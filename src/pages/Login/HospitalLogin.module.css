@@ -1,0 +1,91 @@
+@font-face { font-family: poppins-regular; 
+    src: url('../../fonts/poopins/Poppins-Regular.otf');
+ } 
+ @font-face { font-family: poppins-medium; 
+    
+    src: url('../../fonts/poopins/Poppins-Medium.otf');
+ } 
+
+
+.loginSection {
+    background-image: url('../../assests//loginBg.png');
+    background-repeat: no-repeat;
+    height:100vh;
+    background-size: cover;
+    width: 100%;
+}
+.logoSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.logoSection img {
+    width: 100px;
+}
+.logoSection p {
+    font-size: 17px;
+    font-family: poppins-medium !important;
+}
+.loginOuter {
+    margin-top: 4rem !important;
+    display: flex;
+    justify-content: center;
+    
+}
+.loginCard {
+    width: 400px;
+    height:350px;
+    background-color: rgba(245, 245, 245, .6);
+    border-radius: 10px;
+
+}
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    margin: 40px !important;
+}
+.loginForm input {
+    height: 50px;
+    width: 82%;
+    border-radius: 50px;
+    border: none;
+    outline: none;
+    padding-left: 60px !important;
+  
+}
+.loginForm input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+   font-size: 16px;
+   font-family: poppins-regular;
+  }
+  
+.wrap {
+   position: relative;
+    margin-bottom: 25px !important;
+}
+.button {
+    margin-top: 20px !important;
+    padding: 20px 2px !important;
+    border-radius: 50px;
+    border: none;
+    background-color: #185EB6;
+    color:#FFFFFF;
+    font-family: poppins-regular;
+    font-size: 16px;
+}
+.inputIcon {
+    width: 30px;
+    height:30px;
+    position: absolute;
+    left: 10px !important;
+    top:10px;
+}
+.bottom {
+    margin-top: 15px !important;
+    display: flex;
+    justify-content: space-between;
+}
+.bottom p {
+    font-size: 14px;
+    font-family:  poppins-regular;
+}
