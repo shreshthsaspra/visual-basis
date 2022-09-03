@@ -32,12 +32,15 @@
     display: flex;
     justify-content: center;
     
+    
 }
 .loginCard {
     width: 400px;
     height:350px;
     background-color: rgba(245, 245, 245, .6);
     border-radius: 10px;
+    padding-left: 1rem ;
+    padding-right: 1rem ;
 
 }
 .loginForm {
@@ -51,7 +54,7 @@
     border-radius: 50px;
     border: none;
     outline: none;
-    padding-left: 60px !important;
+    padding-left: 17px !important;
   
 }
 .loginForm input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -60,8 +63,14 @@
   }
   
 .wrap {
-   position: relative;
+   
     margin-bottom: 25px !important;
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    background-color: #fff;
 }
 .button {
     margin-top: 20px !important;
@@ -76,8 +85,8 @@
 .inputIcon {
     width: 30px;
     height:30px;
-    position: absolute;
-    left: 10px !important;
+    /* position: absolute; */
+    /* left: 10px !important; */
     top:10px;
 }
 .bottom {

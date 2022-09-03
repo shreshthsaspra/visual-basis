@@ -76,7 +76,7 @@
 .inputIcon {
     width: 30px;
     height:30px;
-    position: absolute;
+    /* position: absolute; */
     left: 10px !important;
     top:10px;
 }
