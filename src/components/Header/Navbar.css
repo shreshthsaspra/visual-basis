@@ -1,3 +1,11 @@
+@font-face { font-family: poppins-medium; 
+    
+    src: url('../../fonts/poopins/Poppins-Medium.otf');
+ } 
+@font-face { font-family: poppins-normal; 
+    
+    src: url('../../fonts/poopins/Poppins-Regular.otf');
+ } 
 .navbarMain {
     z-index: 10 !important;
 }
@@ -151,6 +159,7 @@
 .staffMangaemnet li {
     list-style: circle !important;
     margin-top: 1rem !important;
+    font-family: poppins-normal !important;
 }
 
 .hideLi {

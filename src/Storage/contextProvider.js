@@ -7,7 +7,7 @@ export const GlobalStorage = createContext()
 export const DataStorage = ({ children }) => {
     const[loggedIN, setLoggedIn] = useState(false)
     const [patients, setPatients] = useState([])
-    return (
+    return (    
         <GlobalStorage.Provider value={{pateints:[patients, setPatients],login:[loggedIN, setLoggedIn]}}>
             {children}
         </GlobalStorage.Provider>
