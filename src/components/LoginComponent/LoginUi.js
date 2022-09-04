@@ -2,12 +2,11 @@ import React, { useContext } from 'react'
 import styles from './LoginUi.module.css';
 import UserName from '../../assests/USER.png';
 import Password from '../../assests/password.png'
-import { GlobalStorage } from '../../Storage/contextProvider';
+import { GlobalStorage } from '../../Storage/ContextProvider';
 
 const LoginUi = () => {
-    // const {pateints, setPateints} = useContext(GlobalStorage)
-
-    // console.log(pateints);
+    const {pateints} = useContext(GlobalStorage)
+    console.log(pateints[0]);
     return (
         <div className={styles.loginOuter}>
             <div className={styles.loginCard}>

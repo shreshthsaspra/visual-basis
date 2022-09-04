@@ -1,22 +1,29 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Logo from '../../assests/demoLogo.png';
 import "./Navbar.css"
-import {GlobalStorage} from "../../Storage/contextProvider"
-
+import {GlobalStorage} from "../../Storage/ContextProvider"
 function Navbar() {
+    const {pateints,login} = useContext(GlobalStorage)
     const [showNav, setShowNav] = useState(false)
     const [expandLi, setExpandLi] = useState(false)
     const [expandLiPatient, setExpandLiPatient] = useState(false)
-    const {pateints, setPateints} = useContext(GlobalStorage)
-
-    setPateints(showNav)
-    console.log(pateints);
+    const[pateintsValue, setPateints]  = pateints
+    const[loggedIn, SetloggiedIn]  = login
+    
+   useEffect(() => {
+    SetloggiedIn(true)
+    setPateints([{name:"pravin", bloodG:"O+"},{name:"harsh",bloodG:"B+"}])
+     
+   },[])
+   
+    console.log(loggedIn);
+   
     return (
         <div className='navbarMain'>
             <div className={`showHide`} onClick={() => setShowNav(!showNav)}>
                 {
-                    showNav ? <i class="bi bi-x-lg "></i> :
-                        <i class="bi bi-list "></i>
+                    showNav ? <i className="bi bi-x-lg "></i> :
+                        <i className="bi bi-list "></i>
                 }
             </div>
             <div className={`NavbarContainer ${showNav ? 'show' : 'hide'}`}>
