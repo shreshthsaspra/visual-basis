@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styles from './LoginUi.module.css';
 import UserName from '../../assests/USER.png';
 import Password from '../../assests/password.png'
+import { GlobalStorage } from '../../Storage/contextProvider';
 
 const LoginUi = () => {
+    // const {pateints, setPateints} = useContext(GlobalStorage)
+
+    // console.log(pateints);
     return (
         <div className={styles.loginOuter}>
             <div className={styles.loginCard}>

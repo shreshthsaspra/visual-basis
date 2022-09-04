@@ -1,11 +1,16 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Logo from '../../assests/demoLogo.png';
 import "./Navbar.css"
+import {GlobalStorage} from "../../Storage/contextProvider"
 
 function Navbar() {
     const [showNav, setShowNav] = useState(false)
     const [expandLi, setExpandLi] = useState(false)
     const [expandLiPatient, setExpandLiPatient] = useState(false)
+    const {pateints, setPateints} = useContext(GlobalStorage)
+
+    setPateints(showNav)
+    console.log(pateints);
     return (
         <div className='navbarMain'>
             <div className={`showHide`} onClick={() => setShowNav(!showNav)}>
