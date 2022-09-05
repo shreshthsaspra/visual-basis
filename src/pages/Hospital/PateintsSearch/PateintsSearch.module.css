@@ -1,0 +1,100 @@
+.patientSearch{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+.patientSearch img{
+    width: 100px;
+}
+.patientSearch_body{
+    margin-top: 2rem !important;
+    display: flex;
+    gap: 30px;
+}
+.PateintRegister__body__left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.PateintRegister__body__leftCard {
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    padding-left: 5rem !important;
+    padding-right: 5rem !important;
+    padding-bottom: 2rem !important;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.PateintRegister__body__leftCard img {
+    position: absolute;
+    width: 100px !important;
+    height: 100px !important;
+    top: -3rem;
+
+}
+
+.PateintRegister__body__leftCard__body {
+    margin-top: 3.5rem !important;
+}
+
+.PateintRegister__body__leftCard__body p {
+    font-weight: 700;
+    color: #185EB6;
+    font-size: 25px;
+    letter-spacing: 2.25px;
+    font-family: poppins-medium;
+}
+
+.PateintRegister__body__leftCard__body h4 {
+    background-color: #185EB6;
+    color: #fff;
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+    padding-top: .5rem !important;
+    padding-bottom: .5rem !important;
+    border-radius: 20px;
+    font-size: 20px;
+    font-weight: 500 !important;
+}
+
+.PateintRegister__body__leftCard__bodySeacrh {
+    background-color: #fff !important;
+    color: #185EB6 !important;
+    margin-top: 1rem !important;
+}
+
+.PateintRegister__body__leftCard__bodyGoback {
+    background-color: #fff;
+    color: #185EB6;
+    width: 7rem !important;
+    border-radius: 10px ;
+    text-align: center;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+}
+.PateintRegister__body__leftGoback h4{
+    font-family:  poppins-medium;
+    font-size: 20px;
+}
+
+.patientSearch__bodyRight{
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 100% !important;
+    border-radius: 15px !important;
+    padding: 1rem !important;
+    height: fit-content !important;
+    text-align: center;
+   
+
+}
+.patientSearch__bodyRight__search {
+    display: flex;
+}

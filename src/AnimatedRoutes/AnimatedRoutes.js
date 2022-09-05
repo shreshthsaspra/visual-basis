@@ -3,10 +3,11 @@ import { Route, Routes, useLocation } from 'react-router-dom'
 import HospitalLogin from '../pages/Login/HospitalLogin';
 import DoctorLogin from '../pages/Login/DoctorLogin';
 import StaffManagement from '../pages/Login/StaffManagement';
-import PateintRegister from '../pages/Login/Hospital/PateintRegister/PateintRegister';
-import Home from '../pages/Login/Hospital/Home/Home';
+import PateintRegister from '../pages/Hospital/PateintRegister/PateintRegister';
+import Home from '../pages/Hospital/Home/Home';
 import { AnimatePresence } from 'framer-motion';
 import styles from "./AnimatedRoutes.module.css"  
+import PateintsSearch from '../pages/Hospital/PateintsSearch/PateintsSearch';
 
 function AnimatedRoutes() {
   const location = useLocation()
@@ -15,9 +16,10 @@ function AnimatedRoutes() {
       <AnimatePresence>
         <Routes location={location} key = { location.pathname}>
           <Route path="/" element={<HospitalLogin />} />
-          <Route path="/Home" element={<Home/>} />
+          <Route path="/Hospital" element={<Home/>} />
           <Route path="/doctor-login" element={<DoctorLogin />} />
-          <Route path="/pateintmanagement" element={<PateintRegister/>} />
+          <Route path="/Hospital/pateintmanagement" element={<PateintRegister/>} />
+          <Route path="/Hospital/PateintSearch" element={<PateintsSearch/>} />
           {/* <Route path="/staffmanagement" element={<StaffManagement />} /> */}
           <Route path="/staff-login" element={<StaffManagement />} />
         </Routes>

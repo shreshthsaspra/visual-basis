@@ -1,17 +1,14 @@
 import React from 'react'
 import styles from "./Home.module.css"
-import Logo from "../../../../assests/demoLogo.png"
-import bedLogo from "../../../../assests/USER.png"
+import Logo from "../../../assests/demoLogo.png"
+import bedLogo from "../../../assests/USER.png"
 import { NavLink } from 'react-router-dom'
-import { motion } from 'framer-motion'
 
 function Home() {
   return (
-    <motion.div 
+    <div 
     className={styles.Home}
-    initial = {{opacity:0}}
-    animate = {{opacity:1}}
-    exit = {{opacity:1}}
+   
     >
       <div className={styles.Home__body}>
         <div className={styles.Home__Icon}>
@@ -25,7 +22,7 @@ function Home() {
               <p>Staff Management</p>
             </div>
           </NavLink>
-          <NavLink to="/pateintmanagement" style={{ textDecoration: "none" }}>
+          <NavLink to="/Hospital/pateintmanagement" style={{ textDecoration: "none" }}>
             <div className={styles.Home__body__button__pateint}>
               <img src={bedLogo} alt="" />
               <p>Patient Management</p>
@@ -33,7 +30,7 @@ function Home() {
           </NavLink>
         </div>
       </div>
-    </motion.div>
+    </div>
   )
 }
 
