@@ -4,21 +4,28 @@ import UserName from '../../assests/USER.png';
 import Password from '../../assests/password.png'
 import { GlobalStorage } from '../../Storage/ContextProvider';
 
-const LoginUi = () => {
+const LoginUi = ({
+    userValue,
+    handleUser,
+    passValue,
+    handlePassword,
+    formSubmit
+
+}) => {
     const {pateints} = useContext(GlobalStorage)
     console.log(pateints[0]);
     return (
         <div className={styles.loginOuter}>
             <div className={styles.loginCard}>
-                <form className={styles.loginForm}>
+                <form onSubmit={formSubmit} className={styles.loginForm}>
                     <div className={styles.wrap}>
                         <img className={styles.inputIcon} src={UserName} alt="User Icon" />
-                        <input type="text" placeholder='Username' />
+                        <input value={userValue} onChange={handleUser} type="text" placeholder='Username' />
                     </div>
 
                     <div className={styles.wrap}>
                         <img className={styles.inputIcon} src={Password} alt="Password Icon" />
-                        <input type="text" placeholder='Password' />
+                        <input value={passValue} onChange={handlePassword} type="text" placeholder='Password' />
                     </div>
                     <button className={styles.button}>LOGIN</button>
                     <div className={styles.bottom}>

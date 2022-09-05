@@ -1,7 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Logo from '../../assests/demoLogo.png';
+import { GlobalStorage } from '../../Storage/ContextProvider';
 import "./Navbar.css"
-import {GlobalStorage} from "../../Storage/ContextProvider"
+// import {GlobalStorage} from "../../Storage/ContextProvider"
+
 function Navbar() {
     const {pateints,login} = useContext(GlobalStorage)
     const [showNav, setShowNav] = useState(false)
