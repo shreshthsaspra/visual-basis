@@ -32,11 +32,7 @@ const HospitalLogin = () => {
                         </form>
                     </div>
                 </div>
-                <iframe id="myWidget"
-            src="https://human.biodigital.com/viewer?id=production/maleAdult/male_system_anatomy_skeletal_09&ui-info=false&ui-menu=false&dk=f2c6ec4e8b1f103853561522cb73a56c2a15a359"
-            width="100%"
-            height="100%">
-    </iframe>
+               
             </div>
         </>
     )
