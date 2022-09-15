@@ -1,13 +1,13 @@
 
 import React from 'react'
-import styles from "./PateintRegister.module.css"
+import styles from "./StaffRegister.module.css"
 import Logo from "../../../assests/demoLogo.png"
-import BedIcon from "../../../assests/PATIENT ICON 1.png";
+import Staff from "../../../assests/staff.png";
 import Icon from '../../../assests/buttonIcon.png'
 import Profile from '../../../assests/profile.png'
 import { NavLink } from 'react-router-dom'
 
-function PateintRegister() {
+function StaffRegister() {
   return (
     <>
       <div className={styles.upperLogo}>
@@ -23,13 +23,13 @@ function PateintRegister() {
         <div className={styles.PateintRegister__body}>
           <div className={styles.PateintRegister__body__left}>
             <div className={styles.PateintRegister__body__leftCard}>
-              <img src={BedIcon} alt="" />
+              <img src={Staff} alt="" />
               <div className={styles.PateintRegister__body__leftCard__body}>
-                <p>PATIENT</p>
-                <NavLink to="/Hospital/pateintmanagement" style={{ textDecoration: "none" }}>
+                <p>STAFF</p>
+                <NavLink to="/Hospital/staffmanagement" style={{ textDecoration: "none" }}>
                   <h4>Registration</h4>
                 </NavLink>
-                <NavLink to="/Hospital/PateintSearch" style={{ textDecoration: "none" }}>
+                <NavLink to="/Hospital/staffSearch" style={{ textDecoration: "none" }}>
                   <h4 className={styles.PateintRegister__body__leftCard__bodySeacrh}>Search</h4>
                 </NavLink>
               </div>
@@ -215,7 +215,7 @@ function PateintRegister() {
                 <div className={` ${styles.formWrap} `}>
                   <div className="d-flex">
                     <div className={styles.addressSpace}>
-                      <label className=''>Address</label>
+                      <label className=''>History</label>
                     </div>
                     <div className=' ms-5 w-100'>
                       <textarea wrap="off" cols="30" rows="5" className={styles.bottomTextArea} style={{ width: '100%' }} type="text" />
@@ -241,4 +241,4 @@ function PateintRegister() {
   )
 }
 
-export default PateintRegister
+export default StaffRegister;

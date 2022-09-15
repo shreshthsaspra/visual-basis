@@ -24,14 +24,16 @@
 
 .Home__Icon img {
     width: 100px;
-    display: flex;
-    margin-left: 1rem !important;
+    /* display: flex;
+    justify-content: center; */
+    margin-left: 2rem !important;
 
 }
 
 .Home__Icon p {
     font-size: 17px;
     font-family: poppins-medium !important;
+    letter-spacing: 2px;
 }
 .Home__body__button{
     display: flex;

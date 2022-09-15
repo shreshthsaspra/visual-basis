@@ -1,0 +1,59 @@
+@font-face {
+    font-family: poppins-medium;
+
+    src: url('../../fonts/poopins/Poppins-Medium.otf');
+}
+
+@font-face { font-family: poppins-regular; 
+    src: url('../../fonts/poopins/Poppins-Regular.otf');
+ } 
+
+ @font-face { font-family: poppins-bold; 
+    src: url('../../fonts/poopins/Poppins-Bold.otf');
+ } 
+.navImg{
+    display: flex;
+    justify-content: center;
+    padding-top: 30px !important;
+}
+
+.navImg img {
+    width: 80px;
+}
+.notification {
+    position: fixed;
+    top: 45px;
+    right:320px;
+}
+.notyOuter {
+    padding: 10px !important;
+    background-color: #FFFFFF;
+
+    opacity:0.6;
+    border-radius: 50%;
+}
+.userProfile {
+    position: fixed;
+    top: 40px;
+    right:100px;
+}
+.profileFlex {
+    display: flex;
+    align-items: center;
+    padding: 5px !important;
+    background-color: #D7EEFE;
+    /* opacity:0.55; */
+    border-radius: 30px;
+}
+.profileFlex img {
+    width:50px;
+    border-radius: 50%;
+    
+}
+.profileFlex p {
+    padding-left: 10px !important;
+    font-family: poppins-bold;
+    color: #185EB6;
+    font-size: 20px;
+    
+}

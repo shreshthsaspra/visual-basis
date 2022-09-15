@@ -1,12 +1,12 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import styles from "./PateintsSearch.module.css"
+import styles from "./StaffSearch.module.css"
 import Logo from "../../../assests/demoLogo.png"
 import BedIcon from "../../../assests/PATIENT ICON 1.png";
 import Icon from '../../../assests/buttonIcon.png'
 import Profile from '../../../assests/profile.png'
 
-function PateintsSearch() {
+function StaffSearch() {
   return (
     <>
       <div className={styles.upperLogo}>
@@ -24,7 +24,7 @@ function PateintsSearch() {
             <div className={styles.PateintRegister__body__leftCard}>
               <img src={BedIcon} alt="" />
               <div className={styles.PateintRegister__body__leftCard__body}>
-                <p>PATIENT</p>
+                <p>Staff</p>
                 <NavLink to="/Hospital/pateintmanagement" style={{ textDecoration: "none" }}>
                   <h4>Registration</h4>
                 </NavLink>
@@ -40,7 +40,7 @@ function PateintsSearch() {
             </div>
           </div>
           <div className={styles.PateintRegister__body__right}>
-            <h2>PATIENT SEARCH</h2>
+            <h2>STAFF SEARCH</h2>
             <div className={styles.searchBody}>
               <div className={styles.search}>
                 <input placeholder='Patient UUID' type="text" />
@@ -82,4 +82,4 @@ function PateintsSearch() {
   )
 }
 
-export default PateintsSearch
+export default StaffSearch
