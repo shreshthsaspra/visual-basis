@@ -3,6 +3,11 @@
 
     src: url('../../../fonts/poopins/Poppins-Medium.otf');
 }
+
+@font-face {
+    font-family: poppins-ExtraLight;
+    src: url('../../../fonts/poopins/Poppins-ExtraLight.otf');
+}
 .upperLogo {
     display: flex;
     justify-content: center;
@@ -168,6 +173,31 @@ textarea::-webkit-scrollbar-thumb {
     background-color: #CFDBE3;
     outline: none;
 }
+.dobInput input {
+    padding-left: 20px !important;
+    width:70px !important;
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    font-family: poppins-ExtraLight;
+
+}
+.monthInput input {
+    padding-left:20px !important ;
+    width:60px !important;
+    border-radius: 0 !important;
+    font-family: poppins-ExtraLight;
+
+}
+.dayInput input {
+    width:70px !important;
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    font-family: poppins-ExtraLight;
+    padding-left: 20px !important;
+
+
+
+}
 .ageInput {
     width: 50px !important;
 }
@@ -234,4 +264,29 @@ textarea::-webkit-scrollbar {
   }
 .profileImage {
     width:170px !important;
+}
+
+select {
+    appearance: none !important;
+    -moz-appearance: none !important;
+    -webkit-appearance: none !important;
+    border: none;
+    outline:none;
+    background-color: #CFDBE3;
+    border-radius: 20px;
+    height: 30px !important;
+    padding-left: 15px !important;
+    padding-right: 40px !important;
+    font-family: poppins-medium;
+    color:#737373;
+    background-image: url('../../../assests/down.png');
+    background-repeat: no-repeat;
+    background-position: calc(100% - 1px) center;
+    background-size: 27px;
+
+
+}
+
+.selectPadding {
+
 }

@@ -1,6 +1,8 @@
 
 import './App.css';
 import { useContext } from "react";
+import "react-datepicker/dist/react-datepicker.css";
+import 'react-toastify/dist/ReactToastify.css';
 
 
 import Navbar from './components/Header/Navbar';
