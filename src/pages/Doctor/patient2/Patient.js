@@ -5,8 +5,6 @@ import { ImCross } from "react-icons/im";
 import PatientImg from '../../../assests/patientProfile.png';
 import Reset from '../../../assests/reset.png';
 import Icon from '../../../assests/buttonIcon.png'
-import { ImSearch } from "react-icons/im";
-
 
 const Patient = () => {
     return (
@@ -14,23 +12,14 @@ const Patient = () => {
             <Header />
             <div className={styles.patientBody}>
                 <div className={styles.inputStyle}>
-                <div className={styles.inputWrap}>
-                       <input placeholder='Patient UUID' type="text" />
-                      <ImSearch size="30px" color="grey" className={styles.iconinner} />
-                </div>
-                    {/* <input placeholder='Patient UUID' type="text" /> */}
+                    <input placeholder='Patient UUID' type="text" />
                     <ImCross
                         color="grey"
-                        className='ms-3 mt-1'
+                        className='ms-2'
                     />
                 </div>
                 <div className={styles.mainCard}>
-                    <div className={styles.noPaient}>
-                        <p>Patient Details</p>
-                    </div>
-
-
-                    {/* <div className="row">
+                    <div className="row">
                         <div className="col-lg-8 col-md-7">
                             <div className={styles.left}>
                                 <img src={PatientImg} alt="" />
@@ -39,8 +28,8 @@ const Patient = () => {
                                     <div className="d-flex mb-4">
                                         <p className='me-4'>26 yrs, femail</p>
                                         <p>26 March 1996</p>
-                                    </div> 
- 
+                                    </div>
+
                                     <div className={styles.address}>
                                         <p>
                                             481-1262, Fukura Otsu, Minamiawaji-shi
@@ -62,10 +51,7 @@ const Patient = () => {
                             </div>
 
                         </div>
-                    </div> */}
-
-
-
+                    </div>
                 </div>
 
                 <div className={styles.subcard}>
@@ -74,11 +60,11 @@ const Patient = () => {
                         <button>Analysis</button>
                         <button>Motion Checking</button>
                         <button>Face Analysis</button>
-
+                        
                     </div>
                 </div>
                 <div className={styles.bottomButton}>
-                    <button>Generate Report <img className={styles.iconStyle} src={Icon} alt="" /></button>
+                    <button>Generate Report <img className={styles.iconStyle}  src={Icon} alt="" /></button>
                 </div>
             </div>
         </>

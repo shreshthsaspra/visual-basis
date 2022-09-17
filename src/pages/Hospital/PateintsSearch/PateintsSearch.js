@@ -7,8 +7,7 @@ import Icon from '../../../assests/buttonIcon.png'
 import axios from 'axios';
 import { getCookie } from '../../../Storage/auth';
 
-import { FaSearch } from "react-icons/fa";
-import { FiSearch } from "react-icons/fi";
+
 import { ImSearch } from "react-icons/im";
 
 
@@ -127,7 +126,7 @@ function PateintsSearch() {
 
             <div className={styles.mainBody}>
               {
-                patients?.map(p => (
+                patientNameSearch?.map(p => (
                   <>
                     {
                       p.first_name && p.last_name && (

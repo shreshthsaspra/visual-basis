@@ -42,6 +42,15 @@ export const authenticate = (response, next) => {
     setLocalStorage('user', "hospital");
     next();
 };
+
+export const authenticateDoctor = (response, next) => {
+    console.log('AUTHENTICATE HELPER ON SIGNIN RESPONSE', response);
+    setCookie('token', response.data.access_token);
+    setLocalStorage('user', "doctor");
+    next();
+};
+
+
 // access user info from localstorage
 export const isAuth = () => {
     if (window !== 'undefined') {
