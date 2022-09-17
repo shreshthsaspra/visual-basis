@@ -8,6 +8,11 @@ import Profile from '../../../assests/profile.png'
 import { NavLink } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import { ToastContainer, toast } from 'react-toastify';
+import axios from 'axios';
+import { getCookie} from '../../../Storage/auth';
+import moment from 'moment';
+
+
 
 function PateintRegister() {
 
@@ -16,27 +21,31 @@ function PateintRegister() {
   const [myYear, setMyYear] = useState(currentDate);
   const [myDay, setMyDay] = useState(currentDate);
 
+  const token = getCookie('token');
 
   const [values, setValues] = useState({
     first_name: "",
     last_name: "",
     email: '',
     dob: "",
-    gender:"",
-    age:0,
-    phone_number:"",
-    zipcode:"",
-    address:"",
+    gender: "NA",
+    age: 0,
+    phone_number: "",
+    zipcode: "",
+    address: "",
+    history:"",
     btnText: "Register"
-})
+  })
 
-const { first_name, last_name, email, dob, gender, age, phone_number, zipcode, address, btnText } = values;
+  const { first_name, last_name, email, dob, gender, age, phone_number, zipcode, address, history, btnText } = values;
 
   const minDate = new Date(myYear.getFullYear(), myMonth.getMonth(), 1);
   const maxDate = new Date(myYear.getFullYear(), myMonth.getMonth() + 1, 0);
 
   useEffect(() => {
     setMyDay(new Date(myYear.getFullYear(), myMonth.getMonth(), 1));
+
+
   }, [myMonth, myYear, setMyDay]);
 
   const renderDayContents = (day, date) => {
@@ -46,9 +55,77 @@ const { first_name, last_name, email, dob, gender, age, phone_number, zipcode, a
     return <span>{date.getDate()}</span>;
   };
 
+  const handleChange = name => event => {
+    console.log(event.target.value);
+    setValues({ ...values, [name]: event.target.value });
+};
+
+const clickSubmit = e => {
+  e.preventDefault();
+
+  axios({
+    method: 'POST',
+    url: `http://18.237.160.150/api/patient/register/`,
+    headers: {
+      Authorization: `Bearer ${token}`
+  },
+    data: { first_name, last_name, email, dob, gender, age, phone_number, zipcode, address, history }
+})
+    .then(response => {
+        console.log('Patient Register Successfully', response);
+        setValues({ ...values, first_name: "",
+        last_name: "",
+        email: '',
+        dob: "",
+        gender: "",
+        age: 0,
+        phone_number: "",
+        zipcode: "",
+        address: "",
+        history:"",
+        btnText: "Register" });
+        toast.success("Patient Register Successfully");
+    })
+    .catch(error => {
+        console.log('Patient Register error', error.response.data.detail[0].msg);
+        setValues({ ...values, buttonText: 'Register'});
+        toast.error(error.response.data.detail[0].msg);
+    });
+
+
+}
+
+
+// console.log("DATE OF BIRTH",dateOfBirth);
+
+const handlemonthChange = (date) => {
+      setMyMonth(date);
+      const dateOfBirth = `${moment(myYear).format("YYYY")}-${moment(date).format("MM")}-${moment(myDay).format("DD")}`;
+      setValues({ ...values, dob: dateOfBirth});
+}
+
+const handleDayChange = (date) => {
+  setMyDay(date);
+  const dateOfBirth = `${moment(myYear).format("YYYY")}-${moment(myMonth).format("MM")}-${moment(date).format("DD")}`;
+      setValues({ ...values, dob: dateOfBirth});
+
+}
+
+const handleYearChange = (date) => {
+  setMyYear(date);
+
+  const dateOfBirth = `${moment(date).format("YYYY")}-${moment(myMonth).format("MM")}-${moment(myDay).format("DD")}`;
+      setValues({ ...values, dob: dateOfBirth});
+}
+
+
+// const dateOfBirth = `${moment(myYear).format("YYYY")}-${moment(myMonth).format("MM")}-${moment(myDay).format("DD")}`;
+console.log("DOB", dob);
 
   return (
     <>
+
+    <ToastContainer />
       <div className={styles.upperLogo}>
         <img src={Logo} alt="" />
 
@@ -56,8 +133,6 @@ const { first_name, last_name, email, dob, gender, age, phone_number, zipcode, a
       <div
         className={styles.PateintRegister}
       >
-
-
 
         <div className={styles.PateintRegister__body}>
           <div className={styles.PateintRegister__body__left}>
@@ -80,237 +155,277 @@ const { first_name, last_name, email, dob, gender, age, phone_number, zipcode, a
             </div>
           </div>
           <div className={styles.PateintRegister__body__right}>
+            <form>
+              <div className="formTop">
+                <div className="row">
+                  <div className="col-md-9">
 
-            <div className="formTop">
-              <div className="row">
-                <div className="col-md-9">
-
-                  <div className={` ${styles.formWrap} row`}>
-                    <div className="col-md-3">
-                      <label>Family Name</label>
-                    </div>
-                    <div className="col-md-9">
-                      <input type="text" />
-
-                    </div>
-
-                  </div>
-
-                  <div className={` ${styles.formWrap} row`}>
-                    <div className="col-md-3">
-                      <label>First Name</label>
-
-                    </div>
-                    <div className="col-md-9">
-                      <input type="text" />
-
-                    </div>
-
-
-
-                  </div>
-
-                  <div className={` ${styles.formWrap} d-flex `}>
-                    <div className="d-flex">
-                      <div className="">
-                        <label className={styles.birthspace}>Birth Of Date</label>
+                    <div className={` ${styles.formWrap} row`}>
+                      <div className="col-md-3">
+                        <label>Family Name</label>
                       </div>
-                      <div className={`${styles.dobInput} ms-4`}>
-                        <DatePicker
-                          selected={myYear}
-                          onChange={(date) => setMyYear(date)}
-                          showYearPicker
-                          dateFormat="yyyy"
+                      <div className="col-md-9">
+                        <input
+                          type="text"
+                          onChange={handleChange('last_name')}
+                          value={last_name}
+                        />
+
+                      </div>
+
+                    </div>
+
+                    <div className={` ${styles.formWrap} row`}>
+                      <div className="col-md-3">
+                        <label>First Name</label>
+
+                      </div>
+                      <div className="col-md-9">
+                        <input
+                         type="text" 
+                         onChange={handleChange('first_name')}
+                          value={first_name}
+                         />
+
+                      </div>
+
+
+
+                    </div>
+
+                    <div className={` ${styles.formWrap} d-flex `}>
+                      <div className="d-flex">
+                        <div className="">
+                          <label className={styles.birthspace}>Birth Of Date</label>
+                        </div>
+                        <div className={`${styles.dobInput} ms-4`}>
+                          <DatePicker
+                            selected={myYear}
+                            onChange={(date) => handleYearChange(date)}
+                            showYearPicker
+                            dateFormat="yyyy"
+                          />
+                        </div>
+
+                        <div className={`${styles.monthInput} ms-1`}>
+                          <DatePicker
+                            showMonthYearPicker
+                            dateFormat="MM"
+                            renderCustomHeader={({ date }) => <div></div>}
+                            selected={myMonth}
+                            onChange={(date) => handlemonthChange(date)}
+                          />
+                        </div>
+
+                        <div className={`${styles.dayInput} ms-1`}>
+                          <DatePicker
+                            dateFormat="dd"
+                            renderCustomHeader={({ date }) => <div></div>}
+                            selected={myDay}
+                            renderDayContents={renderDayContents}
+                            onChange={(date) => handleDayChange(date)}
+                          />
+                        </div>
+                      </div>
+
+
+
+                      <div className="d-flex ps-5">
+                        <label className='pe-2'>Age</label>
+                        <div className="">
+                          <input
+                           className={styles.ageInput}
+                            type="text"
+                            onChange={handleChange('age')}
+                            value={age}
+                            
+                            />
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div className={` ${styles.formWrap} row`}>
+                      <div className="col-md-3">
+                        <label>Gender</label>
+
+                      </div>
+                      <div className={`${styles.selectPadding} col-md-9`}>
+                        <select name="gender" id="gender" onChange={handleChange('gender')} value={gender}>
+                          <option value="NA">NA</option>
+                          <option value="Male">Male</option>
+                          <option value="Female">Female</option>
+                          <option value="Other">Other</option>
+                        </select>
+                      </div>
+
+                    </div>
+
+                  </div>
+                  <div className="col-md-3">
+                    <img className={styles.profileImage} src={Profile} alt="" />
+                  </div>
+                </div>
+              </div>
+              <div className="formMiddle">
+                <div className="row">
+                  <div className="col-md-6">
+                    <div className={` ${styles.formWrap} `}>
+                      <div className="d-flex">
+                        <div className={styles.space}>
+                          <label className=''>Zip Code</label>
+                        </div>
+                        <div className='ms-5'>
+                          <input
+                           type="text"
+                           onChange={handleChange('zipcode')}
+                            value={zipcode}
+                           />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-md-6">
+                    <div className={` ${styles.formWrap} row`}>
+                      <div className="col-md-4">
+                        <label>Prefecture</label>
+
+                      </div>
+                      <div className='col-md-8 '>
+                        <select style={{ width: "210px" }} name="gender" id="gender">
+                          <option value="">NA</option>
+                          <option value="Male">Male</option>
+                          <option value="Female">Female</option>
+                          <option value="Other">Other</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div className="row">
+                  <div className="col-md-6">
+                    <div className={` ${styles.formWrap} `}>
+                      <div className="d-flex">
+                        <div className={styles.emailSpace}>
+                          <label className=''>Email ID</label>
+                        </div>
+                        <div className='ms-5'>
+                          <input 
+                          type="email"
+                          onChange={handleChange('email')}
+                           value={email}
+
+                           />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-md-6">
+                    <div className={` ${styles.formWrap} row`}>
+                      <div className="col-md-4">
+                        <label>Phone No .</label>
+
+                      </div>
+                      <div className='col-md-8 '>
+                        <input 
+                        type="text" 
+                        onChange={handleChange('phone_number')} 
+                        value={phone_number}
+                        
                         />
                       </div>
-
-                      <div className={`${styles.monthInput} ms-1`}>
-                        <DatePicker
-                          showMonthYearPicker
-                          dateFormat="MM"
-                          renderCustomHeader={({ date }) => <div></div>}
-                          selected={myMonth}
-                          onChange={(date) => setMyMonth(date)}
-                        />
-                      </div>
-
-                      <div className={`${styles.dayInput} ms-1`}>
-                        <DatePicker
-                          dateFormat="dd"
-                          renderCustomHeader={({ date }) => <div></div>}
-                          selected={myDay}
-                          renderDayContents={renderDayContents}
-                          onChange={(date) => setMyDay(date)}
-                        />
-                      </div>
-                    </div>
-
-
-
-                    <div className="d-flex ps-5">
-                      <label className='pe-2'>Age</label>
-                      <div className="">
-                        <input className={styles.ageInput} type="text" />
-                      </div>
                     </div>
                   </div>
-
-
-                  <div className={` ${styles.formWrap} row`}>
-                    <div className="col-md-3">
-                      <label>Gender</label>
-
-                    </div>
-                    <div className={`${styles.selectPadding} col-md-9`}>
-                      <select name="gender" id="gender">
-                        <option value="">NA</option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                        <option value="Other">Other</option>
-                      </select>
-                    </div>
-
-                  </div>
-
-
-
-
 
                 </div>
-                <div className="col-md-3">
-                  <img className={styles.profileImage} src={Profile} alt="" />
-                </div>
-              </div>
-            </div>
-            <div className="formMiddle">
-              <div className="row">
-                <div className="col-md-6">
-                  <div className={` ${styles.formWrap} `}>
-                    <div className="d-flex">
-                      <div className={styles.space}>
-                        <label className=''>Zip Code</label>
-                      </div>
-                      <div className='ms-5'>
-                        <input type="text" />
+
+                <div className="row">
+                  <div className="col-md-6">
+                    <div className={` ${styles.formWrap} `}>
+                      <div className="d-flex">
+                        <div className={styles.emerSpace}>
+                          <label className=''>Emergency No.</label>
+                        </div>
+                        <div className=''>
+                          <input type="text" />
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div className="col-md-6">
-                  <div className={` ${styles.formWrap} row`}>
-                    <div className="col-md-4">
-                      <label>Prefecture</label>
+                  <div className="col-md-6">
+                    <div className={` ${styles.formWrap} row`}>
+                      <div className="col-md-4">
+                        <label>Doctor's List</label>
 
-                    </div>
-                    <div className='col-md-8 '>
-                      <select style={{ width: "210px" }} name="gender" id="gender">
-                        <option value="">NA</option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                        <option value="Other">Other</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-
-              <div className="row">
-                <div className="col-md-6">
-                  <div className={` ${styles.formWrap} `}>
-                    <div className="d-flex">
-                      <div className={styles.emailSpace}>
-                        <label className=''>Email ID</label>
                       </div>
-                      <div className='ms-5'>
-                        <input type="text" />
+                      <div className='col-md-8 '>
+                        <select style={{ width: "210px" }} name="gender" id="gender">
+                          <option value="NA">NA</option>
+                          <option value="Male">Male</option>
+                          <option value="Female">Female</option>
+                          <option value="Other">Other</option>
+                        </select>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div className="col-md-6">
-                  <div className={` ${styles.formWrap} row`}>
-                    <div className="col-md-4">
-                      <label>Phone No .</label>
 
-                    </div>
-                    <div className='col-md-8 '>
-                      <input type="text" />
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-
-              <div className="row">
-                <div className="col-md-6">
-                  <div className={` ${styles.formWrap} `}>
-                    <div className="d-flex">
-                      <div className={styles.emerSpace}>
-                        <label className=''>Emergency No.</label>
-                      </div>
-                      <div className=''>
-                        <input type="text" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-md-6">
-                  <div className={` ${styles.formWrap} row`}>
-                    <div className="col-md-4">
-                      <label>Doctor's List</label>
-
-                    </div>
-                    <div className='col-md-8 '>
-                      <select style={{ width: "210px" }} name="gender" id="gender">
-                        <option value="">NA</option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                        <option value="Other">Other</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-
-            <div className="formBottom">
-              <div className="">
-                <div className={` ${styles.formWrap} `}>
-                  <div className="d-flex">
-                    <div className={styles.addressSpace}>
-                      <label className=''>Address</label>
-                    </div>
-                    <div className=' ms-5 w-100'>
-                      <textarea className={styles.bottomTextArea} style={{ width: '100%' }} type="text" />
-                    </div>
-                  </div>
                 </div>
               </div>
 
-              <div className="row">
-                <div className="col-md-9">
+              <div className="formBottom">
+                <div className="">
                   <div className={` ${styles.formWrap} `}>
                     <div className="d-flex">
                       <div className={styles.addressSpace}>
-                        <label className=''>History</label>
+                        <label className=''>Address</label>
                       </div>
                       <div className=' ms-5 w-100'>
-                        <textarea wrap="off" cols="30" rows="5" className={styles.bottomTextArea} style={{ width: '100%' }} type="text" />
+                        <textarea 
+                        className={styles.bottomTextArea}
+                         style={{ width: '100%' }} 
+                         type="text"
+                         onChange={handleChange('address')} 
+                         value={address}
+                         />
                       </div>
                     </div>
                   </div>
                 </div>
-                <div className="col-md-3">
-                  <div className={styles.formButton}>
-                    <div className="wrap">
-                      <button className={styles.buttonStyle}>Register <img className={styles.buttonImg} src={Icon} alt="" /></button>
+
+                <div className="row">
+                  <div className="col-md-9">
+                    <div className={` ${styles.formWrap} `}>
+                      <div className="d-flex">
+                        <div className={styles.addressSpace}>
+                          <label className=''>History</label>
+                        </div>
+                        <div className=' ms-5 w-100'>
+                          <textarea 
+                          wrap="off" cols="30" rows="5"
+                           className={styles.bottomTextArea}
+                            style={{ width: '100%' }}
+                            type="text"
+                            onChange={handleChange('history')} 
+                            value={history}
+                            
+                            />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-md-3">
+                    <div className={styles.formButton}>
+                      <div className="wrap">
+                        <button className={styles.buttonStyle} onClick={clickSubmit}>{btnText} <img className={styles.buttonImg} src={Icon} alt="" /></button>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </form>
+
 
           </div>
         </div>

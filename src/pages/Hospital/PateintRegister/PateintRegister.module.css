@@ -167,11 +167,15 @@ textarea::-webkit-scrollbar-thumb {
 .formWrap input {
     padding-left: .5rem !important;
     height: 30px !important;
-    width: 210px;
+    width: 230px;
     border-radius: 20px;
     border: none;
     background-color: #CFDBE3;
     outline: none;
+    font-family:  poppins-regular;
+    font-size: 15px;
+
+
 }
 .dobInput input {
     padding-left: 20px !important;

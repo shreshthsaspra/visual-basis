@@ -104,7 +104,7 @@
 .PateintRegister__body__leftCard__bodySeacrh {
     background-color: #fff !important;
     color: #185EB6 !important;
-    margin-top: .8rem !important;
+    margin-bottom: .8rem !important;
 }
 
 .PateintRegister__body__leftCard__bodyGoback {
@@ -167,6 +167,11 @@ textarea::-webkit-scrollbar-thumb {
     margin-bottom: 30px !important;   
 
 }
+
+.inputWrap {
+    position: relative;
+    /* width: 300px; */
+}
 .search input {
      width: 250px;
     height: 45px;
@@ -176,9 +181,20 @@ textarea::-webkit-scrollbar-thumb {
     border-radius: 10px;
     padding-left: 12px !important;
 }
+
+.iconinner {
+    position: absolute;
+    right: 7px; 
+    top: 7px;
+    bottom: 3px;
+    border: 0;
+    cursor: pointer;
+}
 .search img {
     width: 50px;
 }
+
+
 
 .search ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
    
@@ -193,13 +209,26 @@ textarea::-webkit-scrollbar-thumb {
   .search::-ms-input-placeholder { /* Microsoft Edge */
     font-family: poppins-regular;
   }
+
+  .mainBody {
+    margin-top: 20px !important;
+    height:390px !important;
+    overflow-y: auto;
+    padding: 20px 20px 20px 10px !important;
+  }
+
+
+  
   .singlePatient {
-    margin:15px 0 !important;
+    /* margin:15px 0 !important; */
+    margin-bottom: 20px !important;
     width:100%;
     background-color: #FFFFFF;
     opacity: .7;
     border-radius: 20px;
     padding:8px 40px !important;
+    
+
   }
   .singlePatient p {
     font-family: poppins-regular;
@@ -207,6 +236,41 @@ textarea::-webkit-scrollbar-thumb {
 
   }
 
+  ::-webkit-scrollbar-button {
+    height: 12px;
+  }
+
+   /* Designing for scroll-bar */
+   ::-webkit-scrollbar {
+    /* display: block !important;
+    height: 5px !important; */
+    width: 15px;
+
+    
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #FFFFFF;
+    opacity: .7;
+    border-radius: 5px;
+  
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  
+    background: #CFDBE3;
+    border-radius: 5px;
+
+
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    /* background: #555; */
+}
+  
 
 
 

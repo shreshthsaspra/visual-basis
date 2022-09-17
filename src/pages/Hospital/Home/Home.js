@@ -1,12 +1,23 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import styles from "./Home.module.css"
 import Logo from "../../../assests/demoLogo.png"
 import BedLogo from "../../../assests/patient.png"
-import Staff from "../../../assests/staff.png"
+import Staff from "../../../assests/staff.png";
+import { NavLink, useNavigate } from 'react-router-dom'
+import { isAuth } from '../../../Storage/auth';
 
-import { NavLink } from 'react-router-dom'
 
 function Home() {
+  const navigation = useNavigate();
+
+  React.useEffect(() => {
+    if (!isAuth()) {
+      navigation("/")
+    } 
+  }, []);
+  
+
+
   return (
     <div 
     className={styles.Home}

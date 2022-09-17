@@ -1,7 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Logo from '../../assests/demoLogo.png';
+import { isAuth, signout } from '../../Storage/auth';
 import { GlobalStorage } from '../../Storage/ContextProvider';
-import "./Navbar.css"
+import "./Navbar.css";
+import {useNavigate } from 'react-router-dom'
+
 // import {GlobalStorage} from "../../Storage/ContextProvider"
 
 function Navbar() {
@@ -11,14 +14,20 @@ function Navbar() {
     const [expandLiPatient, setExpandLiPatient] = useState(false)
     const[pateintsValue, setPateints]  = pateints
     const[loggedIn, SetloggiedIn]  = login
+
+    const navigation = useNavigate();
+
     
-   useEffect(() => {
-    SetloggiedIn(true)
-    setPateints([{name:"pravin", bloodG:"O+"},{name:"harsh",bloodG:"B+"}])
-     
-   },[])
+//    useEffect(() => {
+//     SetloggiedIn(true)
+//     setPateints([{name:"pravin", bloodG:"O+"},{name:"harsh",bloodG:"B+"}])
+//    },[])
    
-    console.log(loggedIn);
+    // console.log(loggedIn);
+
+    const hideSidebar = () => {
+        setShowNav(false)
+    }
    
     return (
         <div className='navbarMain'>
@@ -35,7 +44,7 @@ function Navbar() {
                     <div className='NavbarContainer__content'>
                         <div className='NavbarContainer__content__logo'>
                             <img src={Logo} alt="" />
-                            <button className='NavbarContainer__content__signOut'>Sign Out</button>
+                            <button className='NavbarContainer__content__signOut' onClick={() => { setShowNav(false); signout(() => navigation(`/`)) }}>Sign Out</button>
                         </div>
                         <div>
                             <ul>

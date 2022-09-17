@@ -1,12 +1,75 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import styles from "./PateintsSearch.module.css"
 import Logo from "../../../assests/demoLogo.png"
 import BedIcon from "../../../assests/PATIENT ICON 1.png";
 import Icon from '../../../assests/buttonIcon.png'
-import Profile from '../../../assests/profile.png'
+import axios from 'axios';
+import { getCookie } from '../../../Storage/auth';
+
+import { FaSearch } from "react-icons/fa";
+import { FiSearch } from "react-icons/fi";
+import { ImSearch } from "react-icons/im";
+
 
 function PateintsSearch() {
+  const [patientName, setPatientName] = useState("")
+  const [patients, setPateints] = useState([]);
+  const [patientNameSearch, setPatientNameSearch] = useState([])
+  const token = getCookie('token');
+
+
+  useEffect(() => {
+    getPatients();
+  }, []);
+
+  const getPatients = () => {
+    axios({
+      method: 'GET',
+      url: `http://18.237.160.150/api/patient/get/all`,
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
+    })
+
+      .then(response => {
+        console.log("PATIENT", response);
+        setPateints(response.data)
+      })
+      .catch(error => {
+        console.log('Patient not found', error.response.data.error);
+      });
+  };
+
+  // useEffect(() => {
+  //   getPatientNameResults();
+  // }, []);
+
+  const handlePatientNameSearch = (e) => {
+    e.preventDefault();
+    axios({
+      method: 'GET',
+      url: `http://18.237.160.150/api/patient/search?name=${patientName}`,
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
+    })
+
+      .then(response => {
+        console.log("PATIENT SEARCH", response);
+        setPatientNameSearch(response.data)
+      })
+      .catch(error => {
+        console.log('Patient not found', error.response.data.error);
+      });
+  };
+
+  // const handlePatientNameSearch = (e) => {
+  //   e.prevent.default();
+
+  // }
+
+
   return (
     <>
       <div className={styles.upperLogo}>
@@ -26,10 +89,10 @@ function PateintsSearch() {
               <div className={styles.PateintRegister__body__leftCard__body}>
                 <p>PATIENT</p>
                 <NavLink to="/Hospital/pateintmanagement" style={{ textDecoration: "none" }}>
-                  <h4>Registration</h4>
+                  <h4 className={styles.PateintRegister__body__leftCard__bodySeacrh}>Registration</h4>
                 </NavLink>
                 <NavLink to="/Hospital/PateintSearch" style={{ textDecoration: "none" }}>
-                  <h4 className={styles.PateintRegister__body__leftCard__bodySeacrh}>Search</h4>
+                  <h4 >Search</h4>
                 </NavLink>
               </div>
             </div>
@@ -43,17 +106,50 @@ function PateintsSearch() {
             <h2>PATIENT SEARCH</h2>
             <div className={styles.searchBody}>
               <div className={styles.search}>
-                <input placeholder='Patient UUID' type="text" />
-                <input placeholder='Patient Name' type="text" />
-                <img src={Icon} alt="" />
+                <div className={styles.inputWrap}>
+                     <input placeholder='Patient UUID' type="text" />
+                      <ImSearch size="30px" color="grey" className={styles.iconinner} />
+                </div>
+
+                <div className={styles.inputWrap}>
+                <input 
+                placeholder='Patient Name'
+                 type="text"
+                  value={patientName} 
+                  onChange={(e) => setPatientName(e.target.value)}
+                 
+                 />
+                      <ImSearch onClick={handlePatientNameSearch} size="30px" color="grey" className={styles.iconinner} />
+                </div>
+                <img style={{cursor:'pointer'}} src={Icon} alt="" />
               </div>
             </div>
 
             <div className={styles.mainBody}>
-              <div className={styles.singlePatient}>
-                <p>Patient 1</p>
-              </div>
-              <div className={styles.singlePatient}>
+              {
+                patients?.map(p => (
+                  <>
+                    {
+                      p.first_name && p.last_name && (
+                        <div className={styles.singlePatient}>
+                          <p>{`${p.first_name} ${p.last_name}`}</p>
+                        </div>
+                      )
+                    }
+
+                    {
+                      !p.first_name && !p.last_name && (
+                        <div className={styles.singlePatient}>
+                          <p>Without Name</p>
+                        </div>
+                      )
+                    }
+
+                  </>
+                ))
+              }
+
+              {/* <div className={styles.singlePatient}>
                 <p>Patient 2</p>
               </div>
 
@@ -71,9 +167,9 @@ function PateintsSearch() {
 
               <div className={styles.singlePatient}>
                 <p>Patient 6</p>
-              </div>
+              </div> */}
 
-              
+
             </div>
           </div>
         </div>
