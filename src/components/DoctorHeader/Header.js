@@ -40,18 +40,39 @@ const Header = () => {
                     {
                         notifyActive && (
                             <>
-                            <div className={styles.outerNotification}>
-                                <div className={styles.unread}>
-                                    <p> You have 4 unread Notification</p>
+                                <div className={styles.outerNotification}>
+                                    <div className="d-flex" style={{justifyContent: 'space-between'}}>
+                                    <div className={styles.unread}>
+                                        <p> You have 4 unread Notification</p>
+                                    </div>
+                                    <div onClick={clickNoty} className={styles.notyOuterActive} >
+                                        <MdNotificationsActive
+                                            className={styles.iconSize}
+                                            size="35px"
+                                        />
+                                    </div>
+                                    </div>
+                                    <div className={styles.notyBoxOuter}>
+                                        <div className={styles.notyBox}>
+
+                                        </div>
+
+                                        <div className={styles.notyBox}>
+                                            
+                                        </div>
+
+                                        <div className={styles.notyBox}>
+                                            
+                                        </div>
+
+                                        <div className={styles.notyBox}>
+                                            
+                                        </div>
+                                    </div>
                                 </div>
-                            <div onClick={clickNoty} className={styles.notyOuterActive} >
-                                    <MdNotificationsActive
-                                        className={styles.iconSize}
-                                        size="35px"
-                                    />
-                                </div>
-                            </div>
+
                                 
+
                             </>
                         )
                     }

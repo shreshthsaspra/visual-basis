@@ -126,7 +126,7 @@ function PateintsSearch() {
 
             <div className={styles.mainBody}>
               {
-                patientNameSearch?.map(p => (
+                patients?.map(p => (
                   <>
                     {
                       p.first_name && p.last_name && (

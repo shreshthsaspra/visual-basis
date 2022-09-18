@@ -36,7 +36,7 @@ function Navbar() {
                     showNav ? <i className="bi bi-x-lg "></i> :
                         <i className="bi bi-list "></i>
                 }
-            </div>
+            </div> 
             <div className={`NavbarContainer ${showNav ? 'show' : 'hide'}`}>
 
 
