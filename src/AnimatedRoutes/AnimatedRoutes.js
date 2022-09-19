@@ -14,6 +14,7 @@ import ThreedModel from '../pages/ThreedModel';
 import StaffRegister from '../pages/Hospital/staffRegister/StaffRegister';
 import StaffSearch from '../pages/Hospital/StaffSearch/StaffSearch';
 import Patient from '../pages/Doctor/Patient/Patient';
+import DiagnosisHistory from '../pages/Doctor/patientDiagnosis/DiagnosisHistory';
 
 function AnimatedRoutes() {
   const location = useLocation()
@@ -33,6 +34,8 @@ function AnimatedRoutes() {
           <Route path="/doctor-login" element={<DoctorLogin />} />
           <Route path="/Hospital/doctor" element={<DoctorHome />} />
           <Route path="/Hospital/patient" element={<Patient />} />
+          <Route path="/Hospital/diagnosis-history" element={<DiagnosisHistory />} />
+
 
           {/* <Route path="/staffmanagement" element={<StaffManagement />} /> */}
           <Route path="/staff-login" element={<Home />} />
