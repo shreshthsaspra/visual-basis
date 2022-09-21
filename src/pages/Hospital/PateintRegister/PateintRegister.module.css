@@ -270,7 +270,7 @@ textarea::-webkit-scrollbar {
     width:170px !important;
 }
 
-select {
+.select {
     appearance: none !important;
     -moz-appearance: none !important;
     -webkit-appearance: none !important;

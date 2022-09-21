@@ -12,9 +12,13 @@ import { ImSearch } from "react-icons/im";
 
 
 function PateintsSearch() {
-  const [patientName, setPatientName] = useState("")
+  const [patientName, setPatientName] = useState("");
+  const [patientUuid, setPatientUuid] = useState("");
+
   const [patients, setPateints] = useState([]);
   const [patientNameSearch, setPatientNameSearch] = useState([])
+  const [patientUuidSearch, setPatientUuidSearch] = useState([])
+
   const token = getCookie('token');
 
 
@@ -46,6 +50,7 @@ function PateintsSearch() {
 
   const handlePatientNameSearch = (e) => {
     e.preventDefault();
+    setPatientUuid("")
     axios({
       method: 'GET',
       url: `http://18.237.160.150/api/patient/search?name=${patientName}`,
@@ -63,10 +68,25 @@ function PateintsSearch() {
       });
   };
 
-  // const handlePatientNameSearch = (e) => {
-  //   e.prevent.default();
+  const handlePatientUuidSearch = (e) => {
+    e.preventDefault();
+    setPatientName("")
+    axios({
+      method: 'GET',
+      url: `http://18.237.160.150/api/patient/get/${patientUuid}`,
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
+    })
 
-  // }
+      .then(response => {
+        console.log("PATIENT UUid SEARCH", response);
+        setPatientNameSearch([response.data])
+      })
+      .catch(error => {
+        console.log('Patient not found', error.response.data.error);
+      });
+  }
 
 
   return (
@@ -106,8 +126,14 @@ function PateintsSearch() {
             <div className={styles.searchBody}>
               <div className={styles.search}>
                 <div className={styles.inputWrap}>
-                     <input placeholder='Patient UUID' type="text" />
-                      <ImSearch size="30px" color="grey" className={styles.iconinner} />
+                     <input 
+                     placeholder='Patient UUID'
+                      type="text"
+                      value={patientUuid}
+                      onChange={(e) => setPatientUuid(e.target.value)}
+
+                      />
+                      <ImSearch  onClick={handlePatientUuidSearch} size="30px" color="grey" className={styles.iconinner} />
                 </div>
 
                 <div className={styles.inputWrap}>
@@ -126,7 +152,7 @@ function PateintsSearch() {
 
             <div className={styles.mainBody}>
               {
-                patients?.map(p => (
+                patientNameSearch?.map(p => (
                   <>
                     {
                       p.first_name && p.last_name && (

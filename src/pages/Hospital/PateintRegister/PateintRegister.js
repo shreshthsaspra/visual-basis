@@ -251,14 +251,13 @@ console.log("DOB", dob);
 
                       </div>
                       <div className={`${styles.selectPadding} col-md-9`}>
-                        <select name="gender" id="gender" onChange={handleChange('gender')} value={gender}>
+                        <select className={styles.select} name="gender" id="gender" onChange={handleChange('gender')} value={gender}>
                           <option value="NA">NA</option>
                           <option value="Male">Male</option>
                           <option value="Female">Female</option>
                           <option value="Other">Other</option>
                         </select>
-                      </div>
-
+                      </div> 
                     </div>
 
                   </div>
@@ -292,7 +291,7 @@ console.log("DOB", dob);
 
                       </div>
                       <div className='col-md-8 '>
-                        <select style={{ width: "210px" }} name="gender" id="gender">
+                        <select className={styles.select} style={{ width: "230px" }} name="gender" id="gender">
                           <option value="">NA</option>
                           <option value="Male">Male</option>
                           <option value="Female">Female</option>
@@ -361,7 +360,7 @@ console.log("DOB", dob);
 
                       </div>
                       <div className='col-md-8 '>
-                        <select style={{ width: "210px" }} name="gender" id="gender">
+                        <select className={styles.select} style={{ width: "230px" }} name="gender" id="gender">
                           <option value="NA">NA</option>
                           <option value="Male">Male</option>
                           <option value="Female">Female</option>

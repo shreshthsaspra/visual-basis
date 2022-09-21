@@ -1,0 +1,13 @@
+.tableContent {
+    background-color: #EFEFEF;
+    padding: 5px 15px !important;
+    border-radius: 5px;
+    cursor: pointer;
+    /* margin-bottom: 15px !important; */
+}
+.tableContent p{
+    /* padding-top: 5px !important; */
+    color:#185EB6;
+    font-family: poppins-medium;
+   
+}

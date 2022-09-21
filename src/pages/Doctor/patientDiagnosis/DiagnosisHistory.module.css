@@ -6,7 +6,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 90vh !important;
+    height: 100vh !important;
     width: 100% !important;
 }
 .nav {  
@@ -69,7 +69,7 @@ font-family: poppins-medium;
     background-color: #FFFFFF !important;
     border-radius: 10px;
     padding-top: 40px !important;
-    padding-bottom: 60px !important;
+    padding-bottom: 20px !important;
     margin-top: -15px !important;
     z-index: 1 !important;
     padding-left: 50px !important;
@@ -78,7 +78,7 @@ font-family: poppins-medium;
 .heading h2 {
     text-align: right;
     color: #185EB6;
-    font-family: poppins-semiBold;
+    font-family: poppins-semiBold; 
 }
 .profileCard {
     margin-top: 25px !important;
@@ -122,3 +122,168 @@ font-family: poppins-medium;
     color: #185EB6;
     font-family: poppins-medium;
 }
+.search {
+    display: flex;
+    align-items: center;
+}
+.inputOuter {
+    position: relative;
+    /* width: 347px; */
+}
+.inputOuter input {
+    padding-left: 15px !important;
+    width:230px;
+    height:37px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    -moz-box-shadow: 3px 10px 25px rgba(0, 0, 0, 0.16);
+    -webkit-box-shadow: 3px 10px 25px rgba(0, 0, 0, 0.16);
+    box-shadow: 3px 10px 25px rgba(0, 0, 0, 0.16);
+}
+
+.iconinner {
+    position: absolute;
+    right: 7px; 
+    top: 7px;
+    bottom: 3px;
+    border: 0;
+    cursor: pointer;
+}
+
+.sortBy {
+    margin-left: 25px !important;
+    margin-right: 25px !important;
+}
+
+.selectStyle {
+    appearance: none !important;
+    -moz-appearance: none !important;
+    -webkit-appearance: none !important;
+    border: none;
+    outline:none;
+    background-color: #9E9E9E;
+    border-radius: 5px;
+    height: 37px !important;
+    padding-left: 15px !important;
+    padding-right: 20px !important;
+    font-family: poppins-medium;
+    color:#FFFFFF;
+    background-image: url('../../../assests/sortBy.png');
+    background-repeat: no-repeat;
+    background-position: calc(100% - 4px) center;
+    background-size: 20px;
+
+
+}
+
+.filterStyle {
+    appearance: none !important;
+    -moz-appearance: none !important;
+    -webkit-appearance: none !important;
+    border: none;
+    outline:none;
+    background-color: #9E9E9E;
+    border-radius: 5px;
+    height: 37px !important;
+    padding-left: 15px !important;
+    padding-right: 20px !important;
+    font-family: poppins-medium;
+    color:#FFFFFF;
+    background-image: url('../../../assests/filter.png');
+    background-repeat: no-repeat;
+    background-position: calc(100% - 4px) center;
+    background-size: 20px;
+
+
+}
+
+.mainTable {
+    margin-top: 35px !important;
+}
+.tableHeading {
+    background-color: #709BD2;
+    padding: 7px 15px !important;
+    border-radius: 5px;
+}
+.date {
+    display: flex;
+    align-items: center;
+
+}
+.date p {
+    font-family: poppins-medium;
+    color:#FFFFFF;
+}
+
+.tableBody {
+    margin-top: 15px !important;
+    height:200px;
+   overflow-y: auto;
+   padding-right: 15px !important;
+}
+
+.buttonFlex {
+    display: flex;
+    justify-content: center;
+}
+
+.buttonFlex button {
+    border: none;
+    outline: none;
+    padding: 5px 25px !important;
+    border-radius: 5px;
+    background-color: #185EB6;
+    color: #FFFFFF;
+    font-family: poppins-medium;
+}
+
+.tableBody::-webkit-scrollbar-button {
+    height: 12px;
+  }
+
+   /* Designing for scroll-bar */
+   .tableBody::-webkit-scrollbar {
+    /* display: block !important;
+    height: 5px !important; */
+    width: 10px;
+
+    
+}
+
+/* Track */
+.tableBody::-webkit-scrollbar-track {
+    background: #FFFFFF;
+    /* opacity: .7; */
+    border-radius: 5px;
+    -moz-box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.16);
+    -webkit-box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.16);
+    box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.16);
+  
+}
+
+/* Handle */
+.tableBody::-webkit-scrollbar-thumb {
+  
+    background: #185EB6;
+    border-radius: 5px;
+
+
+}
+
+
+.tableContent {
+    background-color: #EFEFEF;
+    padding: 5px 15px !important;
+    border-radius: 5px;
+    cursor: pointer;
+    /* margin-bottom: 15px !important; */
+}
+.tableContent p{
+    /* padding-top: 5px !important; */
+    color:#185EB6;
+    font-family: poppins-medium;
+   
+}
+
+
