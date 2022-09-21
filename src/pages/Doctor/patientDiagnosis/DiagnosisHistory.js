@@ -132,7 +132,7 @@ const DiagnosisHistory = () => {
                                 {data?.map((d, i) => (
 
                                     <div  className="mb-3">
-                                        <div onClick={(e) =>{e.stopPropagation(); handleSubmit(d?.id)}} className={styles.tableContent}>
+                                        <div onClick={(e) =>{e.stopPropagation(); handleSubmit(d?.id)}} className={` ${isOpen == d?.id ?  styles.tableContentOpen: styles.tableContent} `}>
                                             <div className="d-flex align-items-center">
                                                 <p>09-02-2000</p>
                                                 <input className='ms-2'
@@ -147,9 +147,17 @@ const DiagnosisHistory = () => {
 
                                         {
                                             isOpen == d?.id ? (
-                                                <h3 className="text-center">
-                                                    Hello from Harsh
-                                                </h3>
+                                                <div className={styles.innerToggle}>
+                                                    <div className={styles.innerFlex}>
+                                                        <p>Face Analysis</p>
+                                                        <p>Face Analysis</p>
+                                                        <p>Face Analysis</p>
+
+                                                        <p>Face Analysis</p>
+                                                        <p>Face Analysis</p>
+                                                        
+                                                    </div>
+                                                </div>
                                             ) : ""
 
                                         }

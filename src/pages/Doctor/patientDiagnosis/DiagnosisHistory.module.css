@@ -273,17 +273,63 @@ font-family: poppins-medium;
 
 
 .tableContent {
-    background-color: #EFEFEF;
+    background-color: #ECECEC;
     padding: 5px 15px !important;
     border-radius: 5px;
     cursor: pointer;
+    /* -moz-box-shadow: 3px 10px 25px rgba(0, 0, 0, 0.16);
+    -webkit-box-shadow: 3px 10px 25px rgba(0, 0, 0, 0.16);
+    box-shadow: 3px 10px 25px rgba(0, 0, 0, 0.16); */
+   
     /* margin-bottom: 15px !important; */
+}
+.tableContentOpen {
+    
+    background-color: #ECECEC;
+    padding: 5px 15px !important;
+    border-radius: 5px;
+    cursor: pointer;
+    -moz-box-shadow: 3px 10px 25px rgba(0, 0, 0, 0.16);
+    -webkit-box-shadow: 3px 10px 25px rgba(0, 0, 0, 0.16);
+    box-shadow: 3px 10px 25px rgba(0, 0, 0, 0.16);
+
+  
 }
 .tableContent p{
     /* padding-top: 5px !important; */
     color:#185EB6;
     font-family: poppins-medium;
    
+}
+.tableContentOpen p{
+    /* padding-top: 5px !important; */
+    color:#185EB6;
+    font-family: poppins-medium;
+   
+}
+
+.innerToggle {
+ 
+
+   
+    margin-top: 2px !important;
+    background-color: #EEEEEE;
+    border-radius: 5px;
+    padding:0px 20px 15px 20px !important;
+
+}
+.innerFlex {
+    display: flex;
+    /* justify-content: space-around;
+    width: 100%; */
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.innerFlex p {
+    color:#185EB6;
+    font-family: poppins-medium;
+    margin-right: 150px !important;
+    margin-top: 20px!important;
 }
 
 

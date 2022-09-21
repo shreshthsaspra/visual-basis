@@ -15,6 +15,7 @@ import StaffRegister from '../pages/Hospital/staffRegister/StaffRegister';
 import StaffSearch from '../pages/Hospital/StaffSearch/StaffSearch';
 import Patient from '../pages/Doctor/Patient/Patient';
 import DiagnosisHistory from '../pages/Doctor/patientDiagnosis/DiagnosisHistory';
+import GenerateReport from '../pages/Doctor/reportGenerate/GenerateReport';
 
 function AnimatedRoutes() {
   const location = useLocation()
@@ -35,6 +36,8 @@ function AnimatedRoutes() {
           <Route path="/Hospital/doctor" element={<DoctorHome />} />
           <Route path="/Hospital/patient" element={<Patient />} />
           <Route path="/Hospital/diagnosis-history" element={<DiagnosisHistory />} />
+          <Route path="/doctor/generate-report" element={<GenerateReport />} />
+
 
 
           {/* <Route path="/staffmanagement" element={<StaffManagement />} /> */}
