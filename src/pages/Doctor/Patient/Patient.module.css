@@ -64,10 +64,12 @@
 .left {
     display: flex;
     align-items: center;
+    padding: 20px !important;
 }
 
 .left img {
-    width: 200px;
+    width: 170px !important;
+    margin-right: 25px !important;
 }
 
 .profileDetail h3 {

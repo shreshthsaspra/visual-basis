@@ -2,24 +2,34 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 90vh;
+    flex-direction: column;
+    /* height: 100vh; */
+    /* margin-top: 30px !important; */
+    height: 80vh;
     width: 100%;
 }
 .mainOuter {
     width: 80%;
-
     padding: 40px !important;
     -moz-box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.16);
     -webkit-box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.16);
     box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.16);
     border-radius: 5px;
+    /* min-height: 300px; */
+    /* height: 70% !important; */
+    /* height: 520px !important; */
+    /* position: relative; */
     
 }
 
 .cardInner {
+   /* position: absolute; */
+    z-index: 101 !important;
     background-color: #FFFFFF;
     padding: 20px 25px 10px 25px !important;
     border-radius: 5px;
+    width: 100%;
+    /* height: auto */
 }
 
 .buttonFlex {
@@ -30,7 +40,6 @@
 }
 .border {
     border-bottom:  1px solid rgba(24, 94, 182, 0.4);
-
 }
 .wrap {
     display: flex;
@@ -69,4 +78,109 @@
     font-size: 21px;
     font-family: poppins-medium;
     color: #185EB6;
+}
+
+/* .positionExpand {
+    position: relative !important;
+}
+.cardExpand{
+    position: relative !important;
+
+} */
+
+.expandArea {
+    /* position:absolute !important; */
+    /* top: 200px !important; */
+    z-index: 1 !important;
+    margin-top: -0px !important;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    /* height: auto; */
+}
+.expandGame {
+    background-color: #D1EBFE;
+    padding: 15px 40px !important;
+    width: 270px;
+    /* border-radius: 10px; */
+    -moz-box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.16);
+    -webkit-box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.16);
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.16);
+   
+    
+}
+.expandGame p {
+    font-family: poppins-medium;
+    color: #185EB6;
+}
+
+.flexExpand {
+    display: flex;
+    align-items: center;
+    padding-bottom: 8px !important;
+}
+/* .flexExpand input {
+    
+    margin-right: 20px !important;
+    width: 20px !important;
+    height: 20px !important;
+    border: 2px solid red !important;
+    outline: 3px solid red !important;
+    background-color: red !important;
+    border-radius: 5px;
+} */
+
+
+.flexExpand  input[type=checkbox] {
+	-moz-appearance:none;
+	-webkit-appearance:none;
+	-o-appearance:none;
+	outline: none;
+	content: none;	
+}
+
+.flexExpand  input[type=checkbox]:before {
+	font-family: "FontAwesome";
+    content: "\f00c";
+    font-size: 12px;
+    color: transparent !important;
+    background: #FFFFFF;
+    display: block;
+    width: 19px;
+    height: 19px;
+    border: 2.1px solid #185EB6;
+    margin-right: 7px;
+    /* padding-bottom: 10px !important; */
+    border-radius: 4px;
+    padding-top: -5px !important;
+}
+
+.flexExpand  input[type=checkbox]:checked:before {
+
+	color: #185EB6 !important;
+}
+
+
+.printButton {
+    margin-top: 20px !important;
+}
+.printButton button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    border: none;
+    background-color: #FFFFFF;
+    padding: 5px 30px !important;
+    border-radius: 10px;
+    -moz-box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.16);
+    -webkit-box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.16);
+    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.16);
+    font-family: poppins-medium;
+    color: #185EB6;
+    font-size: 18px;
+}
+.printButton img {
+    width: 25px;
 }

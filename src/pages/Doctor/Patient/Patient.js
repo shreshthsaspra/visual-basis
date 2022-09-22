@@ -75,18 +75,17 @@ const Patient = (e) => {
                                 <div className="row">
                                     <div className="col-lg-8 col-md-7">
                                         <div className={styles.left}>
-                                            <img src={PatientImg} alt="" />
+                                            <img src={patientDetail.avatar} alt="" />
                                             <div className={styles.profileDetail}>
-                                                <h3>Suzanne Kaushik</h3>
+                                                <h3>{patientDetail?.first_name} {patientDetail?.last_name}</h3>
                                                 <div className="d-flex mb-4">
-                                                    <p className='me-4'>26 yrs, femail</p>
-                                                    <p>26 March 1996</p>
+                                                    <p className='me-4'>{patientDetail.age}, {patientDetail.gender}</p>
+                                                    <p>{patientDetail.dob}</p>
                                                 </div>
 
                                                 <div className={styles.address}>
                                                     <p>
-                                                        481-1262, Fukura Otsu, Minamiawaji-shi
-                                                        Hyogo
+                                                        {patientDetail.address}
                                                     </p>
                                                 </div>
 
