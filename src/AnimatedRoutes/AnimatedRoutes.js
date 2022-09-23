@@ -16,6 +16,7 @@ import StaffSearch from '../pages/Hospital/StaffSearch/StaffSearch';
 import Patient from '../pages/Doctor/Patient/Patient';
 import DiagnosisHistory from '../pages/Doctor/patientDiagnosis/DiagnosisHistory';
 import GenerateReport from '../pages/Doctor/reportGenerate/GenerateReport';
+import Function from '../pages/Doctor/function/Function';
 
 function AnimatedRoutes() {
   const location = useLocation()
@@ -37,6 +38,8 @@ function AnimatedRoutes() {
           <Route path="/Hospital/patient" element={<Patient />} />
           <Route path="/Hospital/diagnosis-history" element={<DiagnosisHistory />} />
           <Route path="/doctor/generate-report" element={<GenerateReport />} />
+          <Route path="/doctor/function" element={<Function />} />
+
 
 
 
