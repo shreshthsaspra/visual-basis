@@ -31,12 +31,23 @@ const DoctorLogin = () => {
           })
 
           authenticateDoctor(res, () => {
-              // setValues({ ...values, name: '', email: '', password: '', buttonText: 'Submitted' });
-              // toast.success(`Hey ${response.data.user.name}, Welcome back!`);
-              // isAuth() && isAuth().role === 'admin' ? history.push('/admin') : history.push('/private');
-              // history.push("/Home")
+              
               navigation("/Hospital")
+
           });
+
+          if(res.status == 200)
+          {
+            let url1 = `http://18.237.160.150/api/user/get/`
+            const userDetails = axios({
+                method:"get",
+                url:url1,
+                headers:{
+                    
+                }
+
+            })
+          }
          
           console.log("Login Res", res)
           console.log("Is Auth", isAuth())

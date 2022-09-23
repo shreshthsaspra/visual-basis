@@ -38,15 +38,15 @@ export const removeLocalStorage = key => {
 // authenticate user by passing data to cookie and localstorage during signin
 export const authenticate = (response, next) => {
     console.log('AUTHENTICATE HELPER ON SIGNIN RESPONSE', response);
-    setCookie('token', response.data.access_token);
-    setLocalStorage('user', "hospital");
+    setCookie('access_token', response.data.access_token);
+    localStorage.setItem('refresh_token', response.data.refresh_token);
     next();
 };
 
 export const authenticateDoctor = (response, next) => {
     console.log('AUTHENTICATE HELPER ON SIGNIN RESPONSE', response);
-    setCookie('token', response.data.access_token);
-    setLocalStorage('user', "doctor");
+    setCookie('access_token', response.data.access_token);
+    localStorage.setItem('refresh_token', response.data.refresh_token);
     next();
 };
 
@@ -54,7 +54,7 @@ export const authenticateDoctor = (response, next) => {
 // access user info from localstorage
 export const isAuth = () => {
     if (window !== 'undefined') {
-        const cookieChecked = getCookie('token');
+        const cookieChecked = getCookie('access_token');
         if (cookieChecked) {
             if (localStorage.getItem('user')) {
                 return JSON.parse(localStorage.getItem('user'));
@@ -65,8 +65,10 @@ export const isAuth = () => {
     }
 };
 export const signout = next => {
-    removeCookie('token');
-    removeLocalStorage('user');
+    removeCookie('access_token');
+    localStorage.removeItem('user');
+    localStorage.removeItem('refresh_token')
+    localStorage.removeItem('userdetail')
     next();
 };
 export const updateUser = (response, next) => {

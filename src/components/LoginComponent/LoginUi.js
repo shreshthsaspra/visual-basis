@@ -2,22 +2,20 @@ import React, { useContext } from 'react'
 import styles from './LoginUi.module.css';
 import UserName from '../../assests/USER.png';
 import Password from '../../assests/password.png'
-import { GlobalStorage } from '../../Storage/ContextProvider';
+import GlobalStorage from '../../Storage/ContextProvider';
+
 
 const LoginUi = ({
     userValue,
     handleUser,
     passValue,
     handlePassword,
-    formSubmit
-
 }) => {
-    const {pateints} = useContext(GlobalStorage)
-    console.log(pateints[0]);
+    let {loginUser} = useContext(GlobalStorage)
     return (
         <div className={styles.loginOuter}>
             <div className={styles.loginCard}>
-                <form onSubmit={formSubmit} className={styles.loginForm}>
+                <form onSubmit={loginUser} className={styles.loginForm}>
                     <div className={styles.wrap}>
                         <img className={styles.inputIcon} src={UserName} alt="User Icon" />
                         <input value={userValue} onChange={handleUser} type="text" placeholder='Username' />

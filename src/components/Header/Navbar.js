@@ -1,19 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Logo from '../../assests/demoLogo.png';
 import { isAuth, signout } from '../../Storage/auth';
-import { GlobalStorage } from '../../Storage/ContextProvider';
 import "./Navbar.css";
 import {useNavigate } from 'react-router-dom'
 
 // import {GlobalStorage} from "../../Storage/ContextProvider"
 
 function Navbar() {
-    const {pateints,login} = useContext(GlobalStorage)
     const [showNav, setShowNav] = useState(false)
     const [expandLi, setExpandLi] = useState(false)
     const [expandLiPatient, setExpandLiPatient] = useState(false)
-    const[pateintsValue, setPateints]  = pateints
-    const[loggedIn, SetloggiedIn]  = login
 
     const navigation = useNavigate();
 
