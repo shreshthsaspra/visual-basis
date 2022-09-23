@@ -34,10 +34,12 @@ function PateintRegister() {
     zipcode: "",
     address: "",
     history:"",
+    emergency_phone_number:'',
+    prefecture:'Aomori',
     btnText: "Register"
   })
 
-  const { first_name, last_name, email, dob, gender, age, phone_number, zipcode, address, history, btnText } = values;
+  const { first_name, last_name, email, dob, gender, age, phone_number, zipcode, prefecture, address, emergency_phone_number, history, btnText } = values;
 
   const minDate = new Date(myYear.getFullYear(), myMonth.getMonth(), 1);
   const maxDate = new Date(myYear.getFullYear(), myMonth.getMonth() + 1, 0);
@@ -69,7 +71,7 @@ const clickSubmit = e => {
     headers: {
       Authorization: `Bearer ${token}`
   },
-    data: { first_name, last_name, email, dob, gender, age, phone_number, zipcode, address, history }
+    data: { first_name, last_name, email, dob, gender, age, phone_number, zipcode, prefecture, emergency_phone_number, address, history }
 })
     .then(response => {
         console.log('Patient Register Successfully', response);
@@ -83,6 +85,8 @@ const clickSubmit = e => {
         zipcode: "",
         address: "",
         history:"",
+        emergency_phone_number:'',
+        prefecture:'',
         btnText: "Register" });
         toast.success("Patient Register Successfully");
     })
@@ -345,7 +349,11 @@ console.log("DOB", dob);
                     <div className={` ${styles.formWrap} `}>
                       <div className="d-flex">
                         <div className={styles.emerSpace}>
-                          <label className=''>Emergency No.</label>
+                          <label 
+                          onChange={handleChange('emergency_phone_number')}
+                          value={emergency_phone_number}
+                          
+                          className=''>Emergency No.</label>
                         </div>
                         <div className=''>
                           <input type="text" />
@@ -356,7 +364,7 @@ console.log("DOB", dob);
                   <div className="col-md-6">
                     <div className={` ${styles.formWrap} row`}>
                       <div className="col-md-4">
-                        <label>Doctor's List</label>
+                        <label>Doctor</label>
 
                       </div>
                       <div className='col-md-8 '>

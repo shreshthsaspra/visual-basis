@@ -8,6 +8,8 @@ import Icon from '../../../assests/buttonIcon.png'
 import { ImSearch } from "react-icons/im";
 import axios from 'axios';
 import { getCookie } from '../../../Storage/auth';
+import { Link } from 'react-router-dom';
+
 
 
 
@@ -95,7 +97,12 @@ const Patient = (e) => {
                                     <div className="col-lg-4 col-md-5">
                                         <div className={styles.wrap}>
                                             <div className={styles.buttonStyle}>
-                                                <button>Load Previous Data</button>
+                                                <button>
+                                                    <Link style={{textDecoration: 'none'}} to="/Hospital/diagnosis-history">
+                                                    
+                                                    Load Previous Data
+                                                    </Link>
+                                                    </button>
                                             </div>
                                             <div className={styles.iconstyle}>
                                                 <img src={Reset} alt="" />
