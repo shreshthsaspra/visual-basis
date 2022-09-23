@@ -10,12 +10,13 @@ const LoginUi = ({
     handleUser,
     passValue,
     handlePassword,
+    handleSubmit
 }) => {
-    let {loginUser} = useContext(GlobalStorage)
+    // let {loginUser} = useContext(GlobalStorage)
     return (
         <div className={styles.loginOuter}>
             <div className={styles.loginCard}>
-                <form onSubmit={loginUser} className={styles.loginForm}>
+                <form onSubmit={handleSubmit} className={styles.loginForm}>
                     <div className={styles.wrap}>
                         <img className={styles.inputIcon} src={UserName} alt="User Icon" />
                         <input value={userValue} onChange={handleUser} type="text" placeholder='Username' />

@@ -6,98 +6,98 @@ export default GlobalStorage;
 
 
 export const DataStorage = ({children}) => {
-    let [authTokens, setAuthTokens] = useState(()=> localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')) : null)
-    let [user, setUser] = useState(()=> localStorage.getItem('authTokens') ? jwt_decode(localStorage.getItem('authTokens')) : null)
-    let [loading, setLoading] = useState(true)
+    // let [authTokens, setAuthTokens] = useState(()=> localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')) : null)
+    // let [user, setUser] = useState(()=> localStorage.getItem('authTokens') ? jwt_decode(localStorage.getItem('authTokens')) : null)
+    // let [loading, setLoading] = useState(true)
 
-    const history = useNavigate()
+    // const history = useNavigate()
 
-    let loginUser = async (e )=> {
-        e.preventDefault()
-        let loginData = new FormData()
+    // let loginUser = async (e )=> {
+    //     e.preventDefault()
+    //     let loginData = new FormData()
         
-        console.log("login data",loginData);
-        let response = await fetch('http://18.237.160.150/api/auth/token/', {
-            method:'post',
-            headers:{
-                'Content-Type':'application/json'
-            },
-            body:loginData
-        })
-        let data = await response.json()
+    //     console.log("login data",loginData);
+    //     let response = await fetch('http://18.237.160.150/api/auth/token/', {
+    //         method:'post',
+    //         headers:{
+    //             'Content-Type':'application/json'
+    //         },
+    //         body:loginData
+    //     })
+    //     let data = await response.json()
 
-        if(response.status === 200){
-            setAuthTokens(data)
-            setUser(jwt_decode(data.access))
-            localStorage.setItem('authTokens', JSON.stringify(data))
-            history('/Hospital')
-        }else{
-            alert('Something went wrong!')
-        }
-    }
-
-
-    let logoutUser = () => {
-        setAuthTokens(null)
-        setUser(null)
-        localStorage.removeItem('authTokens')
-        history('/login')
-    }
+    //     if(response.status === 200){
+    //         setAuthTokens(data)
+    //         setUser(jwt_decode(data.access))
+    //         localStorage.setItem('authTokens', JSON.stringify(data))
+    //         history('/Hospital')
+    //     }else{
+    //         alert('Something went wrong!')
+    //     }
+    // }
 
 
-    let updateToken = async ()=> {
+    // let logoutUser = () => {
+    //     setAuthTokens(null)
+    //     setUser(null)
+    //     localStorage.removeItem('authTokens')
+    //     history('/login')
+    // }
 
-        let response = await fetch('http://18.237.160.150/api/auth/refresh/', {
-            method:'post',
-            headers:{
-                Authorization:`Bearer ${authTokens?.access}`
-            },
-            body:JSON.stringify({'refresh':authTokens?.refresh})
-        })
 
-        let data = await response.json()
+    // let updateToken = async ()=> {
+
+    //     let response = await fetch('http://18.237.160.150/api/auth/refresh/', {
+    //         method:'post',
+    //         headers:{
+    //             Authorization:`Bearer ${authTokens?.access}`
+    //         },
+    //         body:JSON.stringify({'refresh':authTokens?.refresh})
+    //     })
+
+    //     let data = await response.json()
         
-        if (response.status === 200){
-            setAuthTokens(data)
-            setUser(jwt_decode(data.access))
-            localStorage.setItem('authTokens', JSON.stringify(data))
-        }else{
-            logoutUser()
-        }
+    //     if (response.status === 200){
+    //         setAuthTokens(data)
+    //         setUser(jwt_decode(data.access))
+    //         localStorage.setItem('authTokens', JSON.stringify(data))
+    //     }else{
+    //         logoutUser()
+    //     }
 
-        if(loading){
-            setLoading(false)
-        }
-    }
+    //     if(loading){
+    //         setLoading(false)
+    //     }
+    // }
 
     let contextData = {
-        user:user,
-        authTokens:authTokens,
-        loginUser:loginUser,
-        logoutUser:logoutUser,
+        // user:user,
+        // authTokens:authTokens,
+        // loginUser:loginUser,
+        // logoutUser:logoutUser,
     }
 
 
-    useEffect(()=> {
+    // useEffect(()=> {
 
-        if(loading){
-            updateToken()
-        }
+    //     if(loading){
+    //         updateToken()
+    //     }
 
-        let fourMinutes = 1000 * 60 * 4
+    //     let fourMinutes = 1000 * 60 * 4
 
-        let interval =  setInterval(()=> {
-            if(authTokens){
-                updateToken()
-            }
-        }, fourMinutes)
-        return ()=> clearInterval(interval)
+    //     let interval =  setInterval(()=> {
+    //         if(authTokens){
+    //             updateToken()
+    //         }
+    //     }, fourMinutes)
+    //     return ()=> clearInterval(interval)
 
-    }, [authTokens, loading])
+    // }, [authTokens, loading])
 
     return(
         <GlobalStorage.Provider value={contextData} >
-            {loading ? null : children}
+            {children}
         </GlobalStorage.Provider>
     )
 }

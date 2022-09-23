@@ -87,9 +87,9 @@ const HospitalLogin = () => {
                     localStorage.setItem('user', userDetails.data.role_id)
                     localStorage.setItem('userdetail', JSON.stringify(userDetails.data))
                 }
-                if (localStorage.getItem('user') == 1) {
+                
                     navigation("/Hospital")
-                }
+                
             }
             console.log("Login Res", res)
             console.log("Is Auth", isAuth())
@@ -120,6 +120,7 @@ const HospitalLogin = () => {
                     passValue={password}
                     handleUser={(e) => setUserName(e.target.value)}
                     handlePassword={(e) => setPassword(e.target.value)}
+                    handleSubmit = {handleSubmit}
                 />
             </div>
         </div>
