@@ -40,7 +40,7 @@ function Navbar() {
                     <div className='NavbarContainer__content'>
                         <div className='NavbarContainer__content__logo'>
                             <img src={Logo} alt="" />
-                            <button className='NavbarContainer__content__signOut' onClick={() => { setShowNav(false); signout(() => navigation(`/`)) }}>Sign Out</button>
+                            <button className='NavbarContainer__content__signOut' onClick={() => { setShowNav(false); signout(() => { navigation(`/`) ;window.location.reload()}) }}>Sign Out</button>
                         </div>
                         <div>
                             <ul>

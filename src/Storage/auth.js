@@ -1,5 +1,6 @@
 import cookie from 'js-cookie';
 
+
 // set in cookie
 export const setCookie = (key, value) => {
     if (window !== 'undefined') {
@@ -65,11 +66,14 @@ export const isAuth = () => {
     }
 };
 export const signout = next => {
-    removeCookie('token');
+  
+    localStorage.removeItem('token');
     localStorage.removeItem('user');
     localStorage.removeItem('refresh_token')
     localStorage.removeItem('userdetail')
-    next();
+    next()
+
+    
 };
 export const updateUser = (response, next) => {
     console.log('UPDATE USER IN LOCALSTORAGE HELPERS', response);
