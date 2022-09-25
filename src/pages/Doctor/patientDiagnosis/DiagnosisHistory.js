@@ -61,7 +61,7 @@ const DiagnosisHistory = () => {
     }
 
 
-    return (
+    return ( 
         <>
             <div className={styles.main}>
                 <div className={styles.nav}>

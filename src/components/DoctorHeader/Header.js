@@ -15,6 +15,8 @@ const Header = () => {
     const clickNoty = () => {
         setNotyActive(!notifyActive)
     }
+    const userDetail = JSON.parse(localStorage.getItem('userdetail'));
+    // console.log("User", userDetail.id);
 
     return (
         <>
@@ -81,7 +83,9 @@ const Header = () => {
                 <div className={styles.userProfile}>
                     <div className={`${profileActive ? styles.outerActive : styles.outer} `}>
                         <div onClick={clickProfile} className={styles.profileFlex}>
-                            <p className={`${styles.profiletext} pe-2`}>Dr. Reddy</p>
+                            <p className={`${styles.profiletext} pe-2`}>
+                                {`${userDetail?.first_name && userDetail?.last_name?userDetail?.first_name+userDetail?.last_name: "Tripathi"}`}
+                            </p>
                             <img className={styles.profileImg} src={DoctorImg} alt="" />
                         </div>
 

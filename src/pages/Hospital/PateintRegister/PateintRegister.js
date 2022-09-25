@@ -21,7 +21,7 @@ function PateintRegister() {
   const [myYear, setMyYear] = useState(currentDate);
   const [myDay, setMyDay] = useState(currentDate);
 
-  const token = getCookie('token');
+
 
   const [values, setValues] = useState({
     first_name: "",
@@ -69,7 +69,7 @@ const clickSubmit = e => {
     method: 'POST',
     url: `http://18.237.160.150/api/patient/register/`,
     headers: {
-      Authorization: `Bearer ${token}`
+      Authorization: `Bearer ${localStorage.getItem('token')}`
   },
     data: { first_name, last_name, email, dob, gender, age, phone_number, zipcode, prefecture, emergency_phone_number, address, history }
 })

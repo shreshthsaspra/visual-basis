@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Header from '../../../components/DoctorHeader/Header'
 import styles from './Patient.module.css'
 import { ImCross } from "react-icons/im";
@@ -14,12 +14,35 @@ import { Link } from 'react-router-dom';
 
 
 const Patient = (e) => {
-    
+
     const [patientId, setPatientId] = useState("");
     const [patientDetail, setPatientDetail] = useState();
     const [showProfile, setShowProfile] = useState(false);
     const token = getCookie('token')
-// 073823f3-d2aa-4a22-a958-0789c7a7ecfe
+    // 073823f3-d2aa-4a22-a958-0789c7a7ecfe
+
+
+    useEffect(() => {
+
+        const userDetails = async () => {
+            let url1 = `http://18.237.160.150/api/user/get/`
+            const userDetails = await axios({
+                method: "get",
+                url: url1,
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`
+                }
+
+            })
+            console.log("userDetails", userDetails);
+            if (userDetails.status == 200) {
+                localStorage.setItem('user', userDetails.data.role_id)
+                localStorage.setItem('userdetail', JSON.stringify(userDetails.data))
+            }
+            console.log("usedetails", userDetails);
+        }
+        userDetails()
+    }, [])
 
     const handleRemove = (e) => {
         e.preventDefault();
@@ -34,7 +57,7 @@ const Patient = (e) => {
             method: 'GET',
             url: `http://18.237.160.150/api/patient/get/${patientId}`,
             headers: {
-                Authorization: `Bearer ${token}`
+                Authorization: `Bearer ${localStorage.getItem('token')}`
             },
         })
 
@@ -67,7 +90,7 @@ const Patient = (e) => {
                         color="grey"
                         className='ms-3 mt-1'
                         onClick={handleRemove}
-                        style={{cursor:'pointer'}}
+                        style={{ cursor: 'pointer' }}
                     />
                 </div>
                 <div className={styles.mainCard}>
@@ -98,11 +121,11 @@ const Patient = (e) => {
                                         <div className={styles.wrap}>
                                             <div className={styles.buttonStyle}>
                                                 <button>
-                                                    <Link style={{textDecoration: 'none'}} to="/Hospital/diagnosis-history">
-                                                    
-                                                    Load Previous Data
+                                                    <Link style={{ textDecoration: 'none' }} to="/Hospital/diagnosis-history">
+
+                                                        Load Previous Data
                                                     </Link>
-                                                    </button>
+                                                </button>
                                             </div>
                                             <div className={styles.iconstyle}>
                                                 <img src={Reset} alt="" />
@@ -129,7 +152,12 @@ const Patient = (e) => {
 
                 <div className={styles.subcard}>
                     <div className={styles.buttonDesign}>
-                        <button>Function</button>
+                        <button>
+                            <Link style={{ textDecoration: 'none', color: '#FFFFFF' }} to="/doctor/function">
+
+                                Function
+                            </Link>
+                        </button>
                         <button>Analysis</button>
                         <button>Motion Checking</button>
                         <button>Face Analysis</button>
@@ -137,7 +165,14 @@ const Patient = (e) => {
                     </div>
                 </div>
                 <div className={styles.bottomButton}>
-                    <button>Generate Report <img className={styles.iconStyle} src={Icon} alt="" /></button>
+                    <button>
+                        <Link style={{ textDecoration: 'none' }} to="/doctor/generate-report">
+
+                        Generate Report <img className={styles.iconStyle} src={Icon} alt="" />
+                        </Link>
+
+
+                      </button>
                 </div>
             </div>
         </>

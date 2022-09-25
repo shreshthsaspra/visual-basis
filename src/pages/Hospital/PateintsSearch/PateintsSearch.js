@@ -19,7 +19,7 @@ function PateintsSearch() {
   const [patientNameSearch, setPatientNameSearch] = useState([])
   const [patientUuidSearch, setPatientUuidSearch] = useState([])
 
-  const token = getCookie('token');
+  // const token = getCookie('token');
 
 
   useEffect(() => {
@@ -31,7 +31,7 @@ function PateintsSearch() {
       method: 'GET',
       url: `http://18.237.160.150/api/patient/get/all`,
       headers: {
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${localStorage.getItem('token')}`
       },
     })
 
@@ -55,7 +55,7 @@ function PateintsSearch() {
       method: 'GET',
       url: `http://18.237.160.150/api/patient/search?name=${patientName}`,
       headers: {
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${localStorage.getItem('token')}`
       },
     })
 
@@ -75,7 +75,7 @@ function PateintsSearch() {
       method: 'GET',
       url: `http://18.237.160.150/api/patient/get/${patientUuid}`,
       headers: {
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${localStorage.getItem('token')}`
       },
     })
 
