@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styles from './DiagnosisHistory.module.css';
 import Logo from '../../../assests/shadowLogo.png';
 import Cross from '../../../assests/cross.png';
 import { ImCross } from "react-icons/im";
 import { ImSearch } from "react-icons/im";
 import AccordianItem from '../../../components/Accordian/AccordianItem';
+import axios from 'axios';
+import moment from 'moment';
+import GlobalStorage from '../../../Storage/ContextProvider';
+
 
 
 const data = [
@@ -33,19 +37,24 @@ const data = [
 
 ]
 
-const DiagnosisHistory = () => {
-    const [activeId, setActiveId] = useState();
+const DiagnosisHistory = (props) => {
+    // const state  = this.props.location()
+    const {PateintDetails, setPateintDetails} = useContext(GlobalStorage);
 
+    const [activeId, setActiveId] = useState();
     const [showId, setShowId] = useState();
     const handleShow = id => setShowId(id);
-    const [isCheck, setIsCheck] = useState(false)
+    const [isCheck, setIsCheck] = useState(false);
+    const [history, setHistory] = useState();
     const toggle = (id) => {
         setActiveId(id)
     }
-
     const [isOpen, setIsOpen] = useState("");
     const [isClose, setIsClose] = useState("")
     // const handleShow = () => onShow && onShow(id);
+
+
+    // console.log("UUID", state);
     const handleSubmit = (keyId) => {
         setIsOpen(keyId)
         // setIsOpen(isOpen?.length <=0?keyId: "");
@@ -60,7 +69,32 @@ const DiagnosisHistory = () => {
         console.log(checkId);
     }
 
+    useEffect(() => {
+        getHistory()
+      }, []);
+    
+      const getHistory = () => {
+        axios({
+          method: 'GET',
+          url: `http://18.237.160.150/api/patient/history?id=${PateintDetails?.id}`,
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+          },
+        
+        })
+    
+          .then(response => {
+            console.log("HISTORY", response);
+            setHistory(response.data)
+          })
+          .catch(error => {
+            console.log('Patient not found', error.response.data.error);
+          });
+      };
 
+       
+
+console.log(history?.[0]?.point,"hhhhh");
     return ( 
         <>
             <div className={styles.main}>
@@ -87,11 +121,11 @@ const DiagnosisHistory = () => {
                         <div className={styles.profileCard}>
                             <div className={styles.profileWrap}>
                                 <div className={styles.profileLeft}>
-                                    <h3>Suzanne Kaushik</h3>
-                                    <p>ID: 10091990</p>
+                                    <h3>{`${PateintDetails?.first_name} ${PateintDetails?.last_name}`}</h3>
+                                    <p>{`ID: ${PateintDetails?.id}`}</p>
                                 </div>
                                 <div className={styles.profileRight}>
-                                    <p style={{ fontSize: '22px' }}>12</p>
+                                    <p style={{ fontSize: '22px' }}>{history?.length}</p>
                                     <p style={{ fontSize: '12px' }}>Visits</p>
                                 </div>
                             </div>
@@ -129,12 +163,13 @@ const DiagnosisHistory = () => {
                                 </div>
                             </div>
                             <div className={styles.tableBody}>
-                                {data?.map((d, i) => (
+                                {history?.map((d, i) => (
 
                                     <div  className="mb-3">
                                         <div onClick={(e) =>{e.stopPropagation(); handleSubmit(d?.id)}} className={` ${isOpen == d?.id ?  styles.tableContentOpen: styles.tableContent} `}>
                                             <div className="d-flex align-items-center">
-                                                <p>09-02-2000</p>
+                                                <p>{moment(d?.created_at).format('MM-DD-YYYY')}</p>
+                                               
                                                 <input className='ms-2'
                                                 //  checked={isCheck} 
                                                  type="radio" 
@@ -149,12 +184,9 @@ const DiagnosisHistory = () => {
                                             isOpen == d?.id ? (
                                                 <div className={styles.innerToggle}>
                                                     <div className={styles.innerFlex}>
-                                                        <p>Face Analysis</p>
-                                                        <p>Face Analysis</p>
-                                                        <p>Face Analysis</p>
-
-                                                        <p>Face Analysis</p>
-                                                        <p>Face Analysis</p>
+                                                       {d?.services.map((service, i) => (
+                                                        <p>{service}</p>
+                                                       ))}
                                                         
                                                     </div>
                                                 </div>
