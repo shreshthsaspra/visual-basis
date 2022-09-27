@@ -70,7 +70,9 @@ export const DataStorage = ({children}) => {
     //     }
     // }
 const [tokens, setTokens] = useState()
-const [PateintDetails, setPateintDetails] = useState([]);
+const [PateintDetails, setPateintDetails] = useState();
+const [PateintService, setPateintService] = useState();
+const [showProfile, setShowProfile] = useState(false);
     let contextData = {
         // user:user,
         // authTokens:authTokens,
@@ -97,7 +99,7 @@ const [PateintDetails, setPateintDetails] = useState([]);
     // }, [authTokens, loading])
 
     return(
-        <GlobalStorage.Provider value={{tokens, setTokens,PateintDetails, setPateintDetails}} >
+        <GlobalStorage.Provider value={{tokens, setTokens,PateintDetails, setPateintDetails,PateintService, setPateintService,showProfile, setShowProfile}} >
             {children}
         </GlobalStorage.Provider>
     )

@@ -138,12 +138,28 @@
     justify-content: center;
 }
 
-.buttonDesign button {
+.noactiveButtonGray {
     width: 240px;
     height: 60px;
     /* padding:9px 75px !important; */
     border: none;
     outline: none;
+    /* background-color: #185EB6; */
+    background-color: #9E9E9E;
+    color: #FFFFFF;
+    opacity: 1 !important;
+    border-radius: 10px;
+    font-family: poppins-medium;
+    font-size: 22px;
+    margin-right: 30px !important;
+ }
+ .activeButtonBlue {
+    width: 240px;
+    height: 60px;
+    /* padding:9px 75px !important; */
+    border: none;
+    outline: none;
+    /* background-color: #185EB6; */
     background-color: #185EB6;
     color: #FFFFFF;
     opacity: 1 !important;
