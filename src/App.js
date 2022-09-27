@@ -49,7 +49,7 @@ function App() {
 }
 
 useEffect(() => {
-  let deley = 2000
+  let deley = 240000
   const interval = setInterval(() => {
     console.log("refress tokennnnnn");
     updateToken()

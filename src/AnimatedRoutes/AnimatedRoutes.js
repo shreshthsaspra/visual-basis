@@ -17,13 +17,14 @@ import Patient from '../pages/Doctor/Patient/Patient';
 import DiagnosisHistory from '../pages/Doctor/patientDiagnosis/DiagnosisHistory';
 import GenerateReport from '../pages/Doctor/reportGenerate/GenerateReport';
 import Function from '../pages/Doctor/function/Function';
+import Camera from '../pages/Doctor/camera/Camera';
 
 function AnimatedRoutes() {
   const location = useLocation()
   return (
     <div className={styles.mainRoutes}>
-      <AnimatePresence>
-        <Routes location={location} key = { location.pathname}>
+      {/* <AnimatePresence> */}
+        <Routes>
           <Route path="/" element={<HospitalLogin />} />
           <Route path="/Hospital" element={<Home/>} />
           <Route path="/threed" element={<ThreedModel/>} />
@@ -39,6 +40,8 @@ function AnimatedRoutes() {
           <Route path="/Hospital/diagnosis-history" element={<DiagnosisHistory />} />
           <Route path="/doctor/generate-report" element={<GenerateReport />} />
           <Route path="/doctor/function" element={<Function />} />
+          <Route path="/doctor/camera" element={<Camera />} />
+
 
 
 
@@ -46,7 +49,7 @@ function AnimatedRoutes() {
           {/* <Route path="/staffmanagement" element={<StaffManagement />} /> */}
           <Route path="/staff-login" element={<Home />} />
         </Routes>
-        </AnimatePresence>
+        {/* </AnimatePresence> */}
     </div>
   )
 }
