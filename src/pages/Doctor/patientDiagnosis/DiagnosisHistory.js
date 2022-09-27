@@ -8,6 +8,7 @@ import AccordianItem from '../../../components/Accordian/AccordianItem';
 import axios from 'axios';
 import moment from 'moment';
 import GlobalStorage from '../../../Storage/ContextProvider';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -16,30 +17,33 @@ const data = [
 
     {
         date: "09-10-2022",
-        id:1
+        id: 1
     },
     {
         date: "09-10-2022",
-        id:2
+        id: 2
     },
     {
         date: "09-10-2022",
-        id:3
+        id: 3
     },
     {
         date: "09-10-2022",
-        id:4
+        id: 4
     },
     {
         date: "09-10-2022",
-        id:5
+        id: 5
     },
 
 ]
 
 const DiagnosisHistory = (props) => {
     // const state  = this.props.location()
-    const {PateintDetails, setPateintDetails} = useContext(GlobalStorage);
+    let navigate = useNavigate()
+    const { PateintDetails, setPateintDetails } = useContext(GlobalStorage);
+    const { PateintService, setPateintService } = useContext(GlobalStorage);
+    console.log("chsck selcet", PateintService);
 
     const [activeId, setActiveId] = useState();
     const [showId, setShowId] = useState();
@@ -63,39 +67,44 @@ const DiagnosisHistory = (props) => {
         // console.log("ID", id);
 
     }
+    const handleSerivce = (e) => {
+        e.preventDefault();
+        navigate('/Hospital/patient')
+    }
 
     const handleCheckBox = (checkId) => {
         // setIsCheck(true)
+        setPateintService(checkId)
         console.log(checkId);
     }
 
     useEffect(() => {
         getHistory()
-      }, []);
-    
-      const getHistory = () => {
+    }, []);
+
+    const getHistory = () => {
         axios({
-          method: 'GET',
-          url: `http://18.237.160.150/api/patient/history?id=${PateintDetails?.id}`,
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`
-          },
-        
+            method: 'GET',
+            url: `http://18.237.160.150/api/patient/history?id=${PateintDetails?.id}`,
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            },
+
         })
-    
-          .then(response => {
-            console.log("HISTORY", response);
-            setHistory(response.data)
-          })
-          .catch(error => {
-            console.log('Patient not found', error.response.data.error);
-          });
-      };
 
-       
+            .then(response => {
+                console.log("HISTORY", response);
+                setHistory(response.data)
+            })
+            .catch(error => {
+                console.log('Patient not found', error.response.data.error);
+            });
+    };
 
-console.log(history?.[0]?.point,"hhhhh");
-    return ( 
+
+
+    console.log(history?.[0]?.point, "hhhhh");
+    return (
         <>
             <div className={styles.main}>
                 <div className={styles.nav}>
@@ -165,18 +174,18 @@ console.log(history?.[0]?.point,"hhhhh");
                             <div className={styles.tableBody}>
                                 {history?.map((d, i) => (
 
-                                    <div  className="mb-3">
-                                        <div onClick={(e) =>{e.stopPropagation(); handleSubmit(d?.id)}} className={` ${isOpen == d?.id ?  styles.tableContentOpen: styles.tableContent} `}>
+                                    <div className="mb-3">
+                                        <div onClick={(e) => { e.stopPropagation(); handleSubmit(d?.id) }} className={` ${isOpen == d?.id ? styles.tableContentOpen : styles.tableContent} `}>
                                             <div className="d-flex align-items-center">
                                                 <p>{moment(d?.created_at).format('MM-DD-YYYY')}</p>
-                                               
+
                                                 <input className='ms-2'
-                                                //  checked={isCheck} 
-                                                 type="radio" 
-                                                 value="3"
-                                                 name="hello"
-                                                 onChange={() => handleCheckBox(d)}
-                                                  />
+                                                    //  checked={isCheck} 
+                                                    type="radio"
+                                                    value="3"
+                                                    name="hello"
+                                                    onChange={() => handleCheckBox(d)}
+                                                />
                                             </div>
                                         </div>
 
@@ -184,10 +193,10 @@ console.log(history?.[0]?.point,"hhhhh");
                                             isOpen == d?.id ? (
                                                 <div className={styles.innerToggle}>
                                                     <div className={styles.innerFlex}>
-                                                       {d?.services.map((service, i) => (
-                                                        <p>{service}</p>
-                                                       ))}
-                                                        
+                                                        {d?.services.map((service, i) => (
+                                                            <p>{service}</p>
+                                                        ))}
+
                                                     </div>
                                                 </div>
                                             ) : ""
@@ -202,7 +211,7 @@ console.log(history?.[0]?.point,"hhhhh");
                             </div>
 
                             <div className={styles.buttonFlex}>
-                                <button>Load</button>
+                                <button onClick={handleSerivce}>Load</button>
                             </div>
 
 
