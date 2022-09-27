@@ -6,8 +6,40 @@ import { IoHome } from "react-icons/io5";
 import Reset from '../../../assests/reset.png';
 import { FaCamera } from "react-icons/fa";
 import { MdUpload } from "react-icons/md";
-
+import { AiTwotoneSave } from "react-icons/ai";
+import { BsBoxArrowInRight } from "react-icons/bs";
+import { IoIosArrowForward } from "react-icons/io";
+import { useState } from 'react';
+const data = [
+    {
+        id: 1,
+        date: "2020/10/24 10:15"
+    },
+    {
+        id: 1,
+        date: "2020/10/25 10:15"
+    },
+    {
+        id: 1,
+        date: "2020/10/26 10:15"
+    },
+    {
+        id: 1,
+        date: "2020/10/26 10:15"
+    },
+    {
+        id: 1,
+        date: "2020/10/26 10:15"
+    },
+    {
+        id: 1,
+        date: "2020/10/26 10:15"
+    },
+]
 const Function = () => {
+    const [showDrop, setShowDrop] = useState(false)
+    const [select, setSelect] = useState("")
+    console.log(select);
     return (
         <>
             <div className={styles.image}>
@@ -38,15 +70,36 @@ const Function = () => {
 
                             <div className={styles.inputDiv}>
                                 <p>Visit Date</p>
-                                <div className={styles.dateWrap}>
-                                    <p>10/09/2022</p>
-                                    <span>15:45:34</span>
+                                <div>
+                                    <div onClick={() => setShowDrop(!showDrop)} className={styles.inputDivDate}>
+                                        <div>
+                                            <p>{select ? select?.date : data[0].date}</p>
+                                        </div>
+                                        <div className={styles.dropDown}>
+                                            <IoIosArrowForward />
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div className={`${styles.inputDivDateList} `}>
+                                <div className={`${styles.inputDivDateListOption} ${showDrop ? styles.showDrop : styles.hideDrop}`}>
+                                    {
+                                        data?.map(item => {
+                                            return (
+                                                <p key={item.id} onClick={() => { setSelect(item); setShowDrop(!showDrop) }} >{item.date}</p>
+                                            )
+                                        })
+                                    }
                                 </div>
                             </div>
                         </div>
                         <div className={styles.cardMiddle}>
-                            <button className={styles.modelButton}>Select Model</button>
-                            <button className={styles.screenButton}>Point Screen</button>
+                            <div className={styles.cardMiddleButton}>
+                                <p> posture planning </p>
+                                <div className={styles.cardMiddleButtonCircle}><IoIosArrowForward /></div>
+                            </div>
+
                         </div>
                         <div className={styles.cardRight}>
                             <div className={styles.right1}>
@@ -67,26 +120,33 @@ const Function = () => {
                                                 <p>cm</p>
                                             </div>
                                         </div>
+                                        <div className={`${styles.inputRight}`}>
+                                            <p>Height</p>
+                                            <div className={styles.inputTextWrap}>
+                                                <input type="text" />
+                                                <p>cm</p>
+                                                <p style={{ color: "#185EB6", fontSize: "15px" }}>/</p>
+                                                <input type="text" />
+                                                <p>cm</p>
+                                            </div>
+
+
+                                        </div>
                                     </div>
-
-
-
-                                    <button className={styles.uploadButon}>Upload</button>
                                 </div>
+                                <div className={`${styles.inputRightBUtton} mt-1`}>
+                                    <div className={styles.newData}>
+                                        <BsBoxArrowInRight />
+                                        <p>New Data</p>
+                                    </div>
+                                    <div>
+                                        <div className={styles.save}>
 
-                                <div className={`${styles.inputRight} mt-1`}>
-                                    <p>Height</p>
-                                    <div className={styles.inputTextWrap}>
-                                        <input type="text" />
-                                        <p>cm</p>
+                                            <AiTwotoneSave />
+                                            <p>Save</p>
+                                        </div>
                                     </div>
                                 </div>
-
-
-
-                            </div>
-                            <div className={styles.right2}>
-                                <img src={Reset} alt="" />
                             </div>
 
                         </div>
@@ -95,50 +155,50 @@ const Function = () => {
 
                 <div className={styles.body}>
                     <div className={`${styles.bodyCard} me-4`}>
-                      <p>Front</p>
+                        <p>Front</p>
                         <div className={styles.df}>
-                        <div className={styles.camera}>
-                            <FaCamera size="25px" color='#185EB6' />
-                        </div>
-                        <div className={styles.upload}>
-                            <MdUpload size="25px" color='#185EB6' />
-                        </div>
+                            <div className={styles.camera}>
+                                <FaCamera size="25px" color='#185EB6' />
+                            </div>
+                            <div className={styles.upload}>
+                                <MdUpload size="25px" color='#185EB6' />
+                            </div>
                         </div>
                     </div>
 
                     <div className={`${styles.bodyCard} me-4`}>
-                    <p>Left</p>
+                        <p>Left</p>
                         <div className={styles.df}>
-                        <div className={styles.camera}>
-                            <FaCamera size="25px" color='#185EB6' />
-                        </div>
-                        <div className={styles.upload}>
-                            <MdUpload size="25px" color='#185EB6' />
-                        </div>
+                            <div className={styles.camera}>
+                                <FaCamera size="25px" color='#185EB6' />
+                            </div>
+                            <div className={styles.upload}>
+                                <MdUpload size="25px" color='#185EB6' />
+                            </div>
                         </div>
                     </div>
 
                     <div className={`${styles.bodyCard} me-4`}>
-                    <p>Back</p>
+                        <p>Back</p>
                         <div className={styles.df}>
-                        <div className={styles.camera}>
-                            <FaCamera size="25px" color='#185EB6' />
-                        </div>
-                        <div className={styles.upload}>
-                            <MdUpload size="25px" color='#185EB6' />
-                        </div>
+                            <div className={styles.camera}>
+                                <FaCamera size="25px" color='#185EB6' />
+                            </div>
+                            <div className={styles.upload}>
+                                <MdUpload size="25px" color='#185EB6' />
+                            </div>
                         </div>
                     </div>
 
                     <div className={`${styles.bodyCard} `}>
-                    <p>Right</p>
+                        <p>Right</p>
                         <div className={styles.df}>
-                        <div className={styles.camera}>
-                            <FaCamera size="25px" color='#185EB6' />
-                        </div>
-                        <div className={styles.upload}>
-                            <MdUpload size="25px" color='#185EB6' />
-                        </div>
+                            <div className={styles.camera}>
+                                <FaCamera size="25px" color='#185EB6' />
+                            </div>
+                            <div className={styles.upload}>
+                                <MdUpload size="25px" color='#185EB6' />
+                            </div>
                         </div>
                     </div>
                 </div>

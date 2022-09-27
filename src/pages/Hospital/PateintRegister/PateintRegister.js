@@ -180,7 +180,7 @@ console.log("DOB", dob);
 
                     </div>
 
-                    <div className={` ${styles.formWrap} row`}>
+                    <div className={` ${styles.formWrap} row `}>
                       <div className="col-md-3">
                         <label>First Name</label>
 
@@ -384,12 +384,12 @@ console.log("DOB", dob);
 
               <div className="formBottom">
                 <div className="">
-                  <div className={` ${styles.formWrap} `}>
+                  <div className={` ${styles.historyAdd} `}>
                     <div className="d-flex">
                       <div className={styles.addressSpace}>
                         <label className=''>Address</label>
                       </div>
-                      <div className=' ms-5 w-100'>
+                      <div className={`${styles.textAreaDesigne} ms-5 w-100`}>
                         <textarea 
                         className={styles.bottomTextArea}
                          style={{ width: '100%' }} 
@@ -409,7 +409,7 @@ console.log("DOB", dob);
                         <div className={styles.addressSpace}>
                           <label className=''>History</label>
                         </div>
-                        <div className=' ms-5 w-100'>
+                        <div className={`${styles.textAreaDesigne} ms-5 w-100`}>
                           <textarea 
                           wrap="off" cols="30" rows="5"
                            className={styles.bottomTextArea}
