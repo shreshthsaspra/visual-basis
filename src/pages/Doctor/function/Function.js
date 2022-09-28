@@ -10,6 +10,9 @@ import { AiTwotoneSave } from "react-icons/ai";
 import { BsBoxArrowInRight } from "react-icons/bs";
 import { IoIosArrowForward } from "react-icons/io";
 import { useState } from 'react';
+import { useContext } from 'react';
+import GlobalStorage from '../../../Storage/ContextProvider';
+import { useNavigate } from 'react-router-dom';
 const data = [
     {
         id: 1,
@@ -37,8 +40,22 @@ const data = [
     },
 ]
 const Function = () => {
+    const Navigate = useNavigate()
     const [showDrop, setShowDrop] = useState(false)
+    const {uploadedImage, setUploadIMage} = useContext(GlobalStorage)
     const [select, setSelect] = useState("")
+    
+
+
+    const uploadImage = (img)=>{
+        console.log(img);
+        if(img)
+        {
+            setUploadIMage(img)
+            Navigate("/doctor/function/upload")
+        }
+
+    }
     console.log(select);
     return (
         <>
@@ -161,7 +178,8 @@ const Function = () => {
                                 <FaCamera size="25px" color='#185EB6' />
                             </div>
                             <div className={styles.upload}>
-                                <MdUpload size="25px" color='#185EB6' />
+                                {/* <MdUpload size="25px" color='#185EB6' type='' /> */}
+                                <input type="file" accept='file/image' onChange={(e)=> uploadImage(e.target.files[0])} />
                             </div>
                         </div>
                     </div>

@@ -59,15 +59,4 @@
 
 .cameraStyle {
    padding-top: 5px !important;
-   /* position: relative !important; */
-   object-fit: contain !important;
-   width: 20rem;
-   height: 20rem;
 }
-.cropContainer {
-    position: relative;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 80px;
-  }

@@ -8,6 +8,7 @@ export const DataStorage = ({children}) => {
 const [tokens, setTokens] = useState()
 const [PateintDetails, setPateintDetails] = useState();
 const [PateintService, setPateintService] = useState();
+const [uploadedImage, setUploadIMage] = useState();
 const [showProfile, setShowProfile] = useState(false);
 const [saveImage, setSaveImage]= useState(false);
 const [imgPath, setImgPath] = useState("");
@@ -16,7 +17,7 @@ const [imgPath, setImgPath] = useState("");
 
 
     return(
-        <GlobalStorage.Provider value={{tokens, setTokens, imgPath, setImgPath, PateintDetails, setPateintDetails,PateintService, setPateintService,showProfile, setShowProfile,saveImage,setSaveImage  }} >
+        <GlobalStorage.Provider value={{uploadedImage, setUploadIMage,tokens, setTokens, imgPath, setImgPath, PateintDetails, setPateintDetails,PateintService, setPateintService,showProfile, setShowProfile,saveImage,setSaveImage  }} >
             {children}
         </GlobalStorage.Provider>
     )
