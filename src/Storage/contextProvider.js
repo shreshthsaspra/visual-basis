@@ -4,6 +4,7 @@ export default GlobalStorage;
 
 
 export const DataStorage = ({children}) => {
+    let currentStep = 0;
   
 const [tokens, setTokens] = useState()
 const [PateintDetails, setPateintDetails] = useState();
@@ -11,12 +12,14 @@ const [PateintService, setPateintService] = useState();
 const [showProfile, setShowProfile] = useState(false);
 const [saveImage, setSaveImage]= useState(false);
 const [imgPath, setImgPath] = useState("");
+const [step, setStep] = useState(currentStep);
+
 
 
 
 
     return(
-        <GlobalStorage.Provider value={{tokens, setTokens, imgPath, setImgPath, PateintDetails, setPateintDetails,PateintService, setPateintService,showProfile, setShowProfile,saveImage,setSaveImage  }} >
+        <GlobalStorage.Provider value={{tokens, step, setStep, currentStep, setTokens, imgPath, setImgPath, PateintDetails, setPateintDetails,PateintService, setPateintService,showProfile, setShowProfile,saveImage,setSaveImage  }} >
             {children}
         </GlobalStorage.Provider>
     )

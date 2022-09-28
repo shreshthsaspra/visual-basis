@@ -5,14 +5,27 @@ import ShadoeLogo from '../../../assests/shadowLogo.png'
 import CameraComponent from '../../../components/CameraComponent';
 import GlobalStorage from '../../../Storage/ContextProvider';
 import Front from './Front/Front';
+import Left from './Left/Left';
 
 const Camera = () => {
     const { saveImage, setSaveImage } = useContext(GlobalStorage);
-  const {imgPath, setImgPath} = useContext(GlobalStorage);
+    const {imgPath, setImgPath, step} = useContext(GlobalStorage);
 
     return (
         <>
-        <Front />
+        {
+            step === 0 && (
+             <Front />
+                
+            )
+        }
+
+{
+            step === 1 && (
+             <Left />
+                
+            )
+        }
         </>
     )
 }

@@ -13,16 +13,22 @@ import { IoIosArrowDroprightCircle } from "react-icons/io";
 
 
 function CameraComponent() {
+ 
   const [playing, setPlaying] = useState(false);
   const { imgPath, setImgPath } = useContext(GlobalStorage);
   const [isCropping, setIsCropping] = useState(false);
   const [newImgPathBase64, setNewImgPathBase64] = useState("");
   const [crop, setCrop] = useState({ width: 300, height: 400 });
   const [horizontaloffset, setHorizontaloffset] = useState(0);
-  const { saveImage, setSaveImage } = useContext(GlobalStorage);
+  const { saveImage, setSaveImage, step, setStep, currentStep  } = useContext(GlobalStorage);
 
   const [anti, setAnti] = useState(0);
   const [scaleId, setScale] = useState(1);
+  // const [step, setStep] = useState(currentStep);
+
+
+
+  
 
   // const [rightoffset, setRightoffset] = useState(0);
 
@@ -30,11 +36,25 @@ function CameraComponent() {
   const WIDTH = (HEIGHT / 4) * 3;
 
   const handleMoveBoxLeft = () => {
-    setHorizontaloffset((prev) => prev - 20);
+
+    if(horizontaloffset > -500) {
+      setHorizontaloffset((prev) => prev - 20);
+      console.log("Horizontal Offset", horizontaloffset);
+    }
+    
+
   };
 
   const handleMoveBoxRight = () => {
-    setHorizontaloffset((prev) => prev + 20);
+
+    if(horizontaloffset < 500) {
+
+      setHorizontaloffset((prev) => prev + 20);
+      console.log("Horizontal Offset", horizontaloffset);
+    }
+    
+    
+    
   };
 
   navigator.getUserMedia =
@@ -78,7 +98,7 @@ function CameraComponent() {
       .getContext("2d")
       .drawImage(
         video,
-        (video.videoWidth + horizontaloffset + 15 - (video.videoHeight / 4) * 3) / 2,
+        (video.videoWidth + horizontaloffset + 25 - (video.videoHeight / 4) * 3) / 2,
         0,
         (video.videoHeight / 4) * 3,
         video.videoHeight,
@@ -151,6 +171,13 @@ function CameraComponent() {
    }
 
    console.log(scaleId);
+
+   const handleNext = () => {
+    setPlaying(true)
+    setImgPath("")
+    setStep(currentStep+1)
+   }
+
 
   return (
     <>
@@ -270,7 +297,7 @@ function CameraComponent() {
                   <BiZoomOut color="#185EB6" size="26px" />
                 </button>
 
-                <button className="nextScreen" >
+                <button className="nextScreen" onClick={handleNext}>
                   <IoIosArrowDroprightCircle color="#185EB6" size="25px" /> Next Image
                 </button>
               </div>
