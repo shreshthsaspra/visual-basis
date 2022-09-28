@@ -18,6 +18,7 @@ import DiagnosisHistory from '../pages/Doctor/patientDiagnosis/DiagnosisHistory'
 import GenerateReport from '../pages/Doctor/reportGenerate/GenerateReport';
 import Function from '../pages/Doctor/function/Function';
 import Camera from '../pages/Doctor/camera/Camera';
+import PateintUploadImg from '../components/UploadImage/PateintUploadImg';
 
 function AnimatedRoutes() {
   const location = useLocation()
@@ -28,12 +29,11 @@ function AnimatedRoutes() {
           <Route path="/" element={<HospitalLogin />} />
           <Route path="/Hospital" element={<Home/>} />
           <Route path="/threed" element={<ThreedModel/>} />
-
           <Route path="/Hospital/pateintmanagement" element={<PateintRegister/>} />
+          <Route path="/doctor/function/upload" element={<PateintUploadImg/>} />
           <Route path="/Hospital/PateintSearch" element={<PateintsSearch/>} />
           <Route path="/Hospital/staffSearch" element={<StaffSearch/>} />
           <Route path="/Hospital/staffmanagement" element={<StaffRegister/>} />
-
           <Route path="/doctor-login" element={<DoctorLogin />} />
           <Route path="/Hospital/doctor" element={<DoctorHome />} />
           <Route path="/Hospital/patient" element={<Patient />} />
