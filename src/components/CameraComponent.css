@@ -20,7 +20,7 @@
     padding: 7px !important;
     border-radius: 5px;
     color: #185EB6 !important;
-    font-family: poppins-bold;
+    font-family: poppins-medium;
 }
 .captureImageButton .rotateRight {
     position: absolute;
@@ -42,5 +42,11 @@
 .captureImageButton .ZoomOut {
     position: absolute;
     left:15rem;
+    top:-7rem;
+}
+
+.captureImageButton .nextScreen {
+    position: absolute;
+    right:11rem;
     top:-7rem;
 }

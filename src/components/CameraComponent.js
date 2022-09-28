@@ -8,6 +8,8 @@ import './CameraComponent.css';
 import { FiRotateCw, FiRotateCcw } from "react-icons/fi";
 import { GrZoomIn, GrZoomOut } from "react-icons/gr";
 import { BiZoomIn,BiZoomOut } from "react-icons/bi";
+import ButtonIcon from '../assests/buttonIcon.png';
+import { IoIosArrowDroprightCircle } from "react-icons/io";
 
 
 function CameraComponent() {
@@ -190,7 +192,18 @@ function CameraComponent() {
         <div className="row">
           <div className="col-12 text-center mt-4">
             {(!playing && (
-              <button className="btn btn-primary" onClick={startVideo}>
+              <button 
+              style={{
+                border: 'none',
+                outline: 'none',
+                background: '#185EB6',
+                width: '150px',
+                height: '35px',
+                borderRadius: '5px',
+                color: '#FFFFFF',
+                fontFamily: 'poppins-medium',
+              }}
+              onClick={startVideo}>
                 Start
               </button>
             )) || (
@@ -205,8 +218,6 @@ function CameraComponent() {
                       borderRadius: '5px',
                       color: '#FFFFFF',
                       fontFamily: 'poppins-medium',
-
-
                     }}
                       onClick={captureVideo}>
                       <FaCamera size="22px" className="me-3" />Capture
@@ -244,11 +255,11 @@ function CameraComponent() {
               <>
               <div className="captureImageButton">
                 <button className="rotateRight"  onClick={handleAntiClkwise}>
-                   < FiRotateCcw size="20px" />
+                    <FiRotateCcw size="20px" />
                 </button>
 
                 <button className="rotateLeft" onClick={handleClkwise}>
-                 <FiRotateCw size="20px" />
+                    <FiRotateCw size="20px" />
                 </button>
 
                 <button className="zoomIn" onClick={handleZoomIn}>
@@ -257,6 +268,10 @@ function CameraComponent() {
 
                 <button className="ZoomOut" onClick={handleZoomOut}>
                   <BiZoomOut color="#185EB6" size="26px" />
+                </button>
+
+                <button className="nextScreen" >
+                  <IoIosArrowDroprightCircle color="#185EB6" size="25px" /> Next Image
                 </button>
               </div>
 
