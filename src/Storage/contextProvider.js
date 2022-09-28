@@ -13,13 +13,19 @@ const [showProfile, setShowProfile] = useState(false);
 const [saveImage, setSaveImage]= useState(false);
 const [imgPath, setImgPath] = useState("");
 const [step, setStep] = useState(currentStep);
+const [point, setPoint] = useState({
+    front:"",
+    left:"",
+    back:"",
+    right:"",
+});
 
 
 
 
 
     return(
-        <GlobalStorage.Provider value={{tokens, step, setStep, currentStep, setTokens, imgPath, setImgPath, PateintDetails, setPateintDetails,PateintService, setPateintService,showProfile, setShowProfile,saveImage,setSaveImage  }} >
+        <GlobalStorage.Provider value={{tokens, point, setPoint, step, setStep, currentStep, setTokens, imgPath, setImgPath, PateintDetails, setPateintDetails,PateintService, setPateintService,showProfile, setShowProfile,saveImage,setSaveImage  }} >
             {children}
         </GlobalStorage.Provider>
     )
