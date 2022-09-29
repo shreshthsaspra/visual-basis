@@ -185,6 +185,7 @@ const Function = () => {
                             <div className={styles.upload}>
                                 {/* <MdUpload size="25px" color='#185EB6' type='' /> */}
                                 <input type="file" accept='file/image' onChange={(e)=> uploadImage(e.target.files[0])} />
+                                <MdUpload size="25px" color='#185EB6' />
                             </div>
                         </div>
                     </div>
@@ -197,6 +198,7 @@ const Function = () => {
                                 <FaCamera size="25px" color='#185EB6' />
                             </div>
                             <div className={styles.upload}>
+                            <input type="file" accept='file/image' onChange={(e)=> uploadImage(e.target.files[0])} />
                                 <MdUpload size="25px" color='#185EB6' />
                             </div>
                         </div>
@@ -210,6 +212,7 @@ const Function = () => {
                                 <FaCamera size="25px" color='#185EB6' />
                             </div>
                             <div className={styles.upload}>
+                            <input type="file" accept='file/image' onChange={(e)=> uploadImage(e.target.files[0])} />
                                 <MdUpload size="25px" color='#185EB6' />
                             </div>
                         </div>
@@ -223,6 +226,7 @@ const Function = () => {
                                 <FaCamera size="25px" color='#185EB6' />
                             </div>
                             <div className={styles.upload}>
+                            <input type="file" accept='file/image' onChange={(e)=> uploadImage(e.target.files[0])} />
                                 <MdUpload size="25px" color='#185EB6' />
                             </div>
                         </div>
