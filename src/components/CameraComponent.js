@@ -7,28 +7,32 @@ import GlobalStorage from "../Storage/ContextProvider";
 import './CameraComponent.css';
 import { FiRotateCw, FiRotateCcw } from "react-icons/fi";
 import { GrZoomIn, GrZoomOut } from "react-icons/gr";
-import { BiZoomIn,BiZoomOut } from "react-icons/bi";
+import { BiZoomIn, BiZoomOut } from "react-icons/bi";
 import ButtonIcon from '../assests/buttonIcon.png';
 import { IoIosArrowDroprightCircle } from "react-icons/io";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 
 function CameraComponent() {
- 
+
+
+  let navigate = useNavigate();
   const [playing, setPlaying] = useState(false);
   const { imgPath, setImgPath } = useContext(GlobalStorage);
   const [isCropping, setIsCropping] = useState(false);
   const [newImgPathBase64, setNewImgPathBase64] = useState("");
   const [crop, setCrop] = useState({ width: 300, height: 400 });
   const [horizontaloffset, setHorizontaloffset] = useState(0);
-  const { saveImage, setSaveImage, step, setStep, currentStep  } = useContext(GlobalStorage);
+  const { saveImage, setSaveImage, step, setStep, point, setPoint } = useContext(GlobalStorage);
 
   const [anti, setAnti] = useState(0);
   const [scaleId, setScale] = useState(1);
-  // const [step, setStep] = useState(currentStep);
+  // const [step, setStep] = useState(step);
 
 
 
-  
+
 
   // const [rightoffset, setRightoffset] = useState(0);
 
@@ -37,24 +41,24 @@ function CameraComponent() {
 
   const handleMoveBoxLeft = () => {
 
-    if(horizontaloffset > -500) {
+    if (horizontaloffset > -500) {
       setHorizontaloffset((prev) => prev - 20);
       console.log("Horizontal Offset", horizontaloffset);
     }
-    
+
 
   };
 
   const handleMoveBoxRight = () => {
 
-    if(horizontaloffset < 500) {
+    if (horizontaloffset < 500) {
 
       setHorizontaloffset((prev) => prev + 20);
       console.log("Horizontal Offset", horizontaloffset);
     }
-    
-    
-    
+
+
+
   };
 
   navigator.getUserMedia =
@@ -110,9 +114,10 @@ function CameraComponent() {
     canvas.toBlob(
       (blob) => {
         stopVideo();
-        setImgPath(URL.createObjectURL(blob));
+        setImgPath(blob);
         console.log("BLOB", blob);
       },
+
       "image/jpeg",
       0.95
     );
@@ -148,35 +153,108 @@ function CameraComponent() {
     setNewImgPathBase64(canvas.toDataURL("image/jpeg"));
   };
   console.log("New Image", newImgPathBase64);
+  console.log("POINT1", point);
+
   const handleAntiClkwise = () => {
-    
-   setAnti(anti-90)
+
+    setAnti(anti - 90)
   }
 
   const handleClkwise = () => {
-    
-   setAnti(anti+90)
+
+    setAnti(anti + 90)
   }
 
   const handleZoomIn = () => {
-    
+
     // setCrop(scaleId+0.4)
-    setScale(scaleId+0.2)
-   }
+    setScale(scaleId + 0.2)
+  }
 
-   const handleZoomOut = () => {
-    
+  const handleZoomOut = () => {
+
     // setCrop(scaleId+0.4)
-    setScale(scaleId-0.2)
-   }
+    setScale(scaleId - 0.2)
+  }
 
-   console.log(scaleId);
+  console.log(scaleId);
 
-   const handleNext = () => {
+  const handleNext = () => {
     setPlaying(true)
     setImgPath("")
-    setStep(currentStep+1)
-   }
+    setStep(step + 1)
+  }
+
+  const handleSubmit = () => {
+    let requredTag;
+    if(step == 0) {
+      requredTag="Front"
+    }
+
+    else if(step == 1) {
+      requredTag="Left"
+    }
+
+    else if(step == 2) {
+      requredTag="Back"
+    }
+
+    else if(step == 3) {
+      requredTag="Right"
+    }
+    const formData = new FormData();
+    formData.append('file', imgPath, "noName.png");
+
+    axios({
+      url: `http://18.237.160.150/api/patient/diagnosis/image/upload?id=52351173&tag=${requredTag}`,
+      method: 'POST',
+      data: formData,
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'multipart/form-data',
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    }).then((response) => {
+      if (response.data.message.tag === "Front") {
+        setPoint({ ...point, front: response.data.message.s3_url })
+      
+        setStep(step + 1);
+        setPlaying(true)
+        setImgPath("")
+       
+      }
+
+      if (response.data.message.tag === "Left") {
+        setPoint({ ...point, left: response.data.message.s3_url })
+      
+        setStep(step + 1);
+        setPlaying(true)
+        setImgPath("")
+       
+      }
+
+      if (response.data.message.tag === "Back") {
+        setPoint({ ...point, back: response.data.message.s3_url })
+       
+        setStep(step + 1);
+        setPlaying(true)
+        setImgPath("")
+       
+      }
+
+      if (response.data.message.tag === "Right") {
+        setPoint({ ...point, right: response.data.message.s3_url })
+      
+        navigate("/doctor/function")
+        setPlaying(true)
+        setImgPath("")
+       
+      }
+    })
+      .catch((error) => console.log(error));
+  }
+
+  console.log("POINT", point);
 
 
   return (
@@ -186,7 +264,7 @@ function CameraComponent() {
         <div className="row mt-4">
           {(imgPath && (
             <div className="col-12 text-center CameraClick">
-              <img style={handleZoomIn || handleZoomOut ? {transform: `scale(${scaleId})`}: {transform: `rotate(${anti}deg)`}} src={imgPath} height={HEIGHT} />
+              <img style={handleZoomIn || handleZoomOut ? { transform: `scale(${scaleId})` } : { transform: `rotate(${anti}deg)` }} src={URL.createObjectURL(imgPath)} height={HEIGHT} />
             </div>
           )) || (
               <div className="col-12 text-center">
@@ -219,18 +297,18 @@ function CameraComponent() {
         <div className="row">
           <div className="col-12 text-center mt-4">
             {(!playing && (
-              <button 
-              style={{
-                border: 'none',
-                outline: 'none',
-                background: '#185EB6',
-                width: '150px',
-                height: '35px',
-                borderRadius: '5px',
-                color: '#FFFFFF',
-                fontFamily: 'poppins-medium',
-              }}
-              onClick={startVideo}>
+              <button
+                style={{
+                  border: 'none',
+                  outline: 'none',
+                  background: '#185EB6',
+                  width: '150px',
+                  height: '35px',
+                  borderRadius: '5px',
+                  color: '#FFFFFF',
+                  fontFamily: 'poppins-medium',
+                }}
+                onClick={startVideo}>
                 Start
               </button>
             )) || (
@@ -280,27 +358,31 @@ function CameraComponent() {
               )}
             {!playing && !!imgPath && (
               <>
-              <div className="captureImageButton">
-                <button className="rotateRight"  onClick={handleAntiClkwise}>
+                <div className="captureImageButton">
+                  <button className="rotateRight" onClick={handleAntiClkwise}>
                     <FiRotateCcw size="20px" />
-                </button>
+                  </button>
 
-                <button className="rotateLeft" onClick={handleClkwise}>
+                  <button className="rotateLeft" onClick={handleClkwise}>
                     <FiRotateCw size="20px" />
-                </button>
+                  </button>
 
-                <button className="zoomIn" onClick={handleZoomIn}>
-                  <BiZoomIn size="26px" />
-                </button>
+                  <button className="zoomIn" onClick={handleZoomIn}>
+                    <BiZoomIn size="26px" />
+                  </button>
 
-                <button className="ZoomOut" onClick={handleZoomOut}>
-                  <BiZoomOut color="#185EB6" size="26px" />
-                </button>
+                  <button className="ZoomOut" onClick={handleZoomOut}>
+                    <BiZoomOut color="#185EB6" size="26px" />
+                  </button>
 
-                <button className="nextScreen" onClick={handleNext}>
-                  <IoIosArrowDroprightCircle color="#185EB6" size="25px" /> Next Image
-                </button>
-              </div>
+                  <button className="nextScreen" onClick={handleNext}>
+                    <IoIosArrowDroprightCircle color="#185EB6" size="25px" /> Next Image
+                  </button>
+
+                  <button className="nextScreen3" onClick={handleSubmit}>
+                    <IoIosArrowDroprightCircle color="#185EB6" size="25px" /> Save Image
+                  </button>
+                </div>
 
                 {/* <button
                   className="btn btn-warning ml-2"

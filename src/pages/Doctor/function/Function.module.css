@@ -498,3 +498,9 @@
     display: flex;
     justify-content: center;
 }
+
+.df img{
+    width:250px;
+    height:auto;
+    object-fit: contain;
+}
