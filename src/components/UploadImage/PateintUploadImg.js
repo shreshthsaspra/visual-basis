@@ -127,7 +127,7 @@ function PateintUploadImg() {
 
                                         crop={crop}
                                         zoom={zoom}
-                                        aspect={3/4}
+                                        aspect={2/3}
                                         objectFit
                                         rotation={0}
                                         onCropComplete={onCropComplete}
