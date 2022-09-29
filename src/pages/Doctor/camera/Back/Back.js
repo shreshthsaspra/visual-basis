@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
-import styles from './Camera.module.css';
-import Logo from '../../../assests/demoLogo.png'
-import ShadoeLogo from '../../../assests/shadowLogo.png'
-import CameraComponent from '../../../components/CameraComponent';
-import GlobalStorage from '../../../Storage/ContextProvider';
+import styles from './Back.module.css';
+import Logo from '../../../../assests/demoLogo.png'
+import ShadoeLogo from '../../../../assests/shadowLogo.png'
+import CameraComponent from '../../../../components/CameraComponent';
+import GlobalStorage from '../../../../Storage/ContextProvider';
 
 const Back = () => {
     const { saveImage, setSaveImage } = useContext(GlobalStorage);
@@ -29,7 +29,7 @@ const Back = () => {
                     <div className={styles.mainBody}>
                         <div className={styles.inner}>
                             {/* <CameraComponent /> */}
-                            <h3>Front</h3>
+                            <h3>Back</h3>
                             
                                     <div className={styles.cameraStyle}>
                                         <CameraComponent />

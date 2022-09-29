@@ -11,21 +11,24 @@ import { BiZoomIn, BiZoomOut } from "react-icons/bi";
 import ButtonIcon from '../assests/buttonIcon.png';
 import { IoIosArrowDroprightCircle } from "react-icons/io";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 
 function CameraComponent() {
 
+
+  let navigate = useNavigate();
   const [playing, setPlaying] = useState(false);
   const { imgPath, setImgPath } = useContext(GlobalStorage);
   const [isCropping, setIsCropping] = useState(false);
   const [newImgPathBase64, setNewImgPathBase64] = useState("");
   const [crop, setCrop] = useState({ width: 300, height: 400 });
   const [horizontaloffset, setHorizontaloffset] = useState(0);
-  const { saveImage, setSaveImage, step, setStep, currentStep, point, setPoint } = useContext(GlobalStorage);
+  const { saveImage, setSaveImage, step, setStep, point, setPoint } = useContext(GlobalStorage);
 
   const [anti, setAnti] = useState(0);
   const [scaleId, setScale] = useState(1);
-  // const [step, setStep] = useState(currentStep);
+  // const [step, setStep] = useState(step);
 
 
 
@@ -179,15 +182,31 @@ function CameraComponent() {
   const handleNext = () => {
     setPlaying(true)
     setImgPath("")
-    setStep(currentStep + 1)
+    setStep(step + 1)
   }
 
   const handleSubmit = () => {
+    let requredTag;
+    if(step == 0) {
+      requredTag="Front"
+    }
+
+    else if(step == 1) {
+      requredTag="Left"
+    }
+
+    else if(step == 2) {
+      requredTag="Back"
+    }
+
+    else if(step == 3) {
+      requredTag="Right"
+    }
     const formData = new FormData();
     formData.append('file', imgPath, "noName.png");
 
     axios({
-      url: 'http://18.237.160.150/api/patient/diagnosis/image/upload?id=52351173&tag=Front',
+      url: `http://18.237.160.150/api/patient/diagnosis/image/upload?id=52351173&tag=${requredTag}`,
       method: 'POST',
       data: formData,
       headers: {
@@ -198,6 +217,38 @@ function CameraComponent() {
     }).then((response) => {
       if (response.data.message.tag === "Front") {
         setPoint({ ...point, front: response.data.message.s3_url })
+      
+        setStep(step + 1);
+        setPlaying(true)
+        setImgPath("")
+       
+      }
+
+      if (response.data.message.tag === "Left") {
+        setPoint({ ...point, left: response.data.message.s3_url })
+      
+        setStep(step + 1);
+        setPlaying(true)
+        setImgPath("")
+       
+      }
+
+      if (response.data.message.tag === "Back") {
+        setPoint({ ...point, back: response.data.message.s3_url })
+       
+        setStep(step + 1);
+        setPlaying(true)
+        setImgPath("")
+       
+      }
+
+      if (response.data.message.tag === "Right") {
+        setPoint({ ...point, right: response.data.message.s3_url })
+      
+        navigate("/doctor/function")
+        setPlaying(true)
+        setImgPath("")
+       
       }
     })
       .catch((error) => console.log(error));

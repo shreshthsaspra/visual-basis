@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Function.module.css';
 import Logo from '../../../assests/demoLogo.png';
+import Testing from '../../../assests/testingImage.png'
 import { MdArrowBackIosNew } from "react-icons/md";
 import { IoHome } from "react-icons/io5";
 import Reset from '../../../assests/reset.png';
@@ -43,7 +44,10 @@ const Function = () => {
     const Navigate = useNavigate()
     const [showDrop, setShowDrop] = useState(false)
     const {uploadedImage, setUploadIMage} = useContext(GlobalStorage)
-    const [select, setSelect] = useState("")
+    const [select, setSelect] = useState("");
+
+  const {point, setPoint } = useContext(GlobalStorage);
+
     
 
 
@@ -174,6 +178,7 @@ const Function = () => {
                     <div className={`${styles.bodyCard} me-4`}>
                         <p>Front</p>
                         <div className={styles.df}>
+                               <img src={point.front} alt="" />
                             <div className={styles.camera}>
                                 <FaCamera size="25px" color='#185EB6' />
                             </div>
@@ -187,6 +192,7 @@ const Function = () => {
                     <div className={`${styles.bodyCard} me-4`}>
                         <p>Left</p>
                         <div className={styles.df}>
+                        <img src={point.left} alt="" />
                             <div className={styles.camera}>
                                 <FaCamera size="25px" color='#185EB6' />
                             </div>
@@ -199,6 +205,7 @@ const Function = () => {
                     <div className={`${styles.bodyCard} me-4`}>
                         <p>Back</p>
                         <div className={styles.df}>
+                        <img src={point.back} alt="" />
                             <div className={styles.camera}>
                                 <FaCamera size="25px" color='#185EB6' />
                             </div>
@@ -211,6 +218,7 @@ const Function = () => {
                     <div className={`${styles.bodyCard} `}>
                         <p>Right</p>
                         <div className={styles.df}>
+                             <img src={point.right} alt="" />
                             <div className={styles.camera}>
                                 <FaCamera size="25px" color='#185EB6' />
                             </div>
