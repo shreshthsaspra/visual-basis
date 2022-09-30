@@ -14,6 +14,8 @@ const [showProfile, setShowProfile] = useState(false);
 const [saveImage, setSaveImage]= useState(false);
 const [imgPath, setImgPath] = useState("");
 const [step, setStep] = useState(currentStep);
+const [switchPoint, setSwitchPoint] = useState("");
+
 const [point, setPoint] = useState({
     front:"",
     left:"",
@@ -21,12 +23,8 @@ const [point, setPoint] = useState({
     right:"",
 });
 
-
-
-
-
     return(
-        <GlobalStorage.Provider value={{uploadedImage, setUploadIMage, point, setPoint, tokens, step, setStep, currentStep, setTokens, imgPath, setImgPath, PateintDetails, setPateintDetails,PateintService, setPateintService,showProfile, setShowProfile,saveImage,setSaveImage  }} >
+        <GlobalStorage.Provider value={{uploadedImage, switchPoint, setSwitchPoint, setUploadIMage, point, setPoint, tokens, step, setStep, currentStep, setTokens, imgPath, setImgPath, PateintDetails, setPateintDetails,PateintService, setPateintService,showProfile, setShowProfile,saveImage,setSaveImage  }} >
             {children}
         </GlobalStorage.Provider>
     )

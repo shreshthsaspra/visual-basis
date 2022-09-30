@@ -5,7 +5,7 @@ import Testing from '../../../assests/testingImage.png'
 import { MdArrowBackIosNew } from "react-icons/md";
 import { IoHome } from "react-icons/io5";
 import Reset from '../../../assests/reset.png';
-import { FaCamera } from "react-icons/fa";
+import { FaCamera, FaHandLizard } from "react-icons/fa";
 import { MdUpload } from "react-icons/md";
 import { AiTwotoneSave } from "react-icons/ai";
 import { BsBoxArrowInRight } from "react-icons/bs";
@@ -14,6 +14,7 @@ import { useState } from 'react';
 import { useContext } from 'react';
 import GlobalStorage from '../../../Storage/ContextProvider';
 import { useNavigate } from 'react-router-dom';
+
 const data = [
     {
         id: 1,
@@ -43,7 +44,9 @@ const data = [
 const Function = () => {
     const Navigate = useNavigate()
     const [showDrop, setShowDrop] = useState(false)
-    const {uploadedImage, setUploadIMage} = useContext(GlobalStorage)
+    const {uploadedImage, setUploadIMage, switchPoint, setSwitchPoint,} = useContext(GlobalStorage)
+// const { saveImage, setSaveImage, step, setStep, point, setPoint } = useContext(GlobalStorage);
+
     const [select, setSelect] = useState("");
 
   const {point, setPoint } = useContext(GlobalStorage);
@@ -61,6 +64,22 @@ const Function = () => {
 
     }
     console.log(select);
+    const handleFront =() => {
+        setSwitchPoint("front");
+        Navigate("/doctor/camera")
+    }
+    const handleLeft =() => {
+        setSwitchPoint("left");
+        Navigate("/doctor/camera")
+    }
+    const handleBack =() => {
+        setSwitchPoint("back");
+        Navigate("/doctor/camera")
+    }
+    const handleRight =() => {
+        setSwitchPoint("right");
+        Navigate("/doctor/camera")
+    }
     return (
         <>
             <div className={styles.image}>
@@ -179,7 +198,7 @@ const Function = () => {
                         <p>Front</p>
                         <div className={styles.df}>
                                <img src={point.front} alt="" />
-                            <div className={styles.camera}>
+                            <div className={styles.camera} onClick={handleFront}>
                                 <FaCamera size="25px" color='#185EB6' />
                             </div>
                             <div className={styles.upload}>
@@ -194,7 +213,7 @@ const Function = () => {
                         <p>Left</p>
                         <div className={styles.df}>
                         <img src={point.left} alt="" />
-                            <div className={styles.camera}>
+                            <div className={styles.camera} onClick={handleLeft}>
                                 <FaCamera size="25px" color='#185EB6' />
                             </div>
                             <div className={styles.upload}>
@@ -208,7 +227,7 @@ const Function = () => {
                         <p>Back</p>
                         <div className={styles.df}>
                         <img src={point.back} alt="" />
-                            <div className={styles.camera}>
+                            <div className={styles.camera} onClick={handleBack}>
                                 <FaCamera size="25px" color='#185EB6' />
                             </div>
                             <div className={styles.upload}>
@@ -222,7 +241,7 @@ const Function = () => {
                         <p>Right</p>
                         <div className={styles.df}>
                              <img src={point.right} alt="" />
-                            <div className={styles.camera}>
+                            <div className={styles.camera} onClick={handleRight}>
                                 <FaCamera size="25px" color='#185EB6' />
                             </div>
                             <div className={styles.upload}>

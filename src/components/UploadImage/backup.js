@@ -5,13 +5,13 @@ import Cropper from 'react-easy-crop'
 import styles from './PateintUploadImg.module.css';
 import { useContext } from 'react';
 import GlobalStorage from '../../Storage/ContextProvider';
-function PateintUploadImg() {
+function PateintUploadI() {
     const { uploadedImage, setUploadIMage } = useContext(GlobalStorage)
     const [url, setUrl] = useState()
     const [crop, setCrop] = useState({ x: 0, y: 0 })
     const [croppedArea, setCroppedArea] = useState(null)
     const [initialCroppedArea, setInitialCroppedArea] = useState(undefined)
-    const [scaleId, setScale] = useState(1)
+    const [zoom, setZoom] = useState(1)
     function getRadianAngle(degreeValue) {
         return (degreeValue * Math.PI) / 180;
     }
@@ -97,11 +97,6 @@ function PateintUploadImg() {
             0.66
         );
     };
-
-    const handleZoomIn = () => {
-        // setCrop(scaleId+0.4)
-        setScale(scaleId - 0.2)
-      }
     return (
         <>
 
@@ -127,29 +122,42 @@ function PateintUploadImg() {
                             <div className={styles.cameraStyle}>
 
                                 <div className={styles.cropContainer}>
-                                    <div className="cameraMargin"
-                                        style={{
-                                            border: "4px solid #185EB6",
-                                            position: "absolute",
-                                            height: "500px",
-                                            width: "375px",
-                                              left: 0,
-                                              right: 0,
-                                              overflow:'hidden',
-                                            boxShadow: "1000px 1000px 1000px 1000px rgba(255, 255, 255, 0.304)",
-                                            zIndex:101
+                                    <Cropper
+                                        image={url}
 
+                                        crop={crop}
+                                        zoom={zoom}
+                                        aspect={3/4}
+                                        objectFit
+                                        rotation={0}
+                                        onCropComplete={onCropComplete}
+                                        style={{
+                                            containerStyle: {
+                                                width: "100%",
+                                                height: "100%",
+                                                position: "relative",
+                                                background: "unset"
+
+                                            },
+
+                                            mediaStyle: {
+                                                width: "100%",
+                                                height: "610px",
+                                                // position:"relative",
+                                                objectFit: "contain"
+                                            }
+                                            
                                         }}
-                                    ></div>
-                                    <img src={url} style={{ transform: `scale(${scaleId})` }} alt="" />
+                                        onCropChange={setCrop}
+                                        onZoomChange={setZoom}
+                                        initialCroppedAreaPercentages={initialCroppedArea}
+                                    />
                                 </div>
                             </div>
-
-                            <button onClick={handleZoomIn}>Zoom</button>
                         </div>
 
                     </div>
-                    <button onClick={() => generateDownload(url, croppedArea)}>download</button>
+                    <button onClick={()=>generateDownload(url, croppedArea)}>download</button>
                 </div>
 
 
@@ -160,4 +168,4 @@ function PateintUploadImg() {
     )
 }
 
-export default PateintUploadImg
+export default PateintUploadI
