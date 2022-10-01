@@ -445,8 +445,10 @@
 
 .body {
     display: flex;
+    width: 100% !important;
     margin-top: 10px !important;
     margin-bottom: 45px !important;
+    justify-content: space-between;
 }
 .body svg{
     cursor:  pointer !important;
