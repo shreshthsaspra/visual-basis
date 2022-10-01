@@ -1,4 +1,4 @@
-import React, { useState, Fragment, useContext } from "react";
+import React, { useState, Fragment, useContext, useEffect } from "react";
 import ReactCrop from "react-image-crop";
 import { FaCamera } from "react-icons/fa";
 import { BsArrowRightCircleFill, BsArrowLeftCircleFill } from "react-icons/bs";
@@ -14,6 +14,9 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 
+
+
+
 function FrontCameraComponent() {
 
 
@@ -25,6 +28,43 @@ function FrontCameraComponent() {
   const [crop, setCrop] = useState({ width: 300, height: 400 });
   const [horizontaloffset, setHorizontaloffset] = useState(0);
   const { saveImage, setSaveImage, step, setStep, point, setPoint } = useContext(GlobalStorage);
+  const [finalrows, setFinalrows] = useState(null);
+  const [istoggleon, setIstoggleon]  = useState(false);
+
+
+
+  useEffect(() => {
+
+    const noofcols = Array.apply(null, Array(Math.floor(375 / 10))).map(function () {
+      return (
+        <td style={{ width: '10px', height: '10px', border: '0.1px solid rgba(255,255,255,0.5)', backgroundColor: 'transparent' }}></td>
+      )
+    });
+
+    const noofrows = Array.apply(null, Array(Math.floor(500 / 10))).map(() => {
+      return (
+        <tr style={{ borderCollapse: 'collapse' }}>
+          {
+            noofcols.map((x) => {
+              return x;
+            })
+          }
+        </tr>
+      )
+    });
+
+
+
+    //console.log(noofcol, noofrow);
+    console.log(noofrows);
+    setFinalrows(noofrows);
+
+  }, []);
+
+
+
+
+
 
   const [anti, setAnti] = useState(0);
   const [scaleId, setScale] = useState(1);
@@ -117,7 +157,7 @@ function FrontCameraComponent() {
     );
   };
 
-  
+
 
 
   const handleAntiClkwise = () => {
@@ -159,11 +199,11 @@ function FrontCameraComponent() {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
     }).then((response) => {
-      
-        setPoint({ ...point, front: response.data.message.s3_url })
-        setImgPath("");
-        navigate("/doctor/function");
-        
+
+      setPoint({ ...point, front: response.data.message.s3_url })
+      setImgPath("");
+      navigate("/doctor/function");
+
     })
       .catch((error) => console.log(error));
   }
@@ -195,7 +235,29 @@ function FrontCameraComponent() {
                       marginLeft: "auto !important",
                       marginRight: "auto !important",
                     }}
-                  ></div>
+                  >
+
+
+                    {istoggleon===true?(<table>
+                      {
+                        finalrows.map((x) => {
+                          return (
+                            x
+                          )
+                        })
+                      }
+                    </table>):null}
+
+                    <div style={{
+                      borderRight: "2px solid #185EB6",
+                      height: '495px',
+                      position: 'absolute',
+                      right: '50%',
+                      top: '0%'
+                    }}></div>
+
+
+                  </div>
                 )}
 
                 <video
@@ -267,6 +329,11 @@ function FrontCameraComponent() {
                     }} className="ms-2" onClick={handleMoveBoxRight}>
                       <BsArrowRightCircleFill size="21px" />
                     </button>
+                    <label className="toggle">
+                      <input className="toggle__checkbox" type="checkbox" value={istoggleon} onChange={()=>{setIstoggleon(!istoggleon)}}  />
+                        <span className="toggle__switch"></span>
+                        <span className="toggle__label">Grid</span>
+                    </label>
                   </div>
                 </>
               )}
