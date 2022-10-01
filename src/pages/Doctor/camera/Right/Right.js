@@ -4,6 +4,7 @@ import Logo from '../../../../assests/demoLogo.png'
 import ShadoeLogo from '../../../../assests/shadowLogo.png'
 import CameraComponent from '../../../../components/CameraComponent';
 import GlobalStorage from '../../../../Storage/ContextProvider';
+import RightCameraComponent from '../../../../components/Camera/RightCameraComponent';
 
 const Right = () => {
     const { saveImage, setSaveImage } = useContext(GlobalStorage);
@@ -32,7 +33,7 @@ const Right = () => {
                             <h3>Right</h3>
                             
                                     <div className={styles.cameraStyle}>
-                                        <CameraComponent />
+                                        <RightCameraComponent />
                                     </div>
                         </div>
 

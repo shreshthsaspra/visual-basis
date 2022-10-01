@@ -5,11 +5,8 @@ import Cropper from 'react-easy-crop'
 import styles from './PateintUploadImg.module.css';
 import { useContext } from 'react';
 import GlobalStorage from '../../Storage/ContextProvider';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 function PateintUploadI() {
-    const navigate = useNavigate()
-    const { uploadedImage, setUploadIMage, switchPoint, setSwitchPoint,point, setPoint } = useContext(GlobalStorage)
+    const { uploadedImage, setUploadIMage } = useContext(GlobalStorage)
     const [url, setUrl] = useState()
     const [crop, setCrop] = useState({ x: 0, y: 0 })
     const [croppedArea, setCroppedArea] = useState(null)
@@ -87,49 +84,14 @@ function PateintUploadI() {
 
         canvas.toBlob(
             (blob) => {
-                // const previewUrl = window.URL.createObjectURL(blob);
-                // console.log(blob);
-                // const anchor = document.createElement("a");
-                // anchor.download = "image.jpeg";
-                // anchor.href = URL.createObjectURL(blob);
-                // anchor.click();
+                const previewUrl = window.URL.createObjectURL(blob);
+                console.log(blob);
+                const anchor = document.createElement("a");
+                anchor.download = "image.jpeg";
+                anchor.href = URL.createObjectURL(blob);
+                anchor.click();
 
-                // window.URL.revokeObjectURL(previewUrl);
-                const formData = new FormData();
-                formData.append('file', blob, "noName.png");
-
-                axios({
-                    url: `http://18.237.160.150/api/patient/diagnosis/image/upload?id=52351173&tag=${switchPoint}`,
-                    method: 'POST',
-                    data: formData,
-                    headers: {
-                        Accept: 'application/json',
-                        'Content-Type': 'multipart/form-data',
-                        Authorization: `Bearer ${localStorage.getItem('token')}`,
-                    },
-                }).then((response) => {
-
-                   if(switchPoint == 'front')
-                   {
-                    setPoint({...point, front:response.data.message.s3_url})
-                   }
-                   if(switchPoint == 'right')
-                   {
-                    setPoint({...point, right:response.data.message.s3_url})
-                   }
-                   if(switchPoint == 'left')
-                   {
-                    setPoint({...point, left:response.data.message.s3_url})
-                   }
-                   if(switchPoint == 'back')
-                   {
-                    setPoint({...point, back:response.data.message.s3_url})
-                   }
-          
-                    navigate("/doctor/function");
-                    console.log(response);
-
-                })
+                window.URL.revokeObjectURL(previewUrl);
             },
             "image/jpeg",
             0.66
@@ -155,7 +117,7 @@ function PateintUploadI() {
                     <div className={styles.mainBody}>
                         <div className={styles.inner}>
                             {/* <CameraComponent /> */}
-                            <h3>{switchPoint}</h3>
+                            <h3>Front</h3>
 
                             <div className={styles.cameraStyle}>
 
@@ -165,7 +127,7 @@ function PateintUploadI() {
 
                                         crop={crop}
                                         zoom={zoom}
-                                        aspect={3 / 4}
+                                        aspect={3/4}
                                         objectFit
                                         rotation={0}
                                         onCropComplete={onCropComplete}
@@ -184,7 +146,7 @@ function PateintUploadI() {
                                                 // position:"relative",
                                                 objectFit: "contain"
                                             }
-
+                                            
                                         }}
                                         onCropChange={setCrop}
                                         onZoomChange={setZoom}
@@ -195,7 +157,7 @@ function PateintUploadI() {
                         </div>
 
                     </div>
-                    <button onClick={() => generateDownload(url, croppedArea)}>download</button>
+                    <button onClick={()=>generateDownload(url, croppedArea)}>download</button>
                 </div>
 
 
