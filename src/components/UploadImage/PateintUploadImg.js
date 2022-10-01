@@ -7,14 +7,37 @@ import { useContext } from 'react';
 import GlobalStorage from '../../Storage/ContextProvider';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { FiRotateCcw, FiRotateCw } from 'react-icons/fi';
+import { BiZoomIn, BiZoomOut } from 'react-icons/bi';
 function PateintUploadI() {
     const navigate = useNavigate()
-    const { uploadedImage, setUploadIMage, switchPoint, setSwitchPoint,point, setPoint } = useContext(GlobalStorage)
+    const { uploadedImage, setUploadIMage, switchPoint, setSwitchPoint, point, setPoint } = useContext(GlobalStorage)
     const [url, setUrl] = useState()
     const [crop, setCrop] = useState({ x: 0, y: 0 })
     const [croppedArea, setCroppedArea] = useState(null)
     const [initialCroppedArea, setInitialCroppedArea] = useState(undefined)
+    const [anti, setAnti] = useState(0);
     const [zoom, setZoom] = useState(1)
+
+
+
+    const handleAntiClkwise = () => {
+        setAnti(anti - 90)
+    }
+    const handleClkwise = () => {
+
+        setAnti(anti + 90)
+    }
+
+    const handleZoomIn = () => {
+        // setCrop(scaleId+0.4)
+        setZoom(zoom + 0.2)
+    }
+
+    const handleZoomOut = () => {
+        // setCrop(scaleId+0.4)
+        setZoom(zoom - 0.2)
+    }
     function getRadianAngle(degreeValue) {
         return (degreeValue * Math.PI) / 180;
     }
@@ -109,23 +132,19 @@ function PateintUploadI() {
                     },
                 }).then((response) => {
 
-                   if(switchPoint == 'front')
-                   {
-                    setPoint({...point, front:response.data.message.s3_url})
-                   }
-                   if(switchPoint == 'right')
-                   {
-                    setPoint({...point, right:response.data.message.s3_url})
-                   }
-                   if(switchPoint == 'left')
-                   {
-                    setPoint({...point, left:response.data.message.s3_url})
-                   }
-                   if(switchPoint == 'back')
-                   {
-                    setPoint({...point, back:response.data.message.s3_url})
-                   }
-          
+                    if (switchPoint == 'front') {
+                        setPoint({ ...point, front: response.data.message.s3_url })
+                    }
+                    if (switchPoint == 'right') {
+                        setPoint({ ...point, right: response.data.message.s3_url })
+                    }
+                    if (switchPoint == 'left') {
+                        setPoint({ ...point, left: response.data.message.s3_url })
+                    }
+                    if (switchPoint == 'back') {
+                        setPoint({ ...point, back: response.data.message.s3_url })
+                    }
+
                     navigate("/doctor/function");
                     console.log(response);
 
@@ -143,6 +162,14 @@ function PateintUploadI() {
                 <img src={Logo} alt="" />
             </div>
             <div className={styles.cameraMain}>
+                <div className={styles.rotateButton}>
+                    <button className={styles.rotateRight} onClick={handleAntiClkwise}>
+                        <FiRotateCcw size="20px" />
+                    </button>
+                    <button className={styles.rotateLeft} onClick={handleClkwise}>
+                        <FiRotateCw size="20px" />
+                    </button>
+                </div>
                 <div className={styles.width}>
                     <div className={styles.nav}>
                         <div className={styles.navButton}>
@@ -167,7 +194,7 @@ function PateintUploadI() {
                                         zoom={zoom}
                                         aspect={3 / 4}
                                         objectFit
-                                        rotation={0}
+                                        rotation={anti}
                                         onCropComplete={onCropComplete}
                                         style={{
                                             containerStyle: {
@@ -192,12 +219,23 @@ function PateintUploadI() {
                                     />
                                 </div>
                             </div>
+
                         </div>
 
                     </div>
-                    <button onClick={() => generateDownload(url, croppedArea)}>download</button>
+                    <div className={styles.uploadImg}>
+                        <button className={styles.upload} onClick={() => generateDownload(url, croppedArea)}>Upload</button>
+                    </div>
                 </div>
+                <div className={styles.ZoomButton}>
+                    <button className={styles.zoomIn} onClick={handleZoomIn}>
+                        <BiZoomIn size="26px" />
+                    </button>
 
+                    <button className={styles.zoomIn} onClick={handleZoomOut}>
+                        <BiZoomOut color="#185EB6" size="26px" />
+                    </button>
+                </div>
 
             </div>
 
