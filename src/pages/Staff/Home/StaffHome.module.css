@@ -406,7 +406,7 @@
     height: 20px;
     width: 20px;
     border-radius: 45% !important;
-    background-color: #185EB6;
+    background: #CFDBE3 0% 0% no-repeat padding-box;
     position:absolute;
     display: flex;
     justify-content: center;
@@ -424,7 +424,7 @@
     height: 20px;
     width: 20px;
     border-radius: 50%;
-    background-color: #ccc;
+    background: #CFDBE3 0% 0% no-repeat padding-box;
     position:absolute;
     display: flex;
     justify-content: center;

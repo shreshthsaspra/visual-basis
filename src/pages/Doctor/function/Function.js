@@ -54,47 +54,45 @@ const Function = () => {
         console.log("pointtttttttttt",point);
 
 
-    const uploadImagefFront = (img)=>{
+    const uploadImageFront = ()=>{
         // console.log(img);
-        if(img)
-        {
+       
+        
             setSwitchPoint("front");
-            setUploadIMage(img)
+            setUploadIMage()
             Navigate("/doctor/function/upload")
-        }
+        
 
     }
 
-    const uploadImageRight = (img)=>{
+    const uploadImageRight = ()=>{
         // console.log(img);
-        if(img)
-        {
+        
             setSwitchPoint("right");
-            setUploadIMage(img)
+            // setUploadIMage(img)
             Navigate("/doctor/function/upload")
-        }
+        
 
     }
 
-    const uploadImageLeft = (img)=>{
+    const uploadImageLeft = ()=>{
         // console.log(img);
-        if(img)
-        {
+        
             setSwitchPoint("left");
-            setUploadIMage(img)
+            // setUploadIMage(img)
             Navigate("/doctor/function/upload")
-        }
+        
 
     }
 
-    const uploadImageBack = (img)=>{
+    const uploadImageBack = ()=>{
         // console.log(img);
-        if(img)
-        {
+       
+        
             setSwitchPoint("back");
-            setUploadIMage(img)
+            // setUploadIMage(img)
             Navigate("/doctor/function/upload")
-        }
+        
 
     }
     console.log(select);
@@ -235,9 +233,9 @@ const Function = () => {
                             <div className={styles.camera} onClick={handleFront}>
                                 <FaCamera size="25px" color='#185EB6' />
                             </div>
-                            <div className={styles.upload}>
+                            <div className={styles.upload} onClick = {uploadImageFront}>
                                 {/* <MdUpload size="25px" color='#185EB6' type='' /> */}
-                                <input type="file" accept='file/image' onChange={(e)=> uploadImagefFront(e.target.files[0])} />
+                                {/* <input type="file" accept='file/image' onChange={(e)=> uploadImagefFront(e.target.files[0])} /> */}
                                 <MdUpload size="25px" color='#185EB6' />
                             </div>
                         </div>
@@ -250,8 +248,8 @@ const Function = () => {
                             <div className={styles.camera} onClick={handleLeft}>
                                 <FaCamera size="25px" color='#185EB6' />
                             </div>
-                            <div className={styles.upload}>
-                            <input type="file" accept='file/image' onChange={(e)=> uploadImageLeft(e.target.files[0])} />
+                            <div className={styles.upload} onClick = {uploadImageLeft}>
+                            {/* <input type="file" accept='file/image' onChange={(e)=> uploadImageLeft(e.target.files[0])} /> */}
                                 <MdUpload size="25px" color='#185EB6' />
                             </div>
                         </div>
@@ -264,8 +262,8 @@ const Function = () => {
                             <div className={styles.camera} onClick={handleBack}>
                                 <FaCamera size="25px" color='#185EB6' />
                             </div>
-                            <div className={styles.upload}>
-                            <input type="file" accept='file/image' onChange={(e)=> uploadImageBack(e.target.files[0])} />
+                            <div className={styles.upload} onClick = {uploadImageBack}>
+                            {/* <input type="file" accept='file/image' onChange={(e)=> uploadImageBack(e.target.files[0])} /> */}
                                 <MdUpload size="25px" color='#185EB6' />
                             </div>
                         </div>
@@ -278,8 +276,8 @@ const Function = () => {
                             <div className={styles.camera} onClick={handleRight}>
                                 <FaCamera size="25px" color='#185EB6' />
                             </div>
-                            <div className={styles.upload}>
-                            <input type="file" accept='file/image' onChange={(e)=> uploadImageRight(e.target.files[0])} />
+                            <div className={styles.upload} onClick = {uploadImageRight}>
+                            {/* <input type="file" accept='file/image' onChange={(e)=> uploadImageRight(e.target.files[0])} /> */}
                                 <MdUpload size="25px" color='#185EB6' />
                             </div>
                         </div>

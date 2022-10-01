@@ -6,7 +6,7 @@ import StaffManagement from '../pages/Login/StaffManagement';
 import PateintRegister from '../pages/Hospital/PateintRegister/PateintRegister';
 import Home from '../pages/Hospital/Home/Home';
 import DoctorHome from '../pages/Doctor/Home/Home';
-
+import CroppedIMage from "../Cropped/CroppedIMage"
 import { AnimatePresence } from 'framer-motion';
 import styles from "./AnimatedRoutes.module.css"  
 import PateintsSearch from '../pages/Hospital/PateintsSearch/PateintsSearch';
@@ -39,6 +39,7 @@ function AnimatedRoutes() {
           <Route path="/doctor-login" element={<DoctorLogin />} />
           <Route path="/Hospital/doctor" element={<DoctorHome />} />
           <Route path="/Hospital/patient" element={<Patient />} />
+          <Route path="/crops" element={<CroppedIMage />} />
           <Route path="/Hospital/diagnosis-history" element={<DiagnosisHistory />} />
           <Route path="/doctor/generate-report" element={<GenerateReport />} />
           <Route path="/doctor/function" element={<Function />} />

@@ -1,0 +1,9 @@
+.croppedImage{
+    width: 100% !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 620px;
+    margin: auto;
+    position: relative;
+}
