@@ -123,12 +123,23 @@ export default function CroppedIMage() {
                                 mediaStyle: {
                                     width: "100%",
                                     height: "610px",
-                                    // position:"relative",
+                                    position:"relative",
                                     objectFit: "contain"
                                 }
 
                             }}
                         />
+
+                        <div style={{
+                            position:'absolute',
+                            top:0,
+                            borderLeft:'2px solid red',
+                            height:'99%',
+                            left:'50%',
+                        }}>
+                            
+                        </div>
+
                     </div>
 
                     {/* <img src={URL.createObjectURL(croppedImage)} onClose={onClose} /> */}
