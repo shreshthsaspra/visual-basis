@@ -365,17 +365,76 @@
     margin-bottom: 10px !important;
     border-radius: 10px !important;
     height: 40px;
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    padding: 10px !important;
+    background: rgba(255, 255, 255, 0.5);
+    padding: 12px !important;
 }
 
 .progressOutline {
-    height: 15px;
+    height: 12px;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     border-radius: 10px;
+    position: relative;
+    box-shadow: inset 0px 4px 3px #00000029
 }
 .progressOutlineColor {
-    height: 15px;
+    height: 12px;
+    /* width: 50% !important; */
     border-radius: 10px;
     background-color:#185EB6;
+    position: relative !important;
+
+}
+.round1{
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background-color: #185EB6;
+    position:absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+    top: -5px;
+    border: .2px solid #fff;
+}
+.round1 p{
+    color: #fff;
+    font-size: 10px;
+    font-weight: 600;
+}
+.round2{
+    height: 20px;
+    width: 20px;
+    border-radius: 45% !important;
+    background-color: #185EB6;
+    position:absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 50%;
+    top: -5px;
+    border: .2px solid #fff;
+}
+.round2 p{
+    color: #fff;
+    font-size: 10px;
+    font-weight: 600;
+}
+.round3{
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background-color: #ccc;
+    position:absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 0;
+    top: -5px;
+    border: .2px solid #fff;
+}
+.round3 p{
+    color: #fff;
+    font-size: 10px;
+    font-weight: 600;
 }

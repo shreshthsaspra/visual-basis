@@ -174,14 +174,18 @@ function StaffHome() {
           <div className={styles.PateintRegister__body__rightTop} >
             <div className={styles.progress}>
               <div className={styles.progressOutline}>
-                <div className={styles.progressOutlineColor} style={{ width: `${currentStep}%` }}>
+                <div className={styles.progressOutlineColor} style={{ width:`${currentStep}%`}}>
 
                 </div>
-                <div>
-
+                <div className={styles.round1}>
+                  <p>1</p>
                 </div>
-                <div></div>
-                <div></div>
+                <div className={styles.round2}>
+                  <p>2</p>
+                </div>
+                <div className={styles.round3}>
+                  <p>3</p>
+                </div>
               </div>
             </div>
 

@@ -132,7 +132,6 @@ function StaffPersional() {
     return (
         <div className={styles.title}>
             <p>Persional Details</p>
-            <form>
                 <div className="formTop">
                     <div className="row">
                         <div className="col-md-10">
@@ -411,13 +410,12 @@ function StaffPersional() {
 
                         <div className={styles.formButton}>
                             <div className="">
-                                <button className={styles.buttonStyle} onClick={()=>setCurrentStep(currentStep + 50)}>Proceed <img className={styles.buttonImg} src={Icon} alt="" /></button>
+                                <button className={styles.buttonStyle} onClick={()=>{setCurrentStep(currentStep+50);console.log("nest Step");}}>Proceed <img className={styles.buttonImg} src={Icon} alt="" /></button>
                             </div>
 
                         </div>
                     </div>
                 </div>
-            </form>
         </div>
     )
 }

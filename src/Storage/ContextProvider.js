@@ -24,7 +24,7 @@ const [point, setPoint] = useState({
 });
 
     return(
-        <GlobalStorage.Provider value={{uploadedImage, switchPoint, setSwitchPoint, setUploadIMage, point, setPoint, tokens, step, setStep, currentStep, setTokens, imgPath, setImgPath, PateintDetails, setPateintDetails,PateintService, setPateintService,showProfile, setShowProfile,saveImage,setSaveImage  }} >
+        <GlobalStorage.Provider value={{uploadedImage, switchPoint, setSwitchPoint, setUploadIMage, point, setPoint, tokens, step, setStep, currentStep , setCurrentStep, setTokens, imgPath, setImgPath, PateintDetails, setPateintDetails,PateintService, setPateintService,showProfile, setShowProfile,saveImage,setSaveImage  }} >
             {children}
         </GlobalStorage.Provider>
     )
