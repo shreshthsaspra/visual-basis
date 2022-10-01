@@ -1,0 +1,399 @@
+@font-face {
+    font-family: poppins-medium;
+
+    src: url('../../../../fonts/poopins/Poppins-Medium.otf');
+}
+
+@font-face {
+    font-family: poppins-ExtraLight;
+    src: url('../../../../fonts/poopins/Poppins-ExtraLight.otf');
+}
+
+.title p {
+    text-align: center;
+    color: #185EB6;
+    font-size: 25px;
+    font-weight: 600;
+    margin-bottom: 10px !important;
+}
+
+.upperLogo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.upperLogo img {
+    width: 100px;
+}
+
+.PateintRegister {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+    padding-bottom: 1rem !important;
+    margin-right: 7rem !important;
+    margin-left: 7rem !important;
+    min-height: 80vh;
+}
+
+@media only screen and (max-width: 1450px) {
+    .PateintRegister {
+
+        margin-right: 3rem !important;
+        margin-left: 3rem !important;
+
+    }
+}
+
+.PateintRegister img {
+    width: 100px;
+}
+
+.PateintRegister__body {
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+
+    margin-top: 2rem !important;
+    gap: 30px;
+}
+
+.PateintRegister__body__left {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.PateintRegister__body__leftCard {
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    padding-left: 5rem !important;
+    padding-right: 5rem !important;
+    padding-bottom: 2rem !important;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.PateintRegister__body__leftCard img {
+    position: absolute;
+    width: 70px !important;
+    height: 70px !important;
+    top: -2.4rem;
+
+}
+
+.PateintRegister__body__leftCard__body {
+    margin-top: 2.5rem !important;
+}
+
+.PateintRegister__body__leftCard__body p {
+    font-weight: 700;
+    color: #185EB6;
+    font-size: 25px;
+    letter-spacing: 2.25px;
+    font-family: poppins-medium;
+    padding-bottom: 25px !important;
+}
+
+.PateintRegister__body__leftCard__body h4 {
+    background-color: #185EB6;
+    color: #fff;
+    padding-left: 2.5rem !important;
+    padding-right: 2.5rem !important;
+    padding-top: .6rem !important;
+    padding-bottom: .6rem !important;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 500 !important;
+}
+
+.PateintRegister__body__leftCard__bodySeacrh {
+    background-color: #fff !important;
+    color: #185EB6 !important;
+    margin-top: .8rem !important;
+}
+
+.PateintRegister__body__leftCard__bodyGoback {
+    background-color: #fff;
+    color: #185EB6;
+    width: 7rem !important;
+    border-radius: 10px;
+    text-align: center;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+}
+
+.PateintRegister__body__leftGoback h4 {
+    font-family: poppins-medium;
+    font-size: 20px;
+    margin-top: 20px !important;
+}
+
+/* Right containr from  */
+.PateintRegister__body__right {
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 100% !important;
+    border-radius: 15px !important;
+    padding: 1rem 3rem !important;
+    height: fit-content !important;
+}
+
+
+@media only screen and (min-width: 1990px) {
+    .formWrap {
+        width: 63% !important;
+    }
+}
+
+@media only screen and (min-width: 2500px) {
+    .formWrap {
+        width: 45% !important;
+    }
+}
+
+@media only screen and (min-width: 2900px) {
+    .formWrap {
+        width: 35% !important;
+    }
+}
+
+.formWrapTop {
+    margin-bottom: 20px !important;
+    /* width: 100% !important; */
+    display: flex;
+}
+
+.formWrap {
+    margin-bottom: 20px !important;
+    width: 100% !important;
+    display: flex;
+
+}
+
+.formWrap label,
+.historyAdd label {
+    color: #185EB6 !important;
+    font-weight: 500;
+    font-family: poppins-medium;
+    font-size: 18px;
+    /* margin-right: 20px !important; */
+
+}
+
+.formWrapTop label,
+.historyAdd label {
+    color: #185EB6 !important;
+    font-weight: 500;
+    font-family: poppins-medium;
+    font-size: 18px;
+    /* margin-right: 20px !important; */
+}
+
+.formWrapTop input,
+.historyAdd input {
+    padding-left: .5rem !important;
+    height: 30px !important;
+    width: 230px;
+    border-radius: 20px;
+    border: none;
+    background-color: #CFDBE3;
+    outline: none;
+    font-family: poppins-regular;
+    font-size: 15px;
+}
+
+.formWrap input,
+.historyAdd input {
+    padding-left: .5rem !important;
+    height: 30px !important;
+    width: 230px;
+    border-radius: 20px;
+    border: none;
+    background-color: #CFDBE3;
+    outline: none;
+    font-family: poppins-regular;
+    font-size: 15px;
+
+
+}
+
+.dobInput input {
+    margin-left: 5rem !important;
+}
+
+.emailInp {
+    margin-left: 7.5rem !important;
+}
+
+.ZipInp {
+    margin-left: 5.5rem !important;
+}
+
+.dobInput input,
+.historyAdd input {
+    padding-left: 20px !important;
+    width: 70px !important;
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    font-family: poppins-ExtraLight;
+
+}
+
+.monthInput input {
+    padding-left: 20px !important;
+    width: 60px !important;
+    border-radius: 0 !important;
+    font-family: poppins-ExtraLight;
+
+}
+
+.dayInput input {
+    width: 70px !important;
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    font-family: poppins-ExtraLight;
+    padding-left: 20px !important;
+
+
+
+}
+
+.ageInput {
+    width: 50px !important;
+}
+
+.birthspace {
+    margin-right: 18px !important;
+}
+
+.space {
+    margin-right: 25px !important;
+}
+
+.emailSpace {
+    margin-right: 33px !important;
+
+}
+
+.emerSpace {
+    margin-right: 17px !important;
+
+}
+
+.addressSpace {
+    margin-right: 30px !important;
+}
+
+.textAreaDesigne {
+    border-radius: 20px;
+    border: none;
+    background-color: #CFDBE3;
+    padding: 5px 10px !important;
+    margin-left: 4rem !important;
+
+}
+
+.textAreaDesigne textarea {
+    outline: none;
+    border: none;
+    background-color: #CFDBE3;
+
+}
+
+.historyAdd {
+    margin-bottom: 20px !important;
+    width: 95% !important;
+    /* display: flex; */
+}
+
+.bottomTextArea {
+    outline: none;
+    resize: none;
+
+}
+
+.bottomTextArea::-webkit-scrollbar-button {
+    height: 5px !important;
+
+}
+
+.bottomTextArea::-webkit-scrollbar {
+
+    width: 10px !important;
+
+
+}
+
+/* Track */
+.bottomTextArea::-webkit-scrollbar-track {
+    /* background: #FFFFFF !important; */
+    opacity: .7 !important;
+    border-radius: 5px !important;
+
+}
+
+/* Handle */
+.bottomTextArea::-webkit-scrollbar-thumb {
+
+    background: #185EB6 !important;
+    border-radius: 5px !important;
+    cursor: pointer !important;
+
+
+}
+
+.formButton {
+    margin-left: 15px !important;
+    display: flex;
+    height: 100%;
+    justify-content: flex-end !important;
+}
+
+.buttonImg {
+    width: 40px !important;
+}
+
+.buttonStyle {
+    border: none;
+    outline: none;
+    border-radius: 50px;
+    background-color: #185EB6;
+    color: #FFFFFF;
+    font-family: poppins-medium;
+    padding: 5px 2px 5px 15px !important;
+
+
+}
+
+.profileImage {
+    width: 170px !important;
+}
+
+.select {
+    appearance: none !important;
+    -moz-appearance: none !important;
+    -webkit-appearance: none !important;
+    border: none;
+    outline: none;
+    background-color: #CFDBE3;
+    border-radius: 20px;
+    height: 30px !important;
+    padding-left: 15px !important;
+    padding-right: 40px !important;
+    font-family: poppins-medium;
+    color: #737373;
+    background-image: url('../../../../assests/down.png');
+    background-repeat: no-repeat;
+    background-position: calc(100% - 1px) center;
+    background-size: 27px;
+
+
+}
+
+.selectPadding {}

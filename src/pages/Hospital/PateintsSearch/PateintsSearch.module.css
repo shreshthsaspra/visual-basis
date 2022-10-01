@@ -223,6 +223,8 @@ textarea::-webkit-scrollbar-thumb {
     /* margin:15px 0 !important; */
     margin-bottom: 20px !important;
     width:100%;
+    display: flex;
+    justify-content: space-between;
     background-color: #FFFFFF;
     opacity: .7;
     border-radius: 20px;
@@ -269,6 +271,14 @@ textarea::-webkit-scrollbar-thumb {
     /* background: #555; */
 }
   
-
-
+.pateintsNOt{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.pateintsNOt p {
+    font-size: 30px;
+    font-weight: 600;
+    opacity: .5;
+}
 

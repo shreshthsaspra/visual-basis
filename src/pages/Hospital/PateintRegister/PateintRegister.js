@@ -9,7 +9,7 @@ import { NavLink } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
-import { getCookie} from '../../../Storage/auth';
+import { getCookie } from '../../../Storage/auth';
 import moment from 'moment';
 
 
@@ -28,17 +28,24 @@ function PateintRegister() {
     first_name: "",
     last_name: "",
     email: '',
-    dob: "",
+    dob: "2022-10-21",
     gender: "NA",
     age: 0,
     phone_number: "",
     zipcode: "",
     address: "",
-    history:"",
-    emergency_phone_number:'',
-    prefecture:'Aomori',
+    history: "",
+    emergency_phone_number: '',
+    prefecture: 'Aomori',
     btnText: "Register"
   })
+useEffect(()=>{
+  let ar = values?.dob.split('-')
+  let date = new Date()
+  let yr = date.getFullYear()
+  let age = yr - ar?.[0]
+  setValues({...values, age:age})
+},[values.dob])
 
   const { first_name, last_name, email, dob, gender, age, phone_number, zipcode, prefecture, address, emergency_phone_number, history, btnText } = values;
 
@@ -61,76 +68,78 @@ function PateintRegister() {
   const handleChange = name => event => {
     console.log(event.target.value);
     setValues({ ...values, [name]: event.target.value });
-};
+  };
 
-const clickSubmit = e => {
-  e.preventDefault();
+  const clickSubmit = e => {
+    e.preventDefault();
+    
 
-  axios({
-    method: 'POST',
-    url: `http://18.237.160.150/api/patient/register/`,
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem('token')}`
-  },
-    data: { first_name, last_name, email, dob, gender, age, phone_number, zipcode, prefecture, emergency_phone_number, address, history }
-})
-    .then(response => {
-        console.log('Patient Register Successfully', response);
-        setValues({ ...values, first_name: "",
-        last_name: "",
-        email: '',
-        dob: "",
-        gender: "",
-        age: 0,
-        phone_number: "",
-        zipcode: "",
-        address: "",
-        history:"",
-        emergency_phone_number:'',
-        prefecture:'',
-        btnText: "Register" });
-        toast.success("Patient Register Successfully");
+    axios({
+      method: 'POST',
+      url: `http://18.237.160.150/api/patient/register/`,
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      },
+      data: { first_name, last_name, email, dob, gender, age, phone_number, zipcode, prefecture, emergency_phone_number, address, history }
     })
-    .catch(error => {
+      .then(response => {
+        console.log('Patient Register Successfully', response);
+        setValues({
+          ...values, first_name: "",
+          last_name: "",
+          email: '',
+          dob: "",
+          gender: "",
+          age: 0,
+          phone_number: "",
+          zipcode: "",
+          address: "",
+          history: "",
+          emergency_phone_number: '',
+          prefecture: '',
+          btnText: "Register"
+        });
+        toast.success("Patient Register Successfully");
+      })
+      .catch(error => {
         console.log('Patient Register error', error.response.data.detail[0].msg);
-        setValues({ ...values, buttonText: 'Register'});
+        setValues({ ...values, buttonText: 'Register' });
         toast.error(error.response.data.detail[0].msg);
-    });
+      });
 
 
-}
+  }
 
 
-// console.log("DATE OF BIRTH",dateOfBirth);
+  // console.log("DATE OF BIRTH",dateOfBirth);
 
-const handlemonthChange = (date) => {
-      setMyMonth(date);
-      const dateOfBirth = `${moment(myYear).format("YYYY")}-${moment(date).format("MM")}-${moment(myDay).format("DD")}`;
-      setValues({ ...values, dob: dateOfBirth});
-}
+  const handlemonthChange = (date) => {
+    setMyMonth(date);
+    const dateOfBirth = `${moment(myYear).format("YYYY")}-${moment(date).format("MM")}-${moment(myDay).format("DD")}`;
+    setValues({ ...values, dob: dateOfBirth });
+  }
 
-const handleDayChange = (date) => {
-  setMyDay(date);
-  const dateOfBirth = `${moment(myYear).format("YYYY")}-${moment(myMonth).format("MM")}-${moment(date).format("DD")}`;
-      setValues({ ...values, dob: dateOfBirth});
+  const handleDayChange = (date) => {
+    setMyDay(date);
+    const dateOfBirth = `${moment(myYear).format("YYYY")}-${moment(myMonth).format("MM")}-${moment(date).format("DD")}`;
+    setValues({ ...values, dob: dateOfBirth });
 
-}
+  }
 
-const handleYearChange = (date) => {
-  setMyYear(date);
+  const handleYearChange = (date) => {
+    setMyYear(date);
 
-  const dateOfBirth = `${moment(date).format("YYYY")}-${moment(myMonth).format("MM")}-${moment(myDay).format("DD")}`;
-      setValues({ ...values, dob: dateOfBirth});
-}
+    const dateOfBirth = `${moment(date).format("YYYY")}-${moment(myMonth).format("MM")}-${moment(myDay).format("DD")}`;
+    setValues({ ...values, dob: dateOfBirth });
+  }
 
 
-// const dateOfBirth = `${moment(myYear).format("YYYY")}-${moment(myMonth).format("MM")}-${moment(myDay).format("DD")}`;
-console.log("DOB", dob);
+  // const dateOfBirth = `${moment(myYear).format("YYYY")}-${moment(myMonth).format("MM")}-${moment(myDay).format("DD")}`;
 
   return (
     <>
 
-    <ToastContainer />
+      <ToastContainer />
       <div className={styles.upperLogo}>
         <img src={Logo} alt="" />
 
@@ -187,10 +196,10 @@ console.log("DOB", dob);
                       </div>
                       <div className="col-md-9">
                         <input
-                         type="text" 
-                         onChange={handleChange('first_name')}
+                          type="text"
+                          onChange={handleChange('first_name')}
                           value={first_name}
-                         />
+                        />
 
                       </div>
 
@@ -239,12 +248,12 @@ console.log("DOB", dob);
                         <label className='pe-2'>Age</label>
                         <div className="">
                           <input
-                           className={styles.ageInput}
+                            className={styles.ageInput}
                             type="text"
                             onChange={handleChange('age')}
                             value={age}
-                            
-                            />
+
+                          />
                         </div>
                       </div>
                     </div>
@@ -262,7 +271,7 @@ console.log("DOB", dob);
                           <option value="Female">Female</option>
                           <option value="Other">Other</option>
                         </select>
-                      </div> 
+                      </div>
                     </div>
 
                   </div>
@@ -281,10 +290,10 @@ console.log("DOB", dob);
                         </div>
                         <div className='ms-5'>
                           <input
-                           type="text"
-                           onChange={handleChange('zipcode')}
+                            type="text"
+                            onChange={handleChange('zipcode')}
                             value={zipcode}
-                           />
+                          />
                         </div>
                       </div>
                     </div>
@@ -316,12 +325,12 @@ console.log("DOB", dob);
                           <label className=''>Email ID</label>
                         </div>
                         <div className='ms-5'>
-                          <input 
-                          type="email"
-                          onChange={handleChange('email')}
-                           value={email}
+                          <input
+                            type="email"
+                            onChange={handleChange('email')}
+                            value={email}
 
-                           />
+                          />
                         </div>
                       </div>
                     </div>
@@ -333,11 +342,11 @@ console.log("DOB", dob);
 
                       </div>
                       <div className='col-md-8 '>
-                        <input 
-                        type="text" 
-                        onChange={handleChange('phone_number')} 
-                        value={phone_number}
-                        
+                        <input
+                          type="text"
+                          onChange={handleChange('phone_number')}
+                          value={phone_number}
+
                         />
                       </div>
                     </div>
@@ -350,11 +359,11 @@ console.log("DOB", dob);
                     <div className={` ${styles.formWrap} `}>
                       <div className="d-flex">
                         <div className={styles.emerSpace}>
-                          <label 
-                          onChange={handleChange('emergency_phone_number')}
-                          value={emergency_phone_number}
-                          
-                          className=''>Emergency No.</label>
+                          <label
+                            onChange={handleChange('emergency_phone_number')}
+                            value={emergency_phone_number}
+
+                            className=''>Emergency No.</label>
                         </div>
                         <div className=''>
                           <input type="text" />
@@ -390,13 +399,13 @@ console.log("DOB", dob);
                         <label className=''>Address</label>
                       </div>
                       <div className={`${styles.textAreaDesigne} ms-5 w-100`}>
-                        <textarea 
-                        className={styles.bottomTextArea}
-                         style={{ width: '100%' }} 
-                         type="text"
-                         onChange={handleChange('address')} 
-                         value={address}
-                         />
+                        <textarea
+                          className={styles.bottomTextArea}
+                          style={{ width: '100%' }}
+                          type="text"
+                          onChange={handleChange('address')}
+                          value={address}
+                        />
                       </div>
                     </div>
                   </div>
@@ -410,15 +419,15 @@ console.log("DOB", dob);
                           <label className=''>History</label>
                         </div>
                         <div className={`${styles.textAreaDesigne} ms-5 w-100`}>
-                          <textarea 
-                          wrap="off" cols="30" rows="5"
-                           className={styles.bottomTextArea}
+                          <textarea
+                            wrap="off" cols="30" rows="5"
+                            className={styles.bottomTextArea}
                             style={{ width: '100%' }}
                             type="text"
-                            onChange={handleChange('history')} 
+                            onChange={handleChange('history')}
                             value={history}
-                            
-                            />
+
+                          />
                         </div>
                       </div>
                     </div>

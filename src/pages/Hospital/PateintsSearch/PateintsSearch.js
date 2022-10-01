@@ -88,7 +88,20 @@ function PateintsSearch() {
       });
   }
 
+const handleKeyDownname = (e)=>{
+  if(e.keyCode == 13)
+  {
+    handlePatientNameSearch(e)
+  }
 
+}
+const handleKeyDownUid = (e)=>{
+  if(e.keyCode == 13)
+  {
+    handlePatientUuidSearch(e)
+  }
+
+}
   return (
     <>
       <div className={styles.upperLogo}>
@@ -126,52 +139,60 @@ function PateintsSearch() {
             <div className={styles.searchBody}>
               <div className={styles.search}>
                 <div className={styles.inputWrap}>
-                     <input 
-                     placeholder='Patient UUID'
-                      type="text"
-                      value={patientUuid}
-                      onChange={(e) => setPatientUuid(e.target.value)}
+                  <input
+                    placeholder='Patient UUID'
+                    type="text"
+                    value={patientUuid}
+                    onKeyDown = {handleKeyDownUid}
+                    onChange={(e) => setPatientUuid(e.target.value)}
 
-                      />
-                      <ImSearch  onClick={handlePatientUuidSearch} size="30px" color="grey" className={styles.iconinner} />
+                  />
+                  <ImSearch onClick={handlePatientUuidSearch} size="30px" color="grey" className={styles.iconinner} />
                 </div>
 
                 <div className={styles.inputWrap}>
-                <input 
-                placeholder='Patient Name'
-                 type="text"
-                  value={patientName} 
-                  onChange={(e) => setPatientName(e.target.value)}
-                 
-                 />
-                      <ImSearch onClick={handlePatientNameSearch} size="30px" color="grey" className={styles.iconinner} />
+                  <input
+                    placeholder='Patient Name'
+                    type="text"
+                    value={patientName}
+                    onKeyDown = {handleKeyDownname}
+                  
+                    onChange={(e) => setPatientName(e.target.value)}
+
+                  />
+                  <ImSearch onClick={handlePatientNameSearch} size="30px" color="grey" className={styles.iconinner} />
                 </div>
-                <img style={{cursor:'pointer'}} src={Icon} alt="" />
+                <img style={{ cursor: 'pointer' }} src={Icon} alt="" />
               </div>
             </div>
 
             <div className={styles.mainBody}>
               {
-                patientNameSearch?.map(p => (
-                  <>
-                    {
-                      p.first_name && p.last_name && (
-                        <div className={styles.singlePatient}>
-                          <p>{`${p.first_name} ${p.last_name}`}</p>
-                        </div>
-                      )
-                    }
+                patientNameSearch?.length >= 1?
+                  (
+                    <>
+                      {
+                        patientNameSearch?.map(p => (
+                          <>
+                            {
+                              p.first_name && p.last_name && (
+                                <div className={styles.singlePatient}>
+                                  <p>{`${p.first_name} ${p.last_name}`}</p>
+                                  <p>{p?.id}</p>
+                                </div>
+                              )
+                            }
 
-                    {
-                      !p.first_name && !p.last_name && (
-                        <div className={styles.singlePatient}>
-                          <p>Without Name</p>
-                        </div>
-                      )
-                    }
 
-                  </>
-                ))
+
+                          </>
+                        ))
+                      }
+                    </>
+                  ):
+                  <div className={styles.pateintsNOt}>
+                  <p >No Pateints Searched</p>
+                  </div>
               }
 
               {/* <div className={styles.singlePatient}>
