@@ -138,7 +138,7 @@ function StaffPersional() {
 
                             <div className={` ${styles.formWrapTop} row`}>
                                 <div className="col-md-3">
-                                    <label>User ID</label>
+                                    <label>Family Name</label>
                                 </div>
                                 <div className="col-md-9">
                                     <input
@@ -154,7 +154,7 @@ function StaffPersional() {
 
                             <div className={` ${styles.formWrapTop} row `}>
                                 <div className="col-md-3">
-                                    <label>Create Password</label>
+                                    <label>First Name</label>
 
                                 </div>
                                 <div className="col-md-9">
@@ -171,12 +171,13 @@ function StaffPersional() {
                             </div>
                             <div className={` ${styles.formWrapTop} row `}>
                                 <div className="col-md-3">
-                                    <label>Confirm Password</label>
+                                    <label>Family Name</label>
 
                                 </div>
                                 <div className="col-md-9">
                                     <input
                                         type="text"
+                                        placeholder="(in Japanese)"
                                         onChange={handleChange('first_name')}
                                         value={first_name}
                                     />
@@ -186,10 +187,26 @@ function StaffPersional() {
 
 
                             </div>
+                            <div className={` ${styles.formWrapTop} row `}>
+                                <div className="col-md-3">
+                                    <label>First Name</label>
+
+                                </div>
+                                <div className="col-md-9">
+                                    <input
+                                        type="text"
+                                      
+                                        placeholder="(in Japanese)"
+                                        onChange={handleChange('first_name')}
+                                        value={first_name}
+                                    />
+
+                                </div>
 
 
 
-
+                            </div>
+                        
 
 
                         </div>
@@ -199,79 +216,11 @@ function StaffPersional() {
 
                     </div>
 
-                    <div className={` ${styles.formWrap} row w-100% `}>
-
-
-
-                        <div className="col-md-6 d-flex">
-                            <div className="">
-                                <label className=''>Family Name</label>
-                            </div>
-                            <div className=" ms-5">
-                                <input
-                                    type="email"
-                                    onChange={handleChange('email')}
-                                    value={email}
-
-                                />
-                            </div>
-                        </div>
-                        <div className={` col-md-6 d-flex`}>
-                            <div className="">
-                                <label>First Name</label>
-
-                            </div>
-                            <div className='ms-3'>
-                                <input
-                                    type="text"
-                                    onChange={handleChange('phone_number')}
-                                    value={phone_number}
-
-                                />
-                            </div>
-                        </div>
-
-
-
-                    </div>
+                   
                   
                 </div>     
               
-                <div className={` ${styles.formWrap} row `}>
-
-
-
-                    <div className="col-md-6 d-flex">
-                        <div className="">
-                            <label className=''>Family Name</label>
-                        </div>
-                        <div className=" ms-5">
-                            <input
-                                type="email"
-                                onChange={handleChange('email')}
-                                value={email}
-
-                            />
-                        </div>
-                    </div>
-                    <div className={` col-md-6 d-flex`}>
-                        <div className="">
-                            <label>First Name</label>
-
-                        </div>
-                        <div className='ms-3'>
-                            <input
-                                type="text"
-                                onChange={handleChange('phone_number')}
-                                value={phone_number}
-
-                            />
-                        </div>
-                    </div>
-
-
-
-                </div>
+                
                 <div className={` ${styles.formWrap} row `}>
 
 

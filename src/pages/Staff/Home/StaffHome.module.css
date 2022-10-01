@@ -318,6 +318,7 @@
     background-color: #185EB6;
     color: #FFFFFF;
     font-family: poppins-medium;
+    
     padding: 5px 2px 5px 15px !important;
 
 
@@ -382,13 +383,14 @@
     border-radius: 10px;
     background-color:#185EB6;
     position: relative !important;
+    transition: all .5s ease-in-out;
 
 }
 .round1{
     height: 20px;
     width: 20px;
     border-radius: 50%;
-    background-color: #185EB6;
+    background: #185EB6 0% 0% no-repeat padding-box;
     position:absolute;
     display: flex;
     justify-content: center;
@@ -396,11 +398,13 @@
     left: 0;
     top: -5px;
     border: .2px solid #fff;
+    transition: all .5s ease-in-out;
 }
 .round1 p{
     color: #fff;
     font-size: 10px;
     font-weight: 600;
+    margin-right: 2px !important;
 }
 .round2{
     height: 20px;
@@ -411,14 +415,44 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    left: 50%;
+    left: 48%;
     top: -5px;
     border: .2px solid #fff;
+    transition: all .5s ease-in-out;
+}
+.newColo2{
+    height: 20px;
+    width: 20px;
+    border-radius: 45% !important;
+    position:absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 48%;
+    top: -5px;
+    border: .2px solid #fff;
+    background: #185EB6 0% 0% no-repeat padding-box !important;
+    transition: all .5s ease-in-out;
+}
+.newColo3{
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: #185EB6 0% 0% no-repeat padding-box !important;
+    position:absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 0;
+    top: -5px;
+    border: .2px solid #fff;
+    transition: all .5s ease-in-out;
 }
 .round2 p{
     color: #fff;
     font-size: 10px;
     font-weight: 600;
+    margin-right: 2px !important;
 }
 .round3{
     height: 20px;
@@ -432,9 +466,11 @@
     right: 0;
     top: -5px;
     border: .2px solid #fff;
+    transition: all .5s ease-in-out;    
 }
 .round3 p{
     color: #fff;
     font-size: 10px;
     font-weight: 600;
+    margin-right: 2px !important;
 }

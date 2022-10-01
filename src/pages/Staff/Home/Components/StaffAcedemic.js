@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styles from './StaffAcedemic.module.css'
 import Profile from '../../../../assests/profile.png'
 import Icon from '../../../../assests/buttonIcon.png'
+import GlobalStorage from '../../../../Storage/ContextProvider'
 const multipleCourse = ['1']
 function StaffAcedemic() {
+    const { currentStep, setCurrentStep } = useContext(GlobalStorage)
     return (
         <div className={styles.title}>
             <p>Acedemic Details/Education Profile</p>
@@ -71,7 +73,7 @@ function StaffAcedemic() {
                 <div className={` ${styles.formWrapTop} row  `}>
 
                     <div className="col-md-4">
-                        <label className=''>Yuniversity</label>
+                        <label className=''>University</label>
                     </div>
                     <div className=" col-md-4">
                         <input
@@ -123,7 +125,7 @@ function StaffAcedemic() {
                     <div className={styles.formButton}>
                         <div className="">
                             <button className={styles.buttonStyle} 
-                            // onClick={clickSubmit}
+                            onClick={()=>setCurrentStep(currentStep+50)}
                             >Proceed <img className={styles.buttonImg} src={Icon} alt="" /></button>
                         </div>
 

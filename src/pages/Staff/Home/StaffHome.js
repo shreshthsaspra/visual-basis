@@ -156,7 +156,7 @@ function StaffHome() {
             <div className={styles.PateintRegister__body__leftCard}>
               <img src={BedIcon} alt="" />
               <div className={styles.PateintRegister__body__leftCard__body}>
-                <p>PATIENT</p>
+                <p>STAFF</p>
                 <NavLink to="/Hospital/pateintmanagement" style={{ textDecoration: "none" }}>
                   <h4>Registration</h4>
                 </NavLink>
@@ -174,25 +174,34 @@ function StaffHome() {
           <div className={styles.PateintRegister__body__rightTop} >
             <div className={styles.progress}>
               <div className={styles.progressOutline}>
-                <div className={styles.progressOutlineColor} style={{ width:`${currentStep}%`}}>
+                <div className={styles.progressOutlineColor} style={{ width: `${currentStep}%` }}>
 
                 </div>
                 <div className={styles.round1}>
                   <p>1</p>
                 </div>
-                <div className={styles.round2}>
+                <div className={currentStep >= 50 ? `${styles.round2} ${styles.newColo2}` : `${styles.round2}`}>
                   <p>2</p>
                 </div>
-                <div className={styles.round3}>
+                <div className={currentStep >= 100 ? `${styles.round3} ${styles.newColo3}` : `${styles.round3}`}>
                   <p>3</p>
                 </div>
               </div>
             </div>
 
             <div className={styles.PateintRegister__body__right}>
-              <StaffPersional />
-              {/* <StaffAcedemic/> */}
-              {/* <StaffClinical /> */}
+              {
+                currentStep == 0 && <StaffPersional />
+
+              }
+              {
+                currentStep == 50 && <StaffAcedemic />
+
+              }
+              {
+                currentStep == 100 && <StaffClinical />
+
+              }
             </div>
 
 
