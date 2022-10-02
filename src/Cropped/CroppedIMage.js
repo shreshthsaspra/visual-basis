@@ -23,6 +23,7 @@ export default function CroppedIMage() {
     const { zoom, setZoom } = useContext(GlobalStorage)
     const [croppedAreaPixels, setCroppedAreaPixels] = useState(null)
     const [croppedImage, setCroppedImage] = useState(null)
+    const [ShowUrl, SetShowIMg] = useState(null)
 
     const onCropComplete = useCallback((croppedArea, croppedAreaPixels) => {
         setCroppedAreaPixels(croppedAreaPixels)
@@ -62,11 +63,12 @@ export default function CroppedIMage() {
                     setPoint({ ...point, back: response.data.message.s3_url })
                 }
 
-                navigate("/doctor/function");
+                // navigate("/doctor/function");
                 console.log(response);
 
             })
-            // setCroppedImage(croppedImage)
+            SetShowIMg(URL.createObjectURL(croppedImage))
+            setCroppedImage(croppedImage)
         } catch (e) {
             console.error(e)
         }
@@ -89,6 +91,7 @@ export default function CroppedIMage() {
             }
 
             setImageSrc(imageDataUrl)
+            SetShowIMg(URL.createObjectURL(imageDataUrl))
         }
     }
 
@@ -106,32 +109,32 @@ export default function CroppedIMage() {
                             crop={crop}
                             rotation={rotation}
                             zoom={zoom}
-                            aspect={3 / 4}
+                            aspect={2 / 3}
                             onCropChange={setCrop}
                             onRotationChange={setRotation}
                             onCropComplete={onCropComplete}
                             onZoomChange={setZoom}
-                            style={{
-                                containerStyle: {
-                                    width: "100%",
-                                    height: "100%",
-                                    position: "relative",
-                                    background: "unset"
+                            // style={{
+                            //     containerStyle: {
+                            //         width: "100%",
+                            //         height: "100%",
+                            //         position: "relative",
+                            //         background: "unset"
 
-                                },
+                            //     },
 
-                                mediaStyle: {
-                                    width: "100%",
-                                    height: "610px",
-                                    // position:"relative",
-                                    objectFit: "contain"
-                                }
+                            //     mediaStyle: {
+                            //         width: "100%",
+                            //         height: "610px",
+                            //         // position:"relative",
+                            //         objectFit: "contain"
+                            //     }
 
-                            }}
+                            // }}
                         />
                     </div>
 
-                    {/* <img src={URL.createObjectURL(croppedImage)} onClose={onClose} /> */}
+                    <img src={ShowUrl} onClose={onClose} />
                 </>
             ) : (
                 <></>
