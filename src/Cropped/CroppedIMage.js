@@ -17,7 +17,7 @@ const ORIENTATION_TO_ANGLE = {
 export default function CroppedIMage() {
     const navigate = useNavigate()
     const [imageSrc, setImageSrc] = React.useState(null)
-    const { uploadedImage, setUploadIMage, switchPoint, setSwitchPoint, point, setPoint } = useContext(GlobalStorage)
+    const { uploadedImage, pointMap,setPointMap, setUploadIMage, switchPoint, setSwitchPoint, point,  setPoint } = useContext(GlobalStorage)
     const [crop, setCrop] = useState({ x: 0, y: 0 })
     const { rotation, setRotation } = useContext(GlobalStorage)
     const { zoom, setZoom } = useContext(GlobalStorage)
@@ -80,6 +80,8 @@ export default function CroppedIMage() {
                         Authorization: `Bearer ${localStorage.getItem('token')}`,
                     },
                 }).then(responce=>{
+                    setPointMap({...pointMap, front:responce.data.message.keypoints})
+                    navigate("/doctor/function")
 
                 })
             }
@@ -94,7 +96,8 @@ export default function CroppedIMage() {
                         Authorization: `Bearer ${localStorage.getItem('token')}`,
                     },
                 }).then(responce=>{
-                    
+                    setPointMap({...pointMap, right:responce.data.message.keypoints})
+                    navigate("/doctor/function")
                 })
             }
             if (switchPoint == 'left') {
@@ -107,6 +110,9 @@ export default function CroppedIMage() {
                         'Content-Type': 'multipart/form-data',
                         Authorization: `Bearer ${localStorage.getItem('token')}`,
                     },
+                }).then(responce=>{
+                    setPointMap({...pointMap, left:responce.data.message.keypoints})
+                    navigate("/doctor/function")
                 })
             }
             if (switchPoint == 'back') {
@@ -120,7 +126,8 @@ export default function CroppedIMage() {
                         Authorization: `Bearer ${localStorage.getItem('token')}`,
                     },
                 }).then(responce=>{
-                    
+                    setPointMap({...pointMap, back:responce.data.message.keypoints})
+                    navigate("/doctor/function")
                 })
             }
            

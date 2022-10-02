@@ -1,0 +1,19 @@
+
+.mainDiv {
+    display: flex;
+    justify-content: center;
+    padding-top: 4rem !important;
+}
+.wrap{
+    position: relative !important;
+}
+.point {
+    position: absolute;
+   
+    /* right: 5px !important; */
+    width: 5px;
+    height: 5px;
+    background-color: blue;
+    color: red;
+    border-radius: 50%;
+}

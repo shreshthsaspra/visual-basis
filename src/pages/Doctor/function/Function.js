@@ -284,6 +284,8 @@ const Function = () => {
                     </div>
                 </div>
 
+                <button onClick={() => Navigate("/doctor/patientMap")}> Go Map</button>
+
             </div>
 
 

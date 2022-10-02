@@ -27,7 +27,7 @@ function FrontCameraComponent() {
   const [newImgPathBase64, setNewImgPathBase64] = useState("");
   const [crop, setCrop] = useState({ width: 300, height: 400 });
   const [horizontaloffset, setHorizontaloffset] = useState(0);
-  const { saveImage, setSaveImage, step, setStep, point, setPoint } = useContext(GlobalStorage);
+  const { saveImage,setPointMap, pointMap, setSaveImage, step, setStep, point, setPoint } = useContext(GlobalStorage);
   const [finalrows, setFinalrows] = useState(null);
   const [istoggleon, setIstoggleon]  = useState(false);
 
@@ -202,11 +202,33 @@ function FrontCameraComponent() {
 
       setPoint({ ...point, front: response.data.message.s3_url })
       setImgPath("");
-      navigate("/doctor/function");
+      // navigate("/doctor/function");
 
     })
       .catch((error) => console.log(error));
+
+      axios({
+        url: `http://18.237.160.150/api/services/point/mp`,
+        method: 'POST',
+        data: formData,
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      }).then((response) => {
+
+        console.log("Map Response", response);
+  
+        setPointMap({ ...pointMap, front: response.data.message.keypoints })
+        setImgPath("");
+        navigate("/doctor/function");
+  
+      })
+        .catch((error) => console.log(error));
   }
+
+  
 
   console.log("POINT", point);
 
