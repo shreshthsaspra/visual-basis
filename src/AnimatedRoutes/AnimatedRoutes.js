@@ -39,7 +39,7 @@ function AnimatedRoutes() {
           <Route path="/doctor-login" element={<DoctorLogin />} />
           <Route path="/Hospital/doctor" element={<DoctorHome />} />
           <Route path="/Hospital/patient" element={<Patient />} />
-          <Route path="/crops" element={<CroppedIMage />} />
+          {/* <Route path="/crops" element={<CroppedIMage />} /> */}
           <Route path="/Hospital/diagnosis-history" element={<DiagnosisHistory />} />
           <Route path="/doctor/generate-report" element={<GenerateReport />} />
           <Route path="/doctor/function" element={<Function />} />

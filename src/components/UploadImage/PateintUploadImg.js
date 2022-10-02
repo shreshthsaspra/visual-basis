@@ -11,7 +11,7 @@ import { BiZoomIn, BiZoomOut } from 'react-icons/bi';
 import CroppedIMage from '../../Cropped/CroppedIMage';
 function PateintUploadI() {
     const navigate = useNavigate()
-    const { uploadedImage, setUploadIMage, switchPoint, setSwitchPoint, point, setPoint } = useContext(GlobalStorage)
+    const { uploadedImage, setUploadIMage, switchPoint, setSwitchPoint,point, setPoint } = useContext(GlobalStorage)
     const [url, setUrl] = useState()
     const [crop, setCrop] = useState({ x: 0, y: 0 })
     const [croppedArea, setCroppedArea] = useState(null)
@@ -55,7 +55,6 @@ function PateintUploadI() {
                                    <CroppedIMage/>
                                 </div>
                             </div>
-
                         </div>
 
                     </div>
@@ -72,6 +71,7 @@ function PateintUploadI() {
                         <BiZoomOut color="#185EB6" size="26px" />
                     </button>
                 </div>
+
 
             </div>
 

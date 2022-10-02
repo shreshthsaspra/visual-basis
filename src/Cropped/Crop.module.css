@@ -3,15 +3,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    /* height: 630px; */
+    height: 630px;
     min-height: 630px;
     margin: auto;
     position: relative;
 }
 
-.crop {
+/* .crop {
     position: relative;
-}
+} */
 
 .buttonDiv {
     position: absolute;

@@ -52,6 +52,7 @@ export default function CroppedIMage() {
 
                 if (switchPoint == 'front') {
                     setPoint({ ...point, front: response.data.message.s3_url })
+
                 }
                 if (switchPoint == 'right') {
                     setPoint({ ...point, right: response.data.message.s3_url })
@@ -64,11 +65,68 @@ export default function CroppedIMage() {
                 }
 
                 // navigate("/doctor/function");
-                console.log(response);
+                
 
             })
-            SetShowIMg(URL.createObjectURL(croppedImage))
-            setCroppedImage(croppedImage)
+            // SetShowIMg(URL.createObjectURL(croppedImage))
+            if (switchPoint == 'front') {
+                axios({
+                    url: `http://18.237.160.150/api/services/point/mp`,
+                    method: 'POST',
+                    data: formData,
+                    headers: {
+                        Accept: 'application/json',
+                        'Content-Type': 'multipart/form-data',
+                        Authorization: `Bearer ${localStorage.getItem('token')}`,
+                    },
+                }).then(responce=>{
+
+                })
+            }
+            if (switchPoint == 'right') {
+                axios({
+                    url: `http://18.237.160.150/api/services/point/mp`,
+                    method: 'POST',
+                    data: formData,
+                    headers: {
+                        Accept: 'application/json',
+                        'Content-Type': 'multipart/form-data',
+                        Authorization: `Bearer ${localStorage.getItem('token')}`,
+                    },
+                }).then(responce=>{
+                    
+                })
+            }
+            if (switchPoint == 'left') {
+                axios({
+                    url: `http://18.237.160.150/api/services/point/mp`,
+                    method: 'POST',
+                    data: formData,
+                    headers: {
+                        Accept: 'application/json',
+                        'Content-Type': 'multipart/form-data',
+                        Authorization: `Bearer ${localStorage.getItem('token')}`,
+                    },
+                })
+            }
+            if (switchPoint == 'back') {
+                axios({
+                    url: `http://18.237.160.150/api/services/point/mp`,
+                    method: 'POST',
+                    data: formData,
+                    headers: {
+                        Accept: 'application/json',
+                        'Content-Type': 'multipart/form-data',
+                        Authorization: `Bearer ${localStorage.getItem('token')}`,
+                    },
+                }).then(responce=>{
+                    
+                })
+            }
+           
+
+
+          
         } catch (e) {
             console.error(e)
         }
@@ -114,27 +172,11 @@ export default function CroppedIMage() {
                             onRotationChange={setRotation}
                             onCropComplete={onCropComplete}
                             onZoomChange={setZoom}
-                            // style={{
-                            //     containerStyle: {
-                            //         width: "100%",
-                            //         height: "100%",
-                            //         position: "relative",
-                            //         background: "unset"
 
-                            //     },
-
-                            //     mediaStyle: {
-                            //         width: "100%",
-                            //         height: "610px",
-                            //         // position:"relative",
-                            //         objectFit: "contain"
-                            //     }
-
-                            // }}
                         />
                     </div>
 
-                    <img src={ShowUrl} onClose={onClose} />
+                    {/* <img src={ShowUrl} onClose={onClose} /> */}
                 </>
             ) : (
                 <></>
@@ -147,7 +189,7 @@ export default function CroppedIMage() {
 
                 >
                     Show Result
-                </button> : <div className={styles.uploadImgDiv}> <input  type="file" onChange={onFileChange} accept="image/*" /> <p>Choose</p> </div>}
+                </button> : <div className={styles.uploadImgDiv}> <input type="file" onChange={onFileChange} accept="image/*" /> <p>Choose</p> </div>}
             </div>
         </div>
     )

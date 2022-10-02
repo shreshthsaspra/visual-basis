@@ -78,10 +78,11 @@
     position: relative;
 }
 
-.cropContainer img {
+.cropContainer{
     width: 100%;
-    height: 500px;
-    object-fit: contain;
+    /* display: flex; */
+    justify-content: center !important;
+    align-items: center;
 }
 
 .rotateButton {
@@ -157,3 +158,4 @@
     justify-content: center;
     align-items: center;
 }
+

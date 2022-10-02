@@ -92,3 +92,9 @@
   top: 2px;
 }
 
+.reactEasyCrop_Contain {
+  max-width: 100% !important;
+  max-height: 100% !important;
+  margin: auto !important;
+  position: relative !important;
+}

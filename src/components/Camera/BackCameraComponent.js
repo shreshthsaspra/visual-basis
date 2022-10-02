@@ -1,4 +1,4 @@
-import React, { useState, Fragment, useContext } from "react";
+import React, { useState, Fragment, useContext, useEffect } from "react";
 import ReactCrop from "react-image-crop";
 import { FaCamera } from "react-icons/fa";
 import { BsArrowRightCircleFill, BsArrowLeftCircleFill } from "react-icons/bs";
@@ -14,6 +14,9 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 
+
+
+
 function BackCameraComponent() {
 
 
@@ -25,6 +28,43 @@ function BackCameraComponent() {
   const [crop, setCrop] = useState({ width: 300, height: 400 });
   const [horizontaloffset, setHorizontaloffset] = useState(0);
   const { saveImage, setSaveImage, step, setStep, point, setPoint } = useContext(GlobalStorage);
+  const [finalrows, setFinalrows] = useState(null);
+  const [istoggleon, setIstoggleon]  = useState(false);
+
+
+
+  useEffect(() => {
+
+    const noofcols = Array.apply(null, Array(Math.floor(375 / 10))).map(function () {
+      return (
+        <td style={{ width: '10px', height: '10px', border: '0.1px solid rgba(255,255,255,0.5)', backgroundColor: 'transparent' }}></td>
+      )
+    });
+
+    const noofrows = Array.apply(null, Array(Math.floor(500 / 10))).map(() => {
+      return (
+        <tr style={{ borderCollapse: 'collapse' }}>
+          {
+            noofcols.map((x) => {
+              return x;
+            })
+          }
+        </tr>
+      )
+    });
+
+
+
+    //console.log(noofcol, noofrow);
+    console.log(noofrows);
+    setFinalrows(noofrows);
+
+  }, []);
+
+
+
+
+
 
   const [anti, setAnti] = useState(0);
   const [scaleId, setScale] = useState(1);
@@ -117,56 +157,22 @@ function BackCameraComponent() {
     );
   };
 
-  const onCropChange = (crop) => {
-    const canvas = document.createElement("canvas");
-    const image = document.createElement("img");
-    image.src = imgPath;
-    const pixelRatio = window.devicePixelRatio;
-    const scaleX = image.naturalWidth / image.width;
-    const scaleY = image.naturalHeight / image.height;
-    const ctx = canvas.getContext("2d");
 
-    canvas.width = crop.width * pixelRatio * scaleX;
-    canvas.height = crop.height * pixelRatio * scaleY;
 
-    ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
-    ctx.imageSmoothingQuality = "high";
-
-    ctx.drawImage(
-      image,
-      crop.x * scaleX,
-      crop.y * scaleY,
-      crop.width * scaleX,
-      crop.height * scaleY,
-      0,
-      0,
-      crop.width * scaleX,
-      crop.height * scaleY
-    );
-
-    setNewImgPathBase64(canvas.toDataURL("image/jpeg"));
-  };
-  console.log("New Image", newImgPathBase64);
-  console.log("POINT1", point);
 
   const handleAntiClkwise = () => {
-
     setAnti(anti - 90)
   }
-
   const handleClkwise = () => {
 
     setAnti(anti + 90)
   }
-
   const handleZoomIn = () => {
-
     // setCrop(scaleId+0.4)
     setScale(scaleId + 0.2)
   }
 
   const handleZoomOut = () => {
-
     // setCrop(scaleId+0.4)
     setScale(scaleId - 0.2)
   }
@@ -180,22 +186,6 @@ function BackCameraComponent() {
   }
 
   const handleSubmit = () => {
-    let requredTag;
-    if(step == 0) {
-      requredTag="Front"
-    }
-
-    else if(step == 1) {
-      requredTag="Left"
-    }
-
-    else if(step == 2) {
-      requredTag="Back"
-    }
-
-    else if(step == 3) {
-      requredTag="Right"
-    }
     const formData = new FormData();
     formData.append('file', imgPath, "noName.png");
 
@@ -209,12 +199,11 @@ function BackCameraComponent() {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
     }).then((response) => {
-      
-        setPoint({ ...point, back: response.data.message.s3_url })
-        navigate("/doctor/function")
-        setImgPath("");
 
-        
+      setPoint({ ...point, back: response.data.message.s3_url })
+      setImgPath("");
+      navigate("/doctor/function");
+
     })
       .catch((error) => console.log(error));
   }
@@ -246,7 +235,29 @@ function BackCameraComponent() {
                       marginLeft: "auto !important",
                       marginRight: "auto !important",
                     }}
-                  ></div>
+                  >
+
+
+                    {istoggleon===true?(<table>
+                      {
+                        finalrows.map((x) => {
+                          return (
+                            x
+                          )
+                        })
+                      }
+                    </table>):null}
+
+                    <div style={{
+                      borderRight: "2px solid #185EB6",
+                      height: '495px',
+                      position: 'absolute',
+                      right: '50%',
+                      top: '0%'
+                    }}></div>
+
+
+                  </div>
                 )}
 
                 <video
@@ -318,6 +329,11 @@ function BackCameraComponent() {
                     }} className="ms-2" onClick={handleMoveBoxRight}>
                       <BsArrowRightCircleFill size="21px" />
                     </button>
+                    <label className="toggle">
+                      <input className="toggle__checkbox" type="checkbox" value={istoggleon} onChange={()=>{setIstoggleon(!istoggleon)}}  />
+                        <span className="toggle__switch"></span>
+                        <span className="toggle__label">Grid</span>
+                    </label>
                   </div>
                 </>
               )}
