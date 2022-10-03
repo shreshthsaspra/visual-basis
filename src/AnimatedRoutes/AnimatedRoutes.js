@@ -21,6 +21,7 @@ import Camera from '../pages/Doctor/camera/Camera';
 import PateintUploadImg from '../components/UploadImage/PateintUploadImg';
 import StaffHome from '../pages/Staff/Home/StaffHome';
 import PatientMap from '../pages/Doctor/PatientMap/PatientMap';
+import EditModelMain from '../pages/Doctor/EditModel/EditModelMain';
 
 function AnimatedRoutes() {
   const location = useLocation()
@@ -37,6 +38,7 @@ function AnimatedRoutes() {
           <Route path="/Hospital/staffSearch" element={<StaffSearch/>} />
           <Route path="/Hospital/staffSearch" element={<StaffSearch/>} />
           <Route path="/Hospital/staffhome" element={<StaffHome/>} />
+          <Route path="/editmodel" element={<EditModelMain/>} />
           <Route path="/doctor-login" element={<DoctorLogin />} />
           <Route path="/Hospital/doctor" element={<DoctorHome />} />
           <Route path="/Hospital/patient" element={<Patient />} />

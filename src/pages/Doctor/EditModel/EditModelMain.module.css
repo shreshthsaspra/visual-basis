@@ -1,0 +1,593 @@
+.image {
+    display: flex;
+    justify-content: center;
+    padding-top: 15px !important;
+}
+
+.image img {
+    width: 80px;
+}
+
+.main {
+    padding: 0 90px !important;
+    position: relative;
+}
+
+.topNav {
+    margin-top: 30px !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.left button {
+    border: none;
+    outline: none;
+    width: 300px;
+    height: 38px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    font-family: poppins-semiBold;
+    font-size: 19px;
+    font-weight: 700;
+
+}
+
+.cardMiddleButton {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: inset 3px 3px 5px #00000029;
+    padding: 15px 15px !important;
+    border-radius: 10px;
+    box-shadow: 5px 6px -5px 6px #00000029;
+    width: 250px;
+}
+
+.cardMiddleButton p {
+    font-weight: 600;
+    color: #185EB6;
+    font-family: Poppins-semiBold;
+}
+
+.button1 {
+    margin-right: 20px !important;
+    /* -moz-box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.16);
+    -webkit-box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.16); */
+    /* box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.16); */
+    background-color: #FFFFFF;
+    color: #185EB6;
+
+}
+
+.cardMiddleButtonCircle {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    -moz-box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.16);
+    -webkit-box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.16);
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.16);
+    cursor: pointer;
+}
+
+.cardMiddleButtonCircle svg {
+    color: #185EB6;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.button2 {
+    background-color: #7EB3E4;
+    color: #FFFFFF;
+
+}
+
+.backButton {
+    border: none;
+    outline: none;
+    padding: 4px 5px !important;
+    padding-right: 8px !important;
+    font-family: poppins-medium;
+    color: #185EB6;
+    background-color: #E4F3FE;
+    border-radius: 5px;
+    font-size: 19px;
+    margin-right: 15px !important;
+}
+
+.homeButton {
+    border: none;
+    outline: none;
+    padding: 4px 10px !important;
+    border-radius: 5px;
+    -moz-box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.16);
+    -webkit-box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.16);
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.16);
+    background-color: #FFFFFF;
+}
+
+.card {
+    /* padding: 10px 0px 10px 15px !important; */
+    background-color: #FFFFFF;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 5px 10px !important;
+    z-index: 5;
+}
+
+
+.cardInner {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cardLeft {
+    position: relative;
+}
+
+.inputDivDateList {
+    position: absolute;
+    z-index: 10;
+    top: 8rem;
+    border-radius: 10px !important;
+    gap: 20px;
+    left: 3.5rem;
+    width: 80%;
+    padding: 0 10px !important;
+
+    background-color: #fff;
+
+    margin-right: 20px !important;
+}
+
+.inputDivDateListOption {
+
+    transition: max-height .5s ease-in-out;
+    width: 100%;
+    max-height: 10rem;
+    overflow-y: auto;
+}
+
+.inputDivDateListOption::-webkit-scrollbar {
+    width: .5em;
+    cursor: pointer !important;
+    height: 50px !important;
+
+}
+
+.inputDivDateListOption::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    cursor: pointer !important;
+
+}
+
+.inputDivDateListOption::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+
+    outline: none !important;
+    cursor: pointer !important;
+}
+
+.showDrop {
+    max-height: 10rem;
+
+}
+
+.hideDrop {
+    max-height: 0rem;
+
+}
+
+.inputDivDateList p {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    background-color: #f0f0f0;
+    margin-top: 5px !important;
+    cursor: pointer;
+    border-radius: 10px !important;
+}
+
+.cardLeft h2 {
+    font-family: poppins-medium;
+    color: #185EB6;
+
+}
+
+.nameBelow {
+    display: flex;
+    /* justify-content: center; */
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nameBelow p {
+    font-family: poppins-medium;
+    /* margin-right: 10px !important; */
+    color: #185EB6;
+}
+
+.nameBelow span {
+    font-family: poppins-regular;
+    color: #185EB6;
+    font-size: 14px;
+
+}
+
+.inputDiv {
+    margin-top: 30px !important;
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    justify-content: space-between;
+    -moz-box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.16);
+    -webkit-box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.16);
+    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.16);
+    /* padding: 2px !important; */
+    margin-bottom: 10px !important;
+    border-radius: 8px;
+
+}
+
+.inputDivDate {
+    display: flex;
+    cursor: pointer;
+}
+
+.dropDown {
+    background: #9E9E9E 0% 0% no-repeat padding-box;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+
+}
+
+.dropDown svg {
+    transform: rotate(90deg);
+    color: #fff;
+    font-weight: 700 !important;
+    cursor: pointer;
+}
+
+.select {
+    appearance: none !important;
+    -moz-appearance: none !important;
+    -webkit-appearance: none !important;
+    border: none;
+    outline: none;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    height: 30px !important;
+    padding-left: 15px !important;
+    padding-right: 10px !important;
+    font-family: poppins-medium;
+    color: #185EB6;
+    background-repeat: no-repeat;
+    background-position: calc(100% - 1px) center;
+    background-size: 27px;
+}
+
+.select option {
+    height: 10px !important;
+    padding: 30px !important;
+}
+
+
+.inputDiv p {
+    font-family: poppins-semiBold;
+    color: #185EB6;
+    font-size: 16px;
+    /* padding-left: 10px !important;
+    padding-right: 10px !important; */
+    padding: 4px 10px !important;
+}
+
+.dateWrap {
+    display: flex;
+    align-items: center;
+    padding: 2px 0 !important;
+    background-color: #F1F1F1;
+    border-radius: 5px;
+}
+
+.dateWrap p {
+    font-family: poppins-medium !important;
+    font-size: 14px !important;
+    color: #185EB6;
+}
+
+.dateWrap span {
+    font-family: poppins-regular !important;
+    font-size: 14px !important;
+    color: #185EB6;
+    padding-right: 25px !important;
+}
+
+.cardMiddle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cardMiddle button {
+    border: none;
+    outline: none;
+    width: 220px;
+    height: 35px;
+    /* margin-bottom: 20px !important; */
+    border-radius: 10px;
+    color: #FFFFFF;
+    font-family: poppins-semiBold;
+}
+
+.modelButton {
+    background-color: #9E9E9E;
+    margin-bottom: 10px !important;
+}
+
+.screenButton {
+
+    background-color: #185EB6;
+}
+
+.cardRight {
+    display: flex;
+
+}
+
+.cardRight p {
+    color: #185EB6 !important;
+}
+
+.topRight {
+    display: flex;
+
+}
+
+.inputRight {
+    display: flex;
+    padding: 2px !important;
+    -moz-box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.16);
+    -webkit-box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.16);
+    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.16);
+
+}
+
+
+
+
+.inputRightBUtton {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 2px !important;
+    background: unset !important;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.inputRightBUtton p {
+    color: #fff !important;
+}
+
+.inputWrap {
+    margin-right: 8px !important;
+}
+
+.inputRight p {
+    font-family: poppins-semiBold;
+    color: #185EB6;
+    font-size: 15px;
+    padding: 7px 65px 4px 15px !important;
+}
+
+.inputTextWrap {
+    display: flex;
+}
+
+.inputTextWrap p {
+    padding-right: 15px !important;
+    padding-left: 0px !important;
+    font-size: 11px;
+    padding-top: 15px !important;
+}
+
+.inputTextWrap input {
+    border: none;
+    outline: none;
+    background-color: #EFEFEF;
+    border-radius: 5px;
+    width: 80px;
+    padding-left: 10px !important;
+}
+
+.uploadButon {
+    border: none;
+    outline: none;
+    background-color: #185EB6;
+    padding: 5px 15px !important;
+    border-radius: 5px;
+
+}
+
+.newData,
+.save {
+    border: none;
+    cursor: pointer;
+    width: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    outline: none;
+    background-color: #185EB6;
+    padding: 5px 5px !important;
+    border-radius: 5px;
+}
+
+.newData p,
+.save p {
+    font-weight: 600;
+    color: #fff;
+}
+
+.newData svg,
+.save svg {
+    color: #fff;
+}
+
+.right1 {
+    display: flex;
+    align-items: center;
+}
+
+.right2 {
+    padding: 10px !important;
+    padding-bottom: 0 !important;
+    display: flex;
+    width: 100%;
+    align-items: flex-end;
+    /* flex-direction: column; */
+
+}
+
+.right2 img {
+    width: 70px;
+    height: 70px;
+}
+
+.body {
+    display: flex;
+    width: 100% !important;
+    margin-top: 10px !important;
+    margin-bottom: 45px !important;
+    justify-content: space-between;
+}
+
+.body svg {
+    cursor: pointer !important;
+}
+
+.bodyCard {
+    width: 320px;
+    background-color: #CDEAFD;
+    height: 480px;
+    border-radius: 5px;
+    -moz-box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.16);
+    -webkit-box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.16);
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.16);
+    position: relative;
+
+}
+
+.bodyCard p {
+    padding-top: 15px !important;
+    text-align: center;
+    font-family: poppins-semiBold;
+    color: #185EB6;
+}
+
+/* .bodyCard div {
+    position: absolute;
+    bottom: -15px;
+} */
+.camera {
+    padding: 5px 10px !important;
+    position: absolute;
+    bottom: -15px;
+    background: #FFFFFF;
+    border-radius: 5px;
+    left: 100px;
+
+}
+
+.upload {
+    padding: 5px 0px !important;
+    position: absolute;
+    bottom: -15px;
+    width: 40px;
+    background: #FFFFFF;
+    border-radius: 5px;
+    left: 160px;
+}
+
+.upload input[type="file"] {
+    width: 34px;
+    height: 33px;
+    /* visibility: hidden; */
+    opacity: 0;
+    margin-right: 5px;
+    z-index: 20;
+    cursor: pointer !important;
+    position: absolute;
+}
+
+.upload svg {
+    top: 10px;
+    cursor: pointer !important;
+    margin-left: 7px !important;
+}
+
+.df {
+    display: flex;
+    justify-content: center;
+}
+
+.df img {
+    width: 250px;
+    height: auto;
+    object-fit: contain;
+}
+
+
+
+
+
+
+
+
+.position {
+    /* padding: 10px 0px 10px 15px !important; */
+    background-color: #FFFFFF;
+    border-radius: 10px;
+
+    z-index: 5;
+    margin-top: 15px !important;
+}
+
+.cardInnerbutton div {
+    flex: 0.25;
+    text-align: center;
+    padding: 10px 0 !important;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 500;
+ 
+}
+
+.positionAcitve {
+    background-color: #185EB6;
+    width: 100%;
+    color: #FFFFFF;
+    transition: all .5s ease-out;
+    font-weight: 500;
+}
+
+.cardInnerbutton {
+    display: flex;
+    gap: 20px;
+    justify-content: space-around;
+}
+.editPoint
+{
+    margin-top: 15px !important;
+    display: flex !important;
+    align-items: center  !important;
+    justify-content: center;
+    padding-bottom: 2rem !important;
+}
