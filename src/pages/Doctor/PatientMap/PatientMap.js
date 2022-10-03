@@ -155,9 +155,15 @@ const PatientMap = () => {
         setPointMap({ ...pointMap, front: copyMap })
     }
     console.log("9090", pointMap);
-
-    const handleClick = event => {
-        // setPointMap({...pointMap, "1" });
+    let x = 160
+    let y = 80
+    const handleClick = () => {
+         let copyMap = [...pointMap.front];
+         copyMap.push([
+            x,
+            y ])
+         setPointMap({...point, front:copyMap})
+        
       };
     return (
         <>
@@ -186,7 +192,7 @@ const PatientMap = () => {
 
                 </div>
 
-                <button onClick={handleClick}>Add Point</button>
+                <button onClick={()=>handleClick()}>Add Point</button>
 
 
             </div>
