@@ -2,6 +2,8 @@
 .mainDiv {
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
     padding-top: 4rem !important;
 }
 .wrap{
@@ -11,8 +13,8 @@
     position: absolute;
    
     /* right: 5px !important; */
-    width: 5px;
-    height: 5px;
+    width: 8px;
+    height: 8px;
     background-color: blue;
     color: red;
     border-radius: 50%;
