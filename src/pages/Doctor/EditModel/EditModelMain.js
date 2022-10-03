@@ -88,9 +88,9 @@ function EditModelMain() {
                     </div>
                 </div>
                 <div className={styles.editPoint}>
-                    <div>
-                        <button>Model1</button>
-                        <button></button>
+                    <div className={styles.modelbutton}>
+                        <button className={styles.button1}>Model1</button>
+                        <button className={styles.button2}>Edit Model</button>
                     </div>
                     <div>
                         <div className={`${styles.bodyCard} me-4`}>
@@ -109,9 +109,9 @@ function EditModelMain() {
                         </div>
                     </div>
 
-                    <div>
-                        <button></button>
-                        <button></button>
+                    <div className={styles.modelbutton}>
+                        <button className={styles.button1}>Model2</button>
+                        <button className={styles.button2}>Edit Model</button>
                     </div>
                 </div>
             </div>

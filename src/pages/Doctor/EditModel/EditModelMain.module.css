@@ -567,7 +567,7 @@
     border-radius: 10px;
     cursor: pointer;
     font-weight: 500;
- 
+
 }
 
 .positionAcitve {
@@ -583,11 +583,43 @@
     gap: 20px;
     justify-content: space-around;
 }
-.editPoint
-{
+
+.editPoint {
     margin-top: 15px !important;
     display: flex !important;
-    align-items: center  !important;
+    align-items: baseline !important;
     justify-content: center;
     padding-bottom: 2rem !important;
+}
+
+.modelbutton {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}
+
+.modelbutton .button1 {
+    border: none;
+    width: 154px;
+    height: 45px;
+    outline: none;
+    padding: 10px 5px !important;
+    background: #185EB6 0% 0% no-repeat padding-box;
+    border-radius: 10px;
+    font-weight: 600;
+    color: #fff;
+    box-shadow: 3px 10px 25px #00000029;
+}
+.modelbutton .button2 {
+    border: none;
+    width: 154px;
+    height: 40px;
+    outline: none;
+    padding: 10px 5px !important;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border-radius: 10px;
+    color: #185EB6;
+    font-weight: 600;
+    box-shadow: 3px 10px 25px #00000029;
 }
