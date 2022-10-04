@@ -13,8 +13,8 @@ import GlobalStorage from '../../Storage/ContextProvider';
 const HospitalLogin = () => {
 const {tokens, setTokens} = useContext(GlobalStorage)
 
-    const [username, setUserName] = useState("hospital1@gmail.com")
-    const [password, setPassword] = useState("_9O-mDv5jrE")
+    const [username, setUserName] = useState("hospital2@gmail.com")
+    const [password, setPassword] = useState("SkM70BhaFXs")
     const [loading, setLoading] = useState(true)
     // let [authTokens, setAuthTokens] = useState(()=>)
     const token = getCookie('token');
