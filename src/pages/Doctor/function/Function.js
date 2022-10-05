@@ -285,6 +285,8 @@ const Function = () => {
                 </div>
 
                 <button onClick={() => Navigate("/doctor/patientMap")}> Go Map</button>
+                <button onClick={() => Navigate("/editmodel")}> Edit Point</button>
+
 
             </div>
 

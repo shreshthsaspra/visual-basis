@@ -22,6 +22,8 @@ import PateintUploadImg from '../components/UploadImage/PateintUploadImg';
 import StaffHome from '../pages/Staff/Home/StaffHome';
 import PatientMap from '../pages/Doctor/PatientMap/PatientMap';
 import EditModelMain from '../pages/Doctor/EditModel/EditModelMain';
+import Screening from '../pages/Doctor/Screening/Screening';
+import EditSingle from '../pages/Doctor/EditSingle/EditSingle';
 
 function AnimatedRoutes() {
   const location = useLocation()
@@ -39,6 +41,8 @@ function AnimatedRoutes() {
           <Route path="/Hospital/staffSearch" element={<StaffSearch/>} />
           <Route path="/Hospital/staffhome" element={<StaffHome/>} />
           <Route path="/editmodel" element={<EditModelMain/>} />
+          <Route path="/editmodel/single" element={<EditSingle/>} />
+
           <Route path="/doctor-login" element={<DoctorLogin />} />
           <Route path="/Hospital/doctor" element={<DoctorHome />} />
           <Route path="/Hospital/patient" element={<Patient />} />
@@ -48,14 +52,10 @@ function AnimatedRoutes() {
           <Route path="/doctor/function" element={<Function />} />
           <Route path="/doctor/camera" element={<Camera />} />
           <Route path="/doctor/patientMap" element={<PatientMap />} />
-
-
-
-
-
-
           {/* <Route path="/staffmanagement" element={<StaffManagement />} /> */}
           <Route path="/staff-login" element={<Home />} />
+          <Route path="/doctor/screening" element={<Screening />} />
+
         </Routes>
         {/* </AnimatePresence> */}
     </div>

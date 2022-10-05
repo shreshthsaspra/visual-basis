@@ -1,0 +1,67 @@
+
+.logoSection {
+    display: flex;
+    justify-content: center;
+
+}
+.logoSection img {
+    padding-top: 20px !important;
+    width: 80px;
+}
+
+.cameraMain {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 115vh !important;
+    width: 100% !important;
+    /* margin-bottom: 10px !important; */
+}
+.width {
+    width: 80%;
+    /* background-color: #D5EDFC; */
+}
+.nav {
+    background-color: #185EB6;
+    width: 100% !important;
+    /* padding: 8px 0 !important; */
+    border-radius: 5px;
+}
+.navButton {
+    background-color: #FFFFFF;
+    width: 250px;
+    padding: 4px 5px !important;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+.navButton img {
+    width: 50px;
+    height: 40px;
+}
+.navButton p {
+    font-family: poppins-semiBold;
+    color: #185EB6;
+}
+.mainBody {
+    /* margin-top: -15px !important; */
+    background-color: #F9FDFF;
+    padding: 10px 20px !important;
+}
+.inner {
+    display: flex;
+    justify-content: center;align-items: center;
+    flex-direction: column;
+
+}
+.inner h3 {
+    text-align: center;
+    color: #185EB6;
+}
+
+.cameraStyle {
+   padding-top: 5px !important;
+   border: 4px solid #185EB6;
+   height: 30rem;
+   width: 60%;
+}

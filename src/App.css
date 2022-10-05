@@ -98,3 +98,48 @@
   margin: auto !important;
   position: relative !important;
 }
+
+.horizontal-slider {
+  width: 100%;
+  max-width: 500px;
+  /* height: 100vh;  */
+  margin: auto;
+}
+
+.example-thumb {
+  cursor: pointer;
+  position: absolute;
+  z-index: 100;
+  background: #ffffff;
+  border: 5px solid #3774ff;
+  border-radius: 100%;
+  display: block;
+  box-shadow: 0 0 2px 0 rgb(0 0 0 / 44%);
+}
+
+.example-thumb.active {
+  background-color: transparent;
+}
+
+.example-track {
+  position: relative;
+  background: linear-gradient(to right, #50B188 0%, #60CC5C 20%, #BFCA24 20%,#F2E503 60%,#FBDB00 80%, #FDBB03 100%);
+}
+
+.example-track.example-track-0 {
+  /* background: transparent; */
+}
+
+.horizontal-slider .example-track {
+  top: -9px;
+  height: 18px;
+  border-radius: 5px;
+}
+
+.horizontal-slider .example-thumb {
+  top: -13px;
+  width: 25px;
+  outline: none;
+  height: 25px;
+  line-height: 38px;
+}

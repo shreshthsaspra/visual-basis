@@ -1,0 +1,58 @@
+ .mainDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    
+ }
+ .containerDiv {
+    background-color: #FFFFFF;
+    width: 80%;
+    height: 20rem;
+    border-radius: 5px;
+    padding: 10px 90px !important;
+ }
+ .row {
+    display: flex;
+ }
+ .row button {
+    border: none;
+    outline: none;
+    background-color: #185EB6;
+    color: #FFFFFF;
+    font-family: poppins-medium;
+    width: 220px;
+    height: 35px;
+    font-size: 14px;
+    border-radius: 5px;
+
+ }
+ .color {
+    width: 80px;
+    height: 35px;
+    /* color:grey; */
+    background-color: aqua;
+    margin: 0 5px !important;
+    border-radius: 5px;
+
+ }
+ .input {
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+ }
+
+ .sliderParent{
+    position:relative;
+    height: 40px;
+    
+  }
+  .sliderParent input {
+    width: 440px !important;
+    height: 40px;
+  }
+  .buble{
+    position:absolute;
+  }

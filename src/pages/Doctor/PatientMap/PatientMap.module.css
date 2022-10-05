@@ -1,17 +1,30 @@
 
 .mainDiv {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     padding-top: 4rem !important;
+    /* height: 100vh; */
 }
 .wrap{
-    position: relative !important;
+    position: relative;
+    border:0.1px solid red;
+    /* width: 100%; */
+    /* transform-origin:center 0px; */
+   
+
+
+}
+.wrap img {
+    
+    /* height: 500px; */
+    /* transform: scale(1.4); */
+    transform-origin:center 0px;
 }
 .point {
     position: absolute;
-   
     /* right: 5px !important; */
     width: 8px;
     height: 8px;
