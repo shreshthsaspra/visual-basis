@@ -528,7 +528,7 @@ const Screening = () => {
 
     }
     if (value.OthersTwoValue >= 9 && value.OthersTwoValue <= 10) {
-      setStyle({ ...style, OthersOneValue: "#DF2900" })
+      setStyle({ ...style, OthersTwoValue: "#DF2900" })
 
     }
     if (value.OthersTwoValue > 10) {
