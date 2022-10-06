@@ -55,6 +55,10 @@
    justify-content: center;
 
 }
+.color p {
+   color:  #fff;
+   font-family: poppins-medium;
+}
 
 .input {
    width: 100%;
