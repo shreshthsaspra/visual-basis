@@ -144,6 +144,6 @@ input[type='range'] {
     cursor: ew-resize;
     background: #fff;
     /* box-shadow: 0px 2px 19px #00000029; */
-    border: 3px solid white;
+    border: 3px solid #ccc;
     cursor: pointer;
 }
