@@ -24,6 +24,7 @@ import PatientMap from '../pages/Doctor/PatientMap/PatientMap';
 import EditModelMain from '../pages/Doctor/EditModel/EditModelMain';
 import Screening from '../pages/Doctor/Screening/Screening';
 import EditSingle from '../pages/Doctor/EditSingle/EditSingle';
+import Upload from '../pages/Doctor/face/FaceUpload/Upload';
 
 function AnimatedRoutes() {
   const location = useLocation()
@@ -55,6 +56,8 @@ function AnimatedRoutes() {
           {/* <Route path="/staffmanagement" element={<StaffManagement />} /> */}
           <Route path="/staff-login" element={<Home />} />
           <Route path="/doctor/screening" element={<Screening />} />
+          <Route path="/doctor/face" element={<Upload />} />
+
 
         </Routes>
         {/* </AnimatePresence> */}
