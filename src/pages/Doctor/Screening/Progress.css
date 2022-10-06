@@ -1,0 +1,130 @@
+.colorBg .div1 {
+    width: 10%;
+    background-color: #000 !important;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.colorBg .div2 {
+    width: 10%;
+    background-color: rgb(123, 36, 135) !important;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 10%;
+}
+
+.colorBg .div3 {
+    width: 10%;
+    background-color: rgb(36, 76, 135) !important;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 20%;
+}
+
+.colorBg .div4 {
+    width: 10%;
+    background-color: rgb(126, 228, 199) !important;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 30%;
+}
+
+.colorBg .div5 {
+    width: 10%;
+    background-color: rgb(126, 228, 152) !important;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 40%;
+}
+
+.colorBg .div6 {
+    width: 10%;
+    background-color: rgb(177, 228, 126) !important;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+}
+
+.colorBg .div7 {
+    width: 10%;
+    background-color: rgb(225, 228, 126) !important;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 60%;
+}
+
+.colorBg .div8 {
+    width: 10%;
+    background-color: rgb(248, 213, 175) !important;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 70%;
+}
+
+.colorBg .div9 {
+    width: 10%;
+    background-color: rgb(156, 66, 28) !important;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 80%;
+}
+
+.colorBg .div10 {
+    width: 10%;
+    background-color: rgb(228, 32, 32) !important;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 90%;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.containerStyles {
+    margin-top: 10rem;
+    height: 15px;
+    object-fit: contain;
+    width: 70%;
+    justify-content: center;
+    border-radius: 10px;
+    align-items: center;
+    display: flex;
+    position: relative;
+    background-color: aquamarine;
+}
+
+.containerStyles input {
+    width: 100%;
+    background-color: transparent;
+}
+
+input[type='range'] {
+    overflow: hidden;
+    -webkit-appearance: none;
+    background-color: transparent;
+    z-index: 100;
+}
+
+.slider::-webkit-slider-thumb {
+    width: 22px;
+    -webkit-appearance: none;
+    height: 22px;
+    border-radius: 50%;
+
+    cursor: ew-resize;
+    background: #fff;
+    box-shadow: 3px 3px 10px #00000029;
+    border: 3px solid white;
+    cursor: pointer;
+}
