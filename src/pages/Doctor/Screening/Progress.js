@@ -1,16 +1,36 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useContext } from 'react';
 import { useState } from 'react';
 import GlobalStorage from '../../../Storage/ContextProvider';
 import "./Progress.css"
 function Progress(props) {
-    const { Bgcolor, setBgcolor } = useContext(GlobalStorage);
     const [value, setState] = useState(0)
     const handleChange = (e) => {
-        setState(e.target.value)
-        setBgcolor(e.target.value)
+        props.setValue(e.target.value)
     }
-    console.log(Bgcolor);
+    useEffect(() => {
+        if (props.value >= 0 && props.value <= 1 && props.phy) {
+          props.setStyle({...props.style, Physicalvalue:"#50B188"})
+          console.log(props.style);
+        }
+        if (props.value >= 0 && props.value <= 1 && props.phy) {
+          props.setStyle({...props.style, Physicalvalue:"#60CC5C"})
+          console.log(props.style);
+        }
+        if (props.value >= 0 && props.value <= 1 && props.phy) {
+            props.setStyle({...props.style, Physicalvalue:"#60CC5C"})
+            console.log(props.style);
+        }
+        if (props.value >= 0 && props.value <= 1 && props.phy) {
+            props.setStyle({...props.style, Physicalvalue:"#60CC5C"})
+            console.log(props.style);
+        }
+        if (props.value >= 0 && props.value <= 1 && props.phy) {
+            props.setStyle({...props.style, Physicalvalue:"#60CC5C"})
+            console.log(props.style);
+        }
+      }, [props.value])
+    console.log(props.style);
     return (
         <div className='containerStyles'>
             <div className='colorBg'>
@@ -29,7 +49,7 @@ function Progress(props) {
                 type="range"
                 className='slider'
                 min="0" max="10"
-                value={value}
+                value={props.value}
                 onChange={handleChange}
                 step=".1" />
         </div>
