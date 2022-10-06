@@ -1,39 +1,16 @@
 import React from 'react'
+import { useContext } from 'react';
 import { useState } from 'react';
+import GlobalStorage from '../../../Storage/ContextProvider';
 import "./Progress.css"
 function Progress(props) {
-    const { bgcolor, completed } = props;
+    const { Bgcolor, setBgcolor } = useContext(GlobalStorage);
     const [value, setState] = useState(0)
     const handleChange = (e) => {
         setState(e.target.value)
+        setBgcolor(e.target.value)
     }
-    const containerStyles = {
-        height: 20,
-        width: '100%',
-        position: 'relative',
-        backgroundColor: "#e0e0de",
-        borderRadius: 50,
-        margin: 50,
-
-    }
-
-    const fillerStyles = {
-        height: '100%',
-        position: "relative",
-
-        width: `${completed}%`,
-        backgroundColor: bgcolor,
-        borderRadius: 'inherit',
-        textAlign: 'right'
-    }
-
-    const labelStyles = {
-        padding: 5,
-        backgroundColor: "#000",
-        color: 'white',
-        fontWeight: 'bold'
-    }
-
+    console.log(Bgcolor);
     return (
         <div className='containerStyles'>
             <div className='colorBg'>

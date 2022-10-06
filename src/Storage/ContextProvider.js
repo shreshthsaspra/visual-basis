@@ -10,6 +10,7 @@ export const DataStorage = ({ children }) => {
     const [zoom, setZoom] = useState(1)
     const [tokens, setTokens] = useState()
     const [PateintDetails, setPateintDetails] = useState();
+    const [Bgcolor, setBgcolor] = useState();
     const [PateintService, setPateintService] = useState();
     const [uploadedImage, setUploadIMage] = useState();
     const [showProfile, setShowProfile] = useState(false);
@@ -33,6 +34,8 @@ export const DataStorage = ({ children }) => {
 
     return (
         <GlobalStorage.Provider value={{
+            Bgcolor,
+            setBgcolor,
             zoom,
             setZoom,
             pointMap,

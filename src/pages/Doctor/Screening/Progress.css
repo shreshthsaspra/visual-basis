@@ -1,92 +1,111 @@
 .colorBg .div1 {
     width: 10%;
-    background-color: #000 !important;
+    background: #50B188 0% 0% no-repeat padding-box;
     height: 100%;
     position: absolute;
     top: 0;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
+    box-shadow: inset 0px 3px 6px #00000029;
 }
 
 .colorBg .div2 {
     width: 10%;
-    background-color: rgb(123, 36, 135) !important;
+    background: #60CC5C 0% 0% no-repeat padding-box;
     height: 100%;
     position: absolute;
     top: 0;
+    box-shadow: inset 0px 3px 6px #00000029;
     left: 10%;
 }
 
 .colorBg .div3 {
     width: 10%;
-    background-color: rgb(36, 76, 135) !important;
+    background: #BFCA24 0% 0% no-repeat padding-box;
     height: 100%;
     position: absolute;
     top: 0;
     left: 20%;
+    box-shadow: inset 0px 3px 6px #00000029;
 }
 
 .colorBg .div4 {
     width: 10%;
-    background-color: rgb(126, 228, 199) !important;
+    background: #F2E503 0% 0% no-repeat padding-box;
     height: 100%;
     position: absolute;
     top: 0;
     left: 30%;
+    box-shadow: inset 0px 3px 6px #00000029;
 }
 
 .colorBg .div5 {
     width: 10%;
-    background-color: rgb(126, 228, 152) !important;
+    background: #FBDB00 0% 0% no-repeat padding-box;
     height: 100%;
     position: absolute;
     top: 0;
     left: 40%;
+    box-shadow: inset 0px 3px 6px #00000029;
 }
 
 .colorBg .div6 {
     width: 10%;
-    background-color: rgb(177, 228, 126) !important;
+    background: #FDBB03 0% 0% no-repeat padding-box;
     height: 100%;
     position: absolute;
     top: 0;
     left: 50%;
+    box-shadow: inset 0px 3px 6px #00000029;
 }
 
 .colorBg .div7 {
     width: 10%;
-    background-color: rgb(225, 228, 126) !important;
+    background: #FC9003 0% 0% no-repeat padding-box;
     height: 100%;
     position: absolute;
     top: 0;
     left: 60%;
+    box-shadow: inset 0px 3px 6px #00000029;
 }
 
 .colorBg .div8 {
     width: 10%;
-    background-color: rgb(248, 213, 175) !important;
+    background: #FF6600 0% 0% no-repeat padding-box;
     height: 100%;
     position: absolute;
     top: 0;
     left: 70%;
+    box-shadow: inset 0px 3px 6px #00000029;
 }
 
 .colorBg .div9 {
     width: 10%;
-    background-color: rgb(156, 66, 28) !important;
+    background: #DF2900 0% 0% no-repeat padding-box;
     height: 100%;
     position: absolute;
     top: 0;
     left: 80%;
+    box-shadow: inset 0px 3px 6px #00000029;
+}
+.colorBg .div10{
+    width: 10%;
+    background: #B73533 0% 0% no-repeat padding-box;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 80%;
+    box-shadow: inset 0px 3px 6px #00000029;
 }
 
 .colorBg .div10 {
     width: 10%;
-    background-color: rgb(228, 32, 32) !important;
+    background: #B73533 0% 0% no-repeat padding-box;
     height: 100%;
     position: absolute;
     top: 0;
     left: 90%;
+    box-shadow: inset 0px 3px 6px #00000029;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
 }
@@ -124,7 +143,7 @@ input[type='range'] {
 
     cursor: ew-resize;
     background: #fff;
-    box-shadow: 3px 3px 10px #00000029;
+    /* box-shadow: 0px 2px 19px #00000029; */
     border: 3px solid white;
     cursor: pointer;
 }
