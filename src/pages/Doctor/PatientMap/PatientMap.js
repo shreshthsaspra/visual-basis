@@ -72,8 +72,11 @@ const PatientMap = () => {
         setWidth(width1);
         setHeight(height1);
         setScaleXY(300 / height1);
+        console.log("Point Maping",pointMap);
         //alert('just ran')
     }, []);
+    console.log("Point Maping 2 ",pointMap);
+
 
     useEffect(() => {
         const updatePoint = () => {
@@ -149,7 +152,7 @@ const PatientMap = () => {
 
                         <img src={point.front} alt="" id="patientId" style={{ transform: `scale(${scaleXY})` }} />
                         {
-                            pointMap.front?.map((p, i) => (
+                            pointMap?.front?.slice(11)?.map((p, i) => (
                                 <div
                                     draggable
                                     key={i}

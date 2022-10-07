@@ -8,6 +8,7 @@ import { MdArrowBackIosNew } from 'react-icons/md'
 import Logo from '../../../assests/demoLogo.png';
 import styles from "./EditModelMain.module.css"
 import GlobalStorage from '../../../Storage/ContextProvider'
+import { Link, useNavigate } from 'react-router-dom';
 function EditModelMain() {
     const [activePosF, setActivePosF] = useState('active')
     const [activePosB, setActivePosB] = useState('noactive')
@@ -43,6 +44,8 @@ function EditModelMain() {
 
         }
     }
+    // const navigate = useNavigate()
+    const Navigate = useNavigate()
 
     const { pointMap, point, setPointMap } = useContext(GlobalStorage)
     const [x, setX] = useState(false)
@@ -56,7 +59,7 @@ function EditModelMain() {
 
     const scaleCoordinates = (x, y) => {
 
-        const centerX = width/2;
+        const centerX = width / 2;
         const centerY = 0;
         const relX = x - centerX;
         const relY = y - centerY;
@@ -83,23 +86,7 @@ function EditModelMain() {
         copyMap.splice(i, 1);
         setPointMap({ ...pointMap, front: copyMap })
     }
-    // console.log("9090", pointMap)
-    // const handleClick = (index) => {
 
-    //     setIndex(index)
-    // };
-    // const handDragStart = (id) => {
-    //     console.log(id);
-    //     setX(id.clientX)
-    //     setX(id.clientY)
-    // }
-    // console.log("Start", x, Y);
-    // const handleDragEnd = (End)=>{
-    //     console.log("end", End);
-    // }
-    // useEffect(()=>{
-    //     
-    // },[Yvalu])
 
 
     useEffect(() => {
@@ -164,10 +151,12 @@ function EditModelMain() {
         }
         updatePoint()
     }, [Down])
-
-
+localStorage.getItem("image")
+useEffect(()=>{
+    // console.log(local);
+})
     return (
-        <div style={{overflow:'hidden', height:'140vh'}}>
+        <div style={{ overflow: 'hidden', height: '140vh' }}>
             <div className={styles.image}>
                 <img src={Logo} alt="" />
             </div>
@@ -212,17 +201,21 @@ function EditModelMain() {
                     </div>
                 </div>
 
-                   <div className={`${styles.modelbutton} ${styles.modelbutton1}`}>
+                 <div className={`${styles.modelbutton} ${styles.modelbutton1}`}>
                         <button className={styles.button1}>Model1</button>
-                        <button className={styles.button2}>Edit Model</button>
+                        <button onClick={() => Navigate("/editmodel/single")} className={styles.button2}>Edit Model</button>
                     </div>
 
                     <div className={`${styles.modelbutton} ${styles.modelbutton2}`}>
                         <button className={styles.button1}>Model2</button>
                         <button className={styles.button2}>Edit Model</button>
                     </div>
-                <div className={styles.editPoint}>
+
+                {/* <div style={{ position: 'relative' }}>
                     
+                </div> */}
+                <div className={styles.editPoint}>
+               
                     <div>
                         <div className={`${styles.bodyCard} me-4`}>
                             <div className={styles.df}>
@@ -255,7 +248,7 @@ function EditModelMain() {
                     <div>
                         <div className={`${styles.bodyCard} me-4`}>
                             <div className={styles.df}>
-                            <div className={styles.wrap}>
+                                <div className={styles.wrap}>
                                     <img src={point.front} alt="" id="patientId" style={{ transform: `scale(${scaleXY})` }} />
                                     {
                                         pointMap.front?.map((p, i) => (
@@ -282,7 +275,7 @@ function EditModelMain() {
                         </div>
                     </div>
 
-                   
+
                 </div>
             </div>
         </div>

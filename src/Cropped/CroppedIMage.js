@@ -52,6 +52,7 @@ export default function CroppedIMage() {
 
                 if (switchPoint == 'front') {
                     setPoint({ ...point, front: response.data.message.s3_url })
+                    localStorage.setItem("image", JSON.stringify(response.data.message.s3_url))
 
                 }
                 if (switchPoint == 'right') {
@@ -81,6 +82,7 @@ export default function CroppedIMage() {
                     },
                 }).then(responce=>{
                     setPointMap({...pointMap, front:responce.data.message.keypoints})
+                    JSON.stringify(localStorage.setItem("point", pointMap))
                     navigate("/doctor/function")
 
                 })
