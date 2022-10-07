@@ -4,33 +4,14 @@ import { useState } from 'react';
 import GlobalStorage from '../../../Storage/ContextProvider';
 import "./Progress.css"
 function Progress(props) {
+    
     const [value, setState] = useState(0)
     const handleChange = (e) => {
         props.setValue(e.target.value)
     }
-    useEffect(() => {
-        if (props.value >= 0 && props.value <= 1 && props.phy) {
-          props.setStyle({...props.style, Physicalvalue:"#50B188"})
-          console.log(props.style);
-        }
-        if (props.value >= 0 && props.value <= 1 && props.phy) {
-          props.setStyle({...props.style, Physicalvalue:"#60CC5C"})
-          console.log(props.style);
-        }
-        if (props.value >= 0 && props.value <= 1 && props.phy) {
-            props.setStyle({...props.style, Physicalvalue:"#60CC5C"})
-            console.log(props.style);
-        }
-        if (props.value >= 0 && props.value <= 1 && props.phy) {
-            props.setStyle({...props.style, Physicalvalue:"#60CC5C"})
-            console.log(props.style);
-        }
-        if (props.value >= 0 && props.value <= 1 && props.phy) {
-            props.setStyle({...props.style, Physicalvalue:"#60CC5C"})
-            console.log(props.style);
-        }
-      }, [props.value])
-    console.log(props.style);
+    
+   
+    console.log(props);
     return (
         <div className='containerStyles'>
             <div className='colorBg'>
