@@ -31,9 +31,17 @@ export const DataStorage = ({ children }) => {
         back: "",
         right: "",
     });
+    const [pointMapMv, setPointMapMv] = useState({
+        front: "",
+        left: "",
+        back: "",
+        right: "",
+    });
 
     return (
         <GlobalStorage.Provider value={{
+            pointMapMv,
+            setPointMapMv,
             Bgcolor,
             setBgcolor,
             zoom,

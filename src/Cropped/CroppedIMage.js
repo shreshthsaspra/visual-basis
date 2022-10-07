@@ -17,7 +17,7 @@ const ORIENTATION_TO_ANGLE = {
 export default function CroppedIMage() {
     const navigate = useNavigate()
     const [imageSrc, setImageSrc] = React.useState(null)
-    const { uploadedImage, pointMap,setPointMap, setUploadIMage, switchPoint, setSwitchPoint, point,  setPoint } = useContext(GlobalStorage)
+    const { uploadedImage, pointMap, setPointMap, setUploadIMage, switchPoint, setSwitchPoint, point, setPoint ,pointMapMv, setPointMapMv} = useContext(GlobalStorage)
     const [crop, setCrop] = useState({ x: 0, y: 0 })
     const { rotation, setRotation } = useContext(GlobalStorage)
     const { zoom, setZoom } = useContext(GlobalStorage)
@@ -66,11 +66,26 @@ export default function CroppedIMage() {
                 }
 
                 // navigate("/doctor/function");
-                
+
 
             })
             // SetShowIMg(URL.createObjectURL(croppedImage))
             if (switchPoint == 'front') {
+                axios({
+                    url: `http://18.237.160.150/api/services/point/mv`,
+                    method: 'POST',
+                    data: formData,
+                    headers: {
+                        Accept: 'application/json',
+                        'Content-Type': 'multipart/form-data',
+                        Authorization: `Bearer ${localStorage.getItem('token')}`,
+                    },
+                }).then(responce => {
+                    setPointMapMv({ ...pointMapMv, front: responce.data.message.keypoints })
+                    JSON.stringify(localStorage.setItem("pointmv", responce.data.message.keypoints))
+                    // navigate("/doctor/function")
+
+                })
                 axios({
                     url: `http://18.237.160.150/api/services/point/mp`,
                     method: 'POST',
@@ -80,15 +95,30 @@ export default function CroppedIMage() {
                         'Content-Type': 'multipart/form-data',
                         Authorization: `Bearer ${localStorage.getItem('token')}`,
                     },
-                }).then(responce=>{
-                    setPointMap({...pointMap, front:responce.data.message.keypoints})
-                    JSON.stringify(localStorage.setItem("point", pointMap))
+                }).then(responce => {
+                    setPointMap({ ...pointMap, front: responce.data.message.keypoints })
+                    JSON.stringify(localStorage.setItem("pointmp", responce.data.message.keypoints))
                     navigate("/doctor/function")
 
                 })
             }
             if (switchPoint == 'right') {
                 axios({
+                    url: `http://18.237.160.150/api/services/point/mv`,
+                    method: 'POST',
+                    data: formData,
+                    headers: {
+                        Accept: 'application/json',
+                        'Content-Type': 'multipart/form-data',
+                        Authorization: `Bearer ${localStorage.getItem('token')}`,
+                    },
+                }).then(responce => {
+                    setPointMapMv({ ...pointMapMv, right: responce.data.message.keypoints })
+                 
+                    // navigate("/doctor/function")
+
+                })
+                axios({
                     url: `http://18.237.160.150/api/services/point/mp`,
                     method: 'POST',
                     data: formData,
@@ -97,14 +127,14 @@ export default function CroppedIMage() {
                         'Content-Type': 'multipart/form-data',
                         Authorization: `Bearer ${localStorage.getItem('token')}`,
                     },
-                }).then(responce=>{
-                    setPointMap({...pointMap, right:responce.data.message.keypoints})
+                }).then(responce => {
+                    setPointMap({ ...pointMap, right: responce.data.message.keypoints })
                     navigate("/doctor/function")
                 })
             }
             if (switchPoint == 'left') {
                 axios({
-                    url: `http://18.237.160.150/api/services/point/mp`,
+                    url: `http://18.237.160.150/api/services/point/mv`,
                     method: 'POST',
                     data: formData,
                     headers: {
@@ -112,12 +142,12 @@ export default function CroppedIMage() {
                         'Content-Type': 'multipart/form-data',
                         Authorization: `Bearer ${localStorage.getItem('token')}`,
                     },
-                }).then(responce=>{
-                    setPointMap({...pointMap, left:responce.data.message.keypoints})
-                    navigate("/doctor/function")
+                }).then(responce => {
+                    setPointMapMv({ ...pointMapMv, left: responce.data.message.keypoints })
+                 
+                    // navigate("/doctor/function")
+
                 })
-            }
-            if (switchPoint == 'back') {
                 axios({
                     url: `http://18.237.160.150/api/services/point/mp`,
                     method: 'POST',
@@ -127,15 +157,45 @@ export default function CroppedIMage() {
                         'Content-Type': 'multipart/form-data',
                         Authorization: `Bearer ${localStorage.getItem('token')}`,
                     },
-                }).then(responce=>{
-                    setPointMap({...pointMap, back:responce.data.message.keypoints})
+                }).then(responce => {
+                    setPointMap({ ...pointMap, left: responce.data.message.keypoints })
                     navigate("/doctor/function")
                 })
             }
-           
+            if (switchPoint == 'back') {
+                axios({
+                    url: `http://18.237.160.150/api/services/point/mv`,
+                    method: 'POST',
+                    data: formData,
+                    headers: {
+                        Accept: 'application/json',
+                        'Content-Type': 'multipart/form-data',
+                        Authorization: `Bearer ${localStorage.getItem('token')}`,
+                    },
+                }).then(responce => {
+                    setPointMapMv({ ...pointMapMv, back: responce.data.message.keypoints })
+                 
+                    // navigate("/doctor/function")
+
+                })
+                axios({
+                    url: `http://18.237.160.150/api/services/point/mp`,
+                    method: 'POST',
+                    data: formData,
+                    headers: {
+                        Accept: 'application/json',
+                        'Content-Type': 'multipart/form-data',
+                        Authorization: `Bearer ${localStorage.getItem('token')}`,
+                    },
+                }).then(responce => {
+                    setPointMap({ ...pointMap, back: responce.data.message.keypoints })
+                    navigate("/doctor/function")
+                })
+            }
 
 
-          
+
+
         } catch (e) {
             console.error(e)
         }

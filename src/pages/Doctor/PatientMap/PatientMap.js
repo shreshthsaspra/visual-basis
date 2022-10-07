@@ -9,6 +9,7 @@ import { useEffect } from 'react';
 const PatientMap = () => {
     const { pointMap, point, setPointMap } = useContext(GlobalStorage)
     const [x, setX] = useState(false)
+    const [facePoint, setFacePoint] = useState()
     const [ind, setIndex] = useState(163)
     const [Yvalu, setY] = useState(false)
     const [right, setRight] = useState(false)
@@ -131,6 +132,11 @@ const PatientMap = () => {
         updatePoint()
     }, [Down])
 
+    useEffect(()=>{
+        setPointMap({...pointMap.front, front:pointMap?.front?.slice(11)})
+    },[])
+    console.log("face point",facePoint);
+
     // let new[0] +=20
 
     // copyMap?.front?.[index]?.[0] = copyMap?.front?.[index]?.[0]+20
@@ -152,7 +158,7 @@ const PatientMap = () => {
 
                         <img src={point.front} alt="" id="patientId" style={{ transform: `scale(${scaleXY})` }} />
                         {
-                            pointMap?.front?.slice(11)?.map((p, i) => (
+                            pointMap?.front?.map((p, i) => (
                                 <div
                                     draggable
                                     key={i}
