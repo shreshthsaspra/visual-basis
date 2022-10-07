@@ -5,6 +5,7 @@ import { useContext } from 'react';
 import GlobalStorage from '../../../Storage/ContextProvider';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { IoRadio } from 'react-icons/io5';
 
 const PatientMap = () => {
     const { pointMap, point, setPointMap } = useContext(GlobalStorage)
@@ -12,6 +13,8 @@ const PatientMap = () => {
     const [facePoint, setFacePoint] = useState()
     const [ind, setIndex] = useState(163)
     const [Yvalu, setY] = useState(false)
+    const [enableAdd, setEnableAdd] = useState(false)
+    const [enableDelete, setEnableDelete] = useState(false)
     const [right, setRight] = useState(false)
     const [Down, setDown] = useState(false)
     const [scaleXY, setScaleXY] = useState(1);
@@ -30,7 +33,17 @@ const PatientMap = () => {
         //return { x: scaledX, y: scaledY };
 
     }
-
+    const handlePoint = (i) => {
+        if (enableDelete) {
+            deleteMap(i)
+            console.log(enableAdd);
+        }
+        if(enableAdd)
+        {
+        
+        }
+    }
+   
     const handleScaleUp = () => {
         setScaleXY((prev) => prev + 0.1);
     }
@@ -48,10 +61,15 @@ const PatientMap = () => {
         setPointMap({ ...pointMap, front: copyMap })
     }
     // console.log("9090", pointMap)
-    const handleClick = (index) => {
+    const handleAdd = () => {
 
-        setIndex(index)
+       setEnableDelete(false)
+        setEnableAdd(true);
     };
+    const handleDelete = ()=>{
+    setEnableDelete(true)
+
+    }
     // const handDragStart = (id) => {
     //     console.log(id);
     //     setX(id.clientX)
@@ -73,10 +91,10 @@ const PatientMap = () => {
         setWidth(width1);
         setHeight(height1);
         setScaleXY(300 / height1);
-        console.log("Point Maping",pointMap);
+        console.log("Point Maping", pointMap);
         //alert('just ran')
     }, []);
-    console.log("Point Maping 2 ",pointMap);
+    console.log("Point Maping 2 ", pointMap);
 
 
     useEffect(() => {
@@ -132,10 +150,10 @@ const PatientMap = () => {
         updatePoint()
     }, [Down])
 
-    useEffect(()=>{
-        setPointMap({...pointMap.front, front:pointMap?.front?.slice(11)})
-    },[])
-    console.log("face point",facePoint);
+    useEffect(() => {
+        setPointMap({ ...pointMap.front, front: pointMap?.front?.slice(11) })
+    }, [])
+    console.log("face point", facePoint);
 
     // let new[0] +=20
 
@@ -153,32 +171,32 @@ const PatientMap = () => {
                     <button onClick={() => setRight(!right)}>right</button>
                 </div>
                 {/* <div style={{display:'flex', justifyContent:'center', border:'1px solid red', width:'100%'}}> */}
-                    <div className={styles.wrap}>
+                <div className={styles.wrap}>
 
 
-                        <img src={point.front} alt="" id="patientId" style={{ transform: `scale(${scaleXY})` }} />
-                        {
-                            pointMap?.front?.map((p, i) => (
-                                <div
-                                    draggable
-                                    key={i}
-                                    style={{
-                                        top: `${scaleCoordinates(p[0], p[1]).y}px`,
-                                        left: `${scaleCoordinates(p[0], p[1]).x}px`,
-                                        cursor: 'pointer',
-                                    }}
-                                    className={styles.point}
-                                    onClick={() => handleClick(i)}
-                                >
+                    <img src={point.front} alt="" id="patientId" style={{ transform: `scale(${scaleXY})` }} />
+                    {
+                        pointMap?.front?.map((p, i) => (
+                            <div
+                                draggable
+                                key={i}
+                                style={{
+                                    top: `${scaleCoordinates(p[0], p[1]).y}px`,
+                                    left: `${scaleCoordinates(p[0], p[1]).x}px`,
+                                    cursor: 'pointer',
+                                }}
+                                className={styles.point}
+                                onClick={() => handlePoint(i)}
+                            >
 
-                                </div>
-                            ))
+                            </div>
+                        ))
 
-                        }
+                    }
 
-                    </div>
+                </div>
 
-                    {/* <div className={styles.wrap}>
+                {/* <div className={styles.wrap}>
 
 
                         <img src={point.front} alt="" id="patientId" style={{ transform: `scale(${scaleXY})` }} />
@@ -204,7 +222,8 @@ const PatientMap = () => {
                     </div> */}
                 {/* </div> */}
 
-                <button onClick={() => handleClick()}>Add Point</button>
+                <button onClick={() => handleAdd()}>Add Point</button>
+                <button onClick={() => handleDelete()}>Delete Point</button>
                 <button style={{ position: 'absolute', zIndex: 100, top: '50px' }} onClick={() => handleScaleUp()}>Scale Up</button>
                 <button style={{ position: 'absolute', zIndex: 100, top: '10px' }} onClick={() => handleScaleDown()}>Scale Down</button>
 
