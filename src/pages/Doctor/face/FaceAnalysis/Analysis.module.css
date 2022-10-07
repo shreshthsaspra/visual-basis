@@ -1,0 +1,34 @@
+.image {
+    display: flex;
+    justify-content: center;
+    padding-top: 15px !important;
+ }
+ 
+ 
+ 
+ .image img {
+    width: 80px;
+ }
+
+ .containerMain {
+    padding: 1rem 5.9rem 2rem 5.9rem !important;
+ }
+ .buttonWrap {
+    display: flex;
+    justify-content: space-between;
+ }
+ .buttonWrap button{
+    border: none;
+    outline: none;
+    width: 230px;
+    height: 40px;
+    border-radius: 5px;
+    font-family: poppins-medium;
+    color: #185EB6;
+    background-color: #FFFFFF;
+    font-size: 19px;
+    letter-spacing: 1px;
+    -moz-box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.2);
+ }

@@ -25,6 +25,7 @@ import EditModelMain from '../pages/Doctor/EditModel/EditModelMain';
 import Screening from '../pages/Doctor/Screening/Screening';
 import EditSingle from '../pages/Doctor/EditSingle/EditSingle';
 import Upload from '../pages/Doctor/face/FaceUpload/Upload';
+import Analysis from '../pages/Doctor/face/FaceAnalysis/Analysis';
 
 function AnimatedRoutes() {
   const location = useLocation()
@@ -57,6 +58,8 @@ function AnimatedRoutes() {
           <Route path="/staff-login" element={<Home />} />
           <Route path="/doctor/screening" element={<Screening />} />
           <Route path="/doctor/face" element={<Upload />} />
+          <Route path="/doctor/faceAnalysis" element={<Analysis />} />
+
 
 
         </Routes>
