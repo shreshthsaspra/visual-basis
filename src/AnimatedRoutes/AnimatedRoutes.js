@@ -26,6 +26,7 @@ import Screening from '../pages/Doctor/Screening/Screening';
 import EditSingle from '../pages/Doctor/EditSingle/EditSingle';
 import Upload from '../pages/Doctor/face/FaceUpload/Upload';
 import Analysis from '../pages/Doctor/face/FaceAnalysis/Analysis';
+import HospitalProfile from '../pages/Hospital/Profile/HospitalProfile';
 
 function AnimatedRoutes() {
   const location = useLocation()
@@ -48,6 +49,8 @@ function AnimatedRoutes() {
           <Route path="/doctor-login" element={<DoctorLogin />} />
           <Route path="/Hospital/doctor" element={<DoctorHome />} />
           <Route path="/Hospital/patient" element={<Patient />} />
+          <Route path="/Hospital/profile" element={<HospitalProfile />} />
+
           {/* <Route path="/crops" element={<CroppedIMage />} /> */}
           <Route path="/Hospital/diagnosis-history" element={<DiagnosisHistory />} />
           <Route path="/doctor/generate-report" element={<GenerateReport />} />

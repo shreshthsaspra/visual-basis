@@ -70,7 +70,7 @@
 
 .notyBoxOuter {
     height:165px;
-   overflow-y: auto;
+    overflow-y: auto;
 
 }
 
@@ -165,11 +165,7 @@
 
    /* Designing for scroll-bar */
    .notyBoxOuter::-webkit-scrollbar {
-    /* display: block !important;
-    height: 5px !important; */
-    width: 10px;
-
-    
+    width: 10px;  
 }
 
 /* Track */
@@ -177,14 +173,11 @@
     background: #FFFFFF;
     opacity: .7;
     border-radius: 5px;
-  
 }
 
 /* Handle */
 .notyBoxOuter::-webkit-scrollbar-thumb {
-  
     background: #185EB6;
     border-radius: 5px;
-
 
 }

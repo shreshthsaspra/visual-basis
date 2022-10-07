@@ -194,6 +194,9 @@ const handleKeyDownUid = (e)=>{
                   <p >No Pateints Searched</p>
                   </div>
               }
+              <div className={styles.singlePatient}>
+                <p>Patient 5</p>
+              </div>
 
               {/* <div className={styles.singlePatient}>
                 <p>Patient 2</p>

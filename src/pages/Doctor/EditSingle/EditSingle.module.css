@@ -46,11 +46,13 @@
 .mainBody {
     /* margin-top: -15px !important; */
     background-color: #F9FDFF;
-    padding: 10px 20px !important;
+    padding: 20px 20px 30px 20px !important;
+    border-radius: 5px;
 }
 .inner {
     display: flex;
-    justify-content: center;align-items: center;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
 
 }
@@ -60,7 +62,7 @@
 }
 
 .cameraStyle {
-   padding-top: 5px !important;
+   padding- : 5px !important;
    border: 4px solid #185EB6;
    height: 30rem;
    width: 60%;

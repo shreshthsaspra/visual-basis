@@ -22,7 +22,7 @@ const EditSingle = () => {
                     <div className={styles.nav}>
                         <div className={styles.navButton}>
                             <img src={ShadoeLogo} alt="" />
-                            <p>Camera Screen</p>
+                             <p>Camera Screen</p>
                         </div>
                     </div>
 

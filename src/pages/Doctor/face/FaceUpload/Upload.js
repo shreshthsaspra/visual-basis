@@ -56,14 +56,14 @@ const Upload = () => {
           <div className={styles.infoCard}>
             <h2>IMAGE GUIDELINES</h2>
             <div className={styles.infopara}>
-              <p> 1. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Please show your full face in the forward direction.</p>
-              <p> 2. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Please do not wear a hat or cover your head unless this
+              <p> 1. Please show your full face in the forward direction.</p>
+              <p> 2. Please do not wear a hat or cover your head unless this
                 is for religious reasons.</p>
-              <p> 3. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.	Please do not wear sunglasses.</p>
-              <p> 4. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; If you are wearing glasses, please show your eyes clearly and avoid
+              <p> 3. Please do not wear sunglasses.</p>
+              <p> 4. If you are wearing glasses, please show your eyes clearly and avoid
                 glare on the lenses.</p>
 
-              <p> 5. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Please do not upload any image with red eyes.</p>
+              <p> 5. Please do not upload any image with red eyes.</p>
             </div>
           </div>
           <div  className={styles.aButton}>
