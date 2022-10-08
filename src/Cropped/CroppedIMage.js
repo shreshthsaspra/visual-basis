@@ -81,7 +81,7 @@ export default function CroppedIMage() {
                         Authorization: `Bearer ${localStorage.getItem('token')}`,
                     },
                 }).then(responce => {
-                    setPointMapMv({ ...pointMapMv, front: responce.data.message.keypoints })
+                    setPointMapMv({ ...pointMapMv, front: responce.data.message.keypoints.slice(5) })
                     JSON.stringify(localStorage.setItem("pointmv", responce.data.message.keypoints))
                     // navigate("/doctor/function")
 
@@ -96,7 +96,7 @@ export default function CroppedIMage() {
                         Authorization: `Bearer ${localStorage.getItem('token')}`,
                     },
                 }).then(responce => {
-                    setPointMap({ ...pointMap, front: responce.data.message.keypoints })
+                    setPointMap({ ...pointMap, front: responce.data.message.keypoints.slice(11) })
                     JSON.stringify(localStorage.setItem("pointmp", responce.data.message.keypoints))
                     navigate("/doctor/function")
 

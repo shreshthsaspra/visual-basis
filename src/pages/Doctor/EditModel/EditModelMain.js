@@ -47,12 +47,8 @@ function EditModelMain() {
     // const navigate = useNavigate()
     const Navigate = useNavigate()
 
-    const { pointMap, point, setPointMap } = useContext(GlobalStorage)
-    const [x, setX] = useState(false)
-    const [ind, setIndex] = useState(163)
-    const [Yvalu, setY] = useState(false)
-    const [right, setRight] = useState(false)
-    const [Down, setDown] = useState(false)
+    const { pointMap, point, setPointMap, pointMapMv } = useContext(GlobalStorage)
+   
     const [scaleXY, setScaleXY] = useState(1);
     const [width, setWidth] = useState(null);
     const [height, setHeight] = useState(null);
@@ -70,25 +66,6 @@ function EditModelMain() {
 
     }
 
-    const handleScaleUp = () => {
-        setScaleXY((prev) => prev + 0.1);
-    }
-
-    const handleScaleDown = () => {
-        setScaleXY((prev) => prev - 0.1);
-    }
-
-    // console.log("POINT MAP", pointMap);
-    const deleteMap = (i) => {
-        // console.log("clicked", i);
-        let copyMap = [...pointMap.front];
-
-        copyMap.splice(i, 1);
-        setPointMap({ ...pointMap, front: copyMap })
-    }
-
-
-
     useEffect(() => {
         var img = document.getElementById('patientId');
         var width1 = img.clientWidth;
@@ -99,58 +76,7 @@ function EditModelMain() {
         //alert('just ran')
     }, []);
 
-    useEffect(() => {
-        const updatePoint = () => {
-            const value = pointMap.front?.map((obj, i) => {
-                if (i == ind) {
-                    return { ...obj, 0: obj?.[0] - 1 }
-                }
-                return obj
-            })
-            console.log(x);
-            setPointMap({ ...pointMap.front, front: value })
-        }
-        updatePoint()
-    }, [x])
-    useEffect(() => {
-        const updatePoint = () => {
-            const value = pointMap.front?.map((obj, i) => {
-                if (i == ind) {
-                    return { ...obj, 0: obj?.[0] + 1 }
-                }
-                return obj
-            })
-            console.log(x);
-            setPointMap({ ...pointMap.front, front: value })
-        }
-        updatePoint()
-    }, [right])
-    useEffect(() => {
-        const updatePoint = () => {
-            const value = pointMap.front?.map((obj, i) => {
-                if (i == ind) {
-                    return { ...obj, 1: obj?.[1] - 1 }
-                }
-                return obj
-            })
-            console.log(x);
-            setPointMap({ ...pointMap.front, front: value })
-        }
-        updatePoint()
-    }, [Yvalu])
-    useEffect(() => {
-        const updatePoint = () => {
-            const value = pointMap.front?.map((obj, i) => {
-                if (i == ind) {
-                    return { ...obj, 1: obj?.[1] + 1 }
-                }
-                return obj
-            })
-            console.log(x);
-            setPointMap({ ...pointMap.front, front: value })
-        }
-        updatePoint()
-    }, [Down])
+  
 localStorage.getItem("image")
 useEffect(()=>{
     // console.log(local);
@@ -251,7 +177,7 @@ useEffect(()=>{
                                 <div className={styles.wrap}>
                                     <img src={point.front} alt="" id="patientId" style={{ transform: `scale(${scaleXY})` }} />
                                     {
-                                        pointMap.front?.map((p, i) => (
+                                        pointMapMv.front?.map((p, i) => (
                                             <div
                                                 draggable
                                                 key={i}

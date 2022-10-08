@@ -174,7 +174,6 @@ const EditSingle = () => {
                             <div className={styles.bottomButton}>
                             <button>Add Points</button>
                             <button>Edit Points</button>
-
                             <button>Delete Points</button>
 
 

@@ -107,5 +107,11 @@
 
 .bottomButton button {
     width: 180px;
+    height: 35px;
     margin-bottom: 20px !important;
+    background-color: #185EB6;border: none;
+    outline: none;
+    border-radius: 5px;
+    color: #FFFFFF;
+    font-family: poppins-medium;
 }
