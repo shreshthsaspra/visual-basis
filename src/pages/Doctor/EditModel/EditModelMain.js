@@ -47,7 +47,7 @@ function EditModelMain() {
     // const navigate = useNavigate()
     const Navigate = useNavigate()
 
-    const { pointMap, point, setPointMap, pointMapMv } = useContext(GlobalStorage)
+    const { pointMap, point, setPointMap, pointMapMv, setModel, model} = useContext(GlobalStorage)
    
     const [scaleXY, setScaleXY] = useState(1);
     const [width, setWidth] = useState(null);
@@ -81,6 +81,16 @@ localStorage.getItem("image")
 useEffect(()=>{
     // console.log(local);
 })
+const handleModel1 = () => {
+    setModel("mp");
+    Navigate("/editmodel/single")
+}
+
+const handleModel2 = () => {
+    setModel("mv");
+    Navigate("/editmodel/single")
+}
+  
     return (
         <div style={{ overflow: 'hidden', height: '140vh' }}>
             <div className={styles.image}>
@@ -129,12 +139,12 @@ useEffect(()=>{
 
                  <div className={`${styles.modelbutton} ${styles.modelbutton1}`}>
                         <button className={styles.button1}>Model1</button>
-                        <button onClick={() => Navigate("/editmodel/single")} className={styles.button2}>Edit Model</button>
+                        <button onClick={handleModel1} className={styles.button2}>Edit Model</button>
                     </div>
 
                     <div className={`${styles.modelbutton} ${styles.modelbutton2}`}>
                         <button className={styles.button1}>Model2</button>
-                        <button className={styles.button2}>Edit Model</button>
+                        <button onClick={handleModel2} className={styles.button2}>Edit Model</button>
                     </div>
 
                 {/* <div style={{ position: 'relative' }}>

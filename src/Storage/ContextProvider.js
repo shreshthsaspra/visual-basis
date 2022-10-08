@@ -18,6 +18,8 @@ export const DataStorage = ({ children }) => {
     const [imgPath, setImgPath] = useState("");
     const [step, setStep] = useState(currentStep);
     const [switchPoint, setSwitchPoint] = useState("");
+    const [model, setModel] = useState("");
+
 
     const [point, setPoint] = useState({
         front: "",
@@ -40,6 +42,8 @@ export const DataStorage = ({ children }) => {
 
     return (
         <GlobalStorage.Provider value={{
+            model,
+            setModel,
             pointMapMv,
             setPointMapMv,
             Bgcolor,
