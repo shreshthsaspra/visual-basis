@@ -73,11 +73,8 @@ const PatientMap = () => {
         setWidth(width1);
         setHeight(height1);
         setScaleXY(300 / height1);
-        console.log("Point Maping",pointMap);
         //alert('just ran')
     }, []);
-    console.log("Point Maping 2 ",pointMap);
-
 
     useEffect(() => {
         const updatePoint = () => {
