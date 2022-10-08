@@ -106,3 +106,23 @@
     color: #FFFFFF;
     font-family: poppins-medium;
 }
+.controlEdit{
+    position: absolute;
+    top: 90%;
+    left: 20% !important;
+    gap: 10px;
+}
+.controlEditInner {
+    position: relative;
+    width: 5rem;
+    height: 5rem;
+}
+.leftScale{
+    transform: rotate(180deg);
+}
+.topScale{
+    transform: rotate(90deg);
+}
+.bottomScale{
+    transform: rotate(-90deg);
+}

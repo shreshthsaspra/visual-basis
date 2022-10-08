@@ -158,7 +158,7 @@ const handleModel2 = () => {
                                 <div className={styles.wrap}>
                                     <img src={point.front} alt="" id="patientId" style={{ transform: `scale(${scaleXY})` }} />
                                     {
-                                        pointMap.front?.map((p, i) => (
+                                        pointMap?.front?.map((p, i) => (
                                             <div
                                                 draggable
                                                 key={i}
@@ -187,7 +187,7 @@ const handleModel2 = () => {
                                 <div className={styles.wrap}>
                                     <img src={point.front} alt="" id="patientId" style={{ transform: `scale(${scaleXY})` }} />
                                     {
-                                        pointMapMv.front?.map((p, i) => (
+                                        pointMapMv?.front?.map((p, i) => (
                                             <div
                                                 draggable
                                                 key={i}

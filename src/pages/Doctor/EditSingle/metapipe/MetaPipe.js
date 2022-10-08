@@ -2,8 +2,10 @@ import React, { useContext, useState, useEffect } from 'react';
 import styles from './MetaPipe.module.css';
 import Logo from '../../../../assests/demoLogo.png'
 import ShadoeLogo from '../../../../assests/shadowLogo.png'
+import { BsArrowRightCircleFill, BsArrowLeftCircleFill } from "react-icons/bs";
 
 import GlobalStorage from '../../../../Storage/ContextProvider';
+import { transform } from 'framer-motion';
 
 
 const MetaPipe = () => {
@@ -11,13 +13,16 @@ const MetaPipe = () => {
     const { pointMap, point, setPointMap } = useContext(GlobalStorage);
 
     const [x, setX] = useState(false)
-    const [ind, setIndex] = useState(163)
+    const [ind, setIndex] = useState("")
     const [Yvalu, setY] = useState(false)
     const [right, setRight] = useState(false)
     const [Down, setDown] = useState(false)
     const [scaleXY, setScaleXY] = useState(1);
     const [width, setWidth] = useState(null);
     const [height, setHeight] = useState(null);
+    const [enableAdd, setEnableAdd] = useState(false);
+    const [enableEdit, setEnableEdit] = useState(false);
+    const [enableDelete, setEnableDelete] = useState(false);
 
     const scaleCoordinates = (x, y) => {
 
@@ -49,6 +54,66 @@ const MetaPipe = () => {
         setPointMap({ ...pointMap, front: copyMap })
     }
 
+    const handlePoint = (i) => {
+        if (enableDelete) {
+            deleteMap(i)
+            console.log(enableAdd);
+        }
+        if (enableAdd) {
+
+        }
+        if (enableEdit) {
+            setIndex(i)
+        }
+
+    }
+
+    console.log("indexxxx", ind);
+    const handlePosition = (action) => {
+        console.log("action", action);
+        if (action == 'xl') {
+            const value = pointMap.front?.map((obj, i) => {
+                if (i === ind) {
+                    return { ...obj, 0: obj?.[0] - 1 }
+                }
+                return obj
+            })
+            console.log(x);
+            setPointMap({ ...pointMap.front, front: value })
+        }
+        if (action == 'xr') {
+            const value = pointMap.front?.map((obj, i) => {
+                if (i === ind) {
+                    return { ...obj, 0: obj?.[0] + 1 }
+                }
+                return obj
+            })
+            console.log(x);
+            setPointMap({ ...pointMap.front, front: value })
+
+
+        }
+        if (action == 'yu') {
+            const value = pointMap.front?.map((obj, i) => {
+                if (i === ind) {
+                    return { ...obj, 1: obj?.[1] - 1 }
+                }
+                return obj
+            })
+            console.log(x);
+            setPointMap({ ...pointMap.front, front: value })
+        }
+        if (action == 'yd') {
+            const value = pointMap.front?.map((obj, i) => {
+                if (i === ind) {
+                    return { ...obj, 1: obj?.[1] + 1 }
+                }
+                return obj
+            })
+            console.log(x);
+            setPointMap({ ...pointMap.front, front: value })
+        }
+    }
 
 
     useEffect(() => {
@@ -60,67 +125,32 @@ const MetaPipe = () => {
         setScaleXY(450 / height1);
         //alert('just ran')
     }, []);
+    const handleAdd = () => {
 
-    useEffect(() => {
-        const updatePoint = () => {
-            const value = pointMap.front?.map((obj, i) => {
-                if (i == ind) {
-                    return { ...obj, 0: obj?.[0] - 1 }
-                }
-                return obj
-            })
-            console.log(x);
-            setPointMap({ ...pointMap.front, front: value })
-        }
-        updatePoint()
-    }, [x])
-    useEffect(() => {
-        const updatePoint = () => {
-            const value = pointMap.front?.map((obj, i) => {
-                if (i == ind) {
-                    return { ...obj, 0: obj?.[0] + 1 }
-                }
-                return obj
-            })
-            console.log(x);
-            setPointMap({ ...pointMap.front, front: value })
-        }
-        updatePoint()
-    }, [right])
-    useEffect(() => {
-        const updatePoint = () => {
-            const value = pointMap.front?.map((obj, i) => {
-                if (i == ind) {
-                    return { ...obj, 1: obj?.[1] - 1 }
-                }
-                return obj
-            })
-            console.log(x);
-            setPointMap({ ...pointMap.front, front: value })
-        }
-        updatePoint()
-    }, [Yvalu])
-    useEffect(() => {
-        const updatePoint = () => {
-            const value = pointMap.front?.map((obj, i) => {
-                if (i == ind) {
-                    return { ...obj, 1: obj?.[1] + 1 }
-                }
-                return obj
-            })
-            console.log(x);
-            setPointMap({ ...pointMap.front, front: value })
-        }
-        updatePoint()
-    }, [Down])
+        setEnableDelete(false)
+        setEnableEdit(false)
+        setEnableAdd(true);
+        setIndex("")
+    };
+    const handleDelete = () => {
+        setEnableDelete(true)
+        setEnableEdit(false)
+        setEnableAdd(false);
+        setIndex("")
 
+    }
+    const handleEdit = () => {
+        setEnableAdd(false);
+        setEnableDelete(false)
+        setEnableEdit(true)
+    }
 
     return (
         <>
 
             {/* <CameraComponent /> */}
-            
-            <div style={{overflow: 'hidden'}} className={styles.cameraMain}>
+
+            <div style={{ overflow: 'hidden' }} className={styles.cameraMain}>
                 <div className={styles.width}>
                     <div className={styles.nav}>
                         <div className={styles.navButton}>
@@ -131,17 +161,95 @@ const MetaPipe = () => {
 
 
                     <div className={styles.mainBody}>
+                        <div className={styles.controlEdit}>
+                            <div className={styles.controlEditInner}>
+                                <button
+                                    onClick={() => { enableEdit && handlePosition('xl') }}
+                                    style={{
+                                        border: 'none',
+                                        outline: 'none',
+                                        background: '#185EB6',
+                                        width: '40px',
+                                        height: '35px',
+                                        borderRadius: '5px',
+                                        color: '#FFFFFF',
+                                        fontFamily: 'poppins-medium',
+                                        position: "absolute",
+                                        left: "0",
+
+
+                                    }}
+                                    className={styles.leftScale}
+                                >
+                                    <BsArrowRightCircleFill />
+                                </button>
+                                <button
+                                    onClick={() => { enableEdit && handlePosition('xr') }}
+                                    style={{
+                                        border: 'none',
+                                        outline: 'none',
+                                        background: '#185EB6',
+                                        width: '40px',
+                                        height: '35px',
+                                        borderRadius: '5px',
+                                        color: '#FFFFFF',
+                                        fontFamily: 'poppins-medium',
+                                        position: "absolute",
+                                        right: "-42px",
+                                    }}>
+                                    <BsArrowRightCircleFill />
+                                </button>
+                                <button
+                                    className={styles.topScale}
+                                    onClick={() => { enableEdit && handlePosition('yu') }}
+                                    style={{
+                                        border: 'none',
+                                        outline: 'none',
+                                        background: '#185EB6',
+                                        width: '40px',
+                                        height: '35px',
+                                        borderRadius: '5px',
+                                        color: '#FFFFFF',
+                                        fontFamily: 'poppins-medium',
+                                        position: "absolute",
+                                        left: "41px",
+                                        top: "-43px"
+                                    }}>
+                                    <BsArrowLeftCircleFill />
+                                </button>
+                                <button
+                                    onClick={() => { enableEdit && handlePosition('yd') }}
+                                    className={styles.bottomScale}
+                                    style={{
+                                        border: 'none',
+                                        outline: 'none',
+                                        background: '#185EB6',
+                                        width: '40px',
+                                        height: '35px',
+                                        borderRadius: '5px',
+                                        color: '#FFFFFF',
+                                        fontFamily: 'poppins-medium',
+                                        position: "absolute",
+                                        bottom: "-2px",
+                                        left: "42px"
+                                    }}>
+                                    <BsArrowLeftCircleFill />
+                                </button>
+
+
+                            </div>
+                        </div>
                         <div className={styles.inner}>
                             {/* <CameraComponent /> */}
                             <h3>Front</h3>
 
                             <div className={styles.cameraStyle}>
                                 <div style={{
-                                   
+
                                     display: 'flex',
                                     justifyContent: 'center',
                                     alignItems: 'center',
-                                    overflow:'hidden'
+                                    overflow: 'hidden'
                                 }} className="mt-4">
                                     <div className={styles.wrap}>
                                         <img src={point.front} alt="" id="patientId" style={{ transform: `scale(${scaleXY})` }} />
@@ -156,7 +264,7 @@ const MetaPipe = () => {
                                                         cursor: 'pointer',
                                                     }}
                                                     className={styles.point}
-                                                // onClick={() => handleClick(i)}
+                                                    onClick={() => handlePoint(i)}
                                                 >
 
                                                 </div>
@@ -170,9 +278,9 @@ const MetaPipe = () => {
                             </div>
 
                             <div className={styles.bottomButton}>
-                            <button>Add Points</button>
-                            <button>Edit Points</button>
-                            <button>Delete Points</button>
+                                <button onClick={() => handleAdd()}>Add Points</button>
+                                <button onClick={() => handleEdit()}>Edit Points</button>
+                                <button onClick={() => handleDelete()}>Delete Points</button>
 
 
                             </div>
