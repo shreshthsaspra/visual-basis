@@ -71,7 +71,7 @@ const MetaPipe = () => {
     console.log("indexxxx", ind);
     const handlePosition = (action) => {
         console.log("action", action);
-        if (action == 'xl') {
+        if (action === 'xl') {
             const value = pointMap.front?.map((obj, i) => {
                 if (i === ind) {
                     return { ...obj, 0: obj?.[0] - 1 }
@@ -81,7 +81,7 @@ const MetaPipe = () => {
             console.log(x);
             setPointMap({ ...pointMap.front, front: value })
         }
-        if (action == 'xr') {
+        if (action === 'xr') {
             const value = pointMap.front?.map((obj, i) => {
                 if (i === ind) {
                     return { ...obj, 0: obj?.[0] + 1 }
@@ -93,7 +93,7 @@ const MetaPipe = () => {
 
 
         }
-        if (action == 'yu') {
+        if (action === 'yu') {
             const value = pointMap.front?.map((obj, i) => {
                 if (i === ind) {
                     return { ...obj, 1: obj?.[1] - 1 }
@@ -103,7 +103,7 @@ const MetaPipe = () => {
             console.log(x);
             setPointMap({ ...pointMap.front, front: value })
         }
-        if (action == 'yd') {
+        if (action === 'yd') {
             const value = pointMap.front?.map((obj, i) => {
                 if (i === ind) {
                     return { ...obj, 1: obj?.[1] + 1 }
@@ -143,6 +143,27 @@ const MetaPipe = () => {
         setEnableAdd(false);
         setEnableDelete(false)
         setEnableEdit(true)
+    }
+
+    const addPoint = (e) => {
+        // offsetX
+        // :
+        // 65
+        // offsetY
+        // :
+        // 51
+        console.log(e);
+        const x = e.nativeEvent.offsetX 
+        const y = e.nativeEvent.offsetY
+        const elem = [x, y]
+        console.log(elem);
+        console.log(pointMap);
+        // spush(elem)
+        const copyEle = [...pointMap.front]
+        copyEle.push(elem)
+        console.log(copyEle);
+        setPointMap({ ...pointMap.front, front: copyEle })
+
     }
 
     return (
@@ -252,7 +273,7 @@ const MetaPipe = () => {
                                     overflow: 'hidden'
                                 }} className="mt-4">
                                     <div className={styles.wrap}>
-                                        <img src={point.front} alt="" id="patientId" style={{ transform: `scale(${scaleXY})` }} />
+                                        <img onClick={(e) => addPoint(e)} src={point.front} alt="" id="patientId" style={{ transform: `scale(${scaleXY})` }} />
                                         {
                                             pointMap.front?.map((p, i) => (
                                                 <div
@@ -264,7 +285,7 @@ const MetaPipe = () => {
                                                         cursor: 'pointer',
                                                     }}
                                                     className={styles.point}
-                                                    onClick={() => handlePoint(i)}
+                                                onClick={(e) => handlePoint(e)}
                                                 >
 
                                                 </div>
