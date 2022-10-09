@@ -114,6 +114,10 @@ const Movenet = () => {
         updatePoint()
     }, [Down])
 
+    const AddLocationPoints = (e) => {
+        console.log('ON CLICK, clientX:', e.clientX)
+    }
+
 
     return (
         <>
@@ -143,6 +147,9 @@ const Movenet = () => {
                                     alignItems: 'center',
                                     overflow:'hidden'
                                 }} className="mt-4">
+                                    <div className={styles.centerLine}>
+                                        
+                                    </div>
                                     <div className={styles.wrap}>
                                         <img src={point.front} alt="" id="patientId" style={{ transform: `scale(${scaleXY})` }} />
                                         {
@@ -170,7 +177,7 @@ const Movenet = () => {
                             </div>
 
                             <div className={styles.bottomButton}>
-                            <button>Add Points</button>
+                            <button onMouseMove={AddLocationPoints} >Add Points</button>
                             <button>Edit Points</button>
                             <button>Delete Points</button>
 
