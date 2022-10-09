@@ -47,7 +47,7 @@ const MetaPipe = () => {
 
     // console.log("POINT MAP", pointMap);
     const deleteMap = (i) => {
-        // console.log("clicked", i);
+        console.log("clicked", i);
         let copyMap = [...pointMap.front];
 
         copyMap.splice(i, 1);
@@ -59,11 +59,9 @@ const MetaPipe = () => {
             deleteMap(i)
             console.log(enableAdd);
         }
-        if (enableAdd) {
-
-        }
         if (enableEdit) {
             setIndex(i)
+            console.log("edit inmdex", i);
         }
 
     }
@@ -273,10 +271,11 @@ const MetaPipe = () => {
                                     overflow: 'hidden'
                                 }} className="mt-4">
                                     <div className={styles.wrap}>
-                                        <img onClick={(e) => addPoint(e)} src={point.front} alt="" id="patientId" style={{ transform: `scale(${scaleXY})` }} />
+                                        <img onClick={(e) => {enableAdd&&addPoint(e)}} src={point.front} alt="" id="patientId" style={{ transform: `scale(${scaleXY})` }} />
                                         {
                                             pointMap.front?.map((p, i) => (
                                                 <div
+                                               
                                                     draggable
                                                     key={i}
                                                     style={{
@@ -284,8 +283,8 @@ const MetaPipe = () => {
                                                         left: `${scaleCoordinates(p[0], p[1]).x}px`,
                                                         cursor: 'pointer',
                                                     }}
-                                                    className={styles.point}
-                                                onClick={(e) => handlePoint(e)}
+                                                    className={i === ind? styles.pointActive:styles.point}
+                                                onClick={(e) => {e.stopPropagation(); handlePoint(i)}}
                                                 >
 
                                                 </div>
@@ -299,9 +298,9 @@ const MetaPipe = () => {
                             </div>
 
                             <div className={styles.bottomButton}>
-                                <button onClick={() => handleAdd()}>Add Points</button>
-                                <button onClick={() => handleEdit()}>Edit Points</button>
-                                <button onClick={() => handleDelete()}>Delete Points</button>
+                                <button className={enableAdd?styles.actiiveMode:""} onClick={() => handleAdd()}>Add Points</button>
+                                <button className={enableEdit?styles.actiiveMode:""} onClick={() => handleEdit()}>Edit Points</button>
+                                <button className={enableDelete?styles.actiiveMode:""} onClick={() => handleDelete()}>Delete Points</button>
 
 
                             </div>
