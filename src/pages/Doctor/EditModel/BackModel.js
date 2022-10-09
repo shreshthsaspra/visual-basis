@@ -4,7 +4,6 @@ import styles from "./EditModelMain.module.css";
 import GlobalStorage from '../../../Storage/ContextProvider'
 
 const BackModel = () => {
-        // const navigate = useNavigate()
         const [scaleXY, setScaleXY] = useState(1);
         const [width, setWidth] = useState(null);
         const [height, setHeight] = useState(null);
@@ -14,7 +13,6 @@ const BackModel = () => {
         const { pointMap, point, setPointMap, pointMapMv, setModel, model} = useContext(GlobalStorage);
 
         const scaleCoordinates = (x, y) => {
-
             const centerX = width / 2;
             const centerY = 0;
             const relX = x - centerX;
@@ -23,7 +21,6 @@ const BackModel = () => {
             const scaledY = relY * scaleXY;
             return { x: scaledX + centerX, y: scaledY + centerY };
             //return { x: scaledX, y: scaledY };
-    
         }
     
         useEffect(() => {

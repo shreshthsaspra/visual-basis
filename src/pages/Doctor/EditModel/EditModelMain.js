@@ -1,19 +1,16 @@
 import React, { useContext, useEffect } from 'react'
 import { useState } from 'react';
-import { AiTwotoneSave } from 'react-icons/ai';
-import { BsBoxArrowInRight } from 'react-icons/bs';
-import { IoIosArrowForward } from 'react-icons/io';
 import { IoHome } from 'react-icons/io5'
 import { MdArrowBackIosNew } from 'react-icons/md'
 import Logo from '../../../assests/demoLogo.png';
 import styles from "./EditModelMain.module.css"
-
-import { Link, useNavigate } from 'react-router-dom';
 import FrontModel from './FrontModel';
 import BackModel from './BackModel';
 import LeftModel from './LeftModel';
 import RightModel from './RightModel';
 function EditModelMain() {
+
+    
     const [activePosF, setActivePosF] = useState('active')
     const [activePosB, setActivePosB] = useState('noactive')
     const [activePosL, setActivePosL] = useState('noactive')
@@ -56,9 +53,7 @@ function EditModelMain() {
 
 
     localStorage.getItem("image")
-    useEffect(() => {
-        // console.log(local);
-    })
+  
 
 
     return (
