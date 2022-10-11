@@ -195,31 +195,7 @@ const PatientMap = () => {
 
                 </div>
 
-                {/* <div className={styles.wrap}>
-
-
-                        <img src={point.front} alt="" id="patientId" style={{ transform: `scale(${scaleXY})` }} />
-                        {
-                            pointMap.front?.map((p, i) => (
-                                <div
-                                    draggable
-                                    key={i}
-                                    style={{
-                                        top: `${scaleCoordinates(p[0], p[1]).y}px`,
-                                        left: `${scaleCoordinates(p[0], p[1]).x}px`,
-                                        cursor: 'pointer',
-                                    }}
-                                    className={styles.point}
-                                    onClick={() => handleClick(i)}
-                                >
-
-                                </div>
-                            ))
-
-                        }
-
-                    </div> */}
-                {/* </div> */}
+              
 
                 <button onClick={() => handleAdd()}>Add Point</button>
                 <button onClick={() => handleDelete()}>Delete Point</button>
